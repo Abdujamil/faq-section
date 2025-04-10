@@ -1,13 +1,13 @@
 "use client";
 import React, {useEffect, useRef} from "react";
 import Image from "next/image";
-// import styles from "/page.module.scss";
+import styles from '../app/page.module.scss';
 
-const range = 40;
+const range = 80;
 
 const calcValue = (a, b) => (a / b * range - range / 2).toFixed(1);
 
-const ParallaxCard = ({src, alt, children}) => {
+const ParallaxCard = ({src, alt, children, style}) => {
     const cardRef = useRef(null);
     const imagesRef = useRef([]);
     const backgroundsRef = useRef([]);
@@ -43,10 +43,10 @@ const ParallaxCard = ({src, alt, children}) => {
     }, []);
 
     return (
-        <div ref={cardRef} className={styles.logo}>
+        <div ref={cardRef} className={styles.logoOnHover} style={style}>
             {children}
             <div ref={(el) => (imagesRef.current[0] = el)} className={styles.card__img}>
-                <Image src={src} alt={alt} width={155} height={155}/>
+                <Image src={src} alt={alt} width={155} height={155}  />
             </div>
             <div ref={(el) => (backgroundsRef.current[0] = el)} className={styles.card__bg}></div>
         </div>
