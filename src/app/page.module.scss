@@ -3,8 +3,6 @@
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
 
   display: block;
   max-width: 1160px;
@@ -15,7 +13,10 @@
   min-height: 100svh;
   padding: 80px 10px 20px 10px;
   gap: 64px;
-  font-family: var(--font-geist-sans);
+  //font-family: var(--font-geist-sans);
+  font-family: 'Arial';
+
+  color: #CCCCCC;
 
 }
 
@@ -71,10 +72,9 @@
   padding: 0 20px;
   border: none;
   border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+  transition: background 0.2s,
+  color 0.2s,
+  border-color 0.2s;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -166,14 +166,14 @@ a.secondary {
 
 @media (prefers-color-scheme: dark) {
   .logo {
-    filter: invert();
+    //filter: invert();
   }
 }
 
 
 /* New styles */
 
-.title{
+.title {
   font-family: 'Arial';
   font-style: normal;
   font-weight: 400;
@@ -183,3 +183,145 @@ a.secondary {
   color: #CCCCCC;
   margin-bottom: 60px;
 }
+
+.accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .faqCard {
+    position: relative;
+
+    &:hover {
+
+      .question {
+        .number {
+          p {
+            color: #3D9ED6;
+            font-weight: bold;
+
+            //font-family: 'Rubik';
+            font-style: normal;
+            font-size: 60px;
+          }
+        }
+
+        h3 {
+          font-size: 22px;
+          color: #3D9ED6;
+        }
+
+        .logoOnHover {
+          opacity: 1;
+        }
+
+        .arrow {
+          transform: rotate(190deg);
+
+          svg path {
+            stroke: #3D9ED6;
+          }
+        }
+      }
+
+      .answer {
+
+        .texts {
+        }
+      }
+    }
+  }
+
+  .question {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 31px;
+    position: relative;
+
+    background: #212121;
+    border-radius: 4px;
+
+    .number {
+      padding: 6px;
+
+      p {
+
+        //font-family: 'Rubik';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 22px;
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    h3 {
+      width: 100%;
+      font-weight: 400;
+      font-size: 18px;
+
+      transition: all 0.3s ease-in-out;
+
+    }
+
+    .logoOnHover {
+      position: absolute;
+      right: 15%;
+      opacity: 0;
+      transition: all 0.3s ease-in-out;
+
+    }
+
+    .arrow {
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .answer {
+    overflow: hidden;
+    height: 0;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    background: #212121;
+
+    .texts {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 30px;
+
+      p {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      .logo {
+        transition: all .5s ease-in-out;
+      }
+
+      button {
+        padding: 16px 61px;
+
+        background: #000;
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+    }
+  }
+
+
+}
+
+
