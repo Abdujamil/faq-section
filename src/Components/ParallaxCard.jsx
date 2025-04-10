@@ -7,7 +7,7 @@ const range = 80;
 
 const calcValue = (a, b) => (a / b * range - range / 2).toFixed(1);
 
-const ParallaxCard = ({src, alt, children, style}) => {
+const ParallaxCard = ({src, alt, style} ) => {
     const cardRef = useRef(null);
     const imagesRef = useRef([]);
     const backgroundsRef = useRef([]);
@@ -44,7 +44,7 @@ const ParallaxCard = ({src, alt, children, style}) => {
 
     return (
         <div ref={cardRef} className={styles.logoOnHover} style={style}>
-            {children}
+            {/*{children}*/}
             <div ref={(el) => (imagesRef.current[0] = el)} className={styles.card__img}>
                 <Image src={src} alt={alt} width={155} height={155}  />
             </div>

@@ -29,6 +29,7 @@ const FaqCard: React.FC = () => {
                     <ParallaxCard
                         src="/firstLogo.png"
                         alt="image"
+
                         style={{
                             display: activeIndex === 0 ? "none" : "block",
                         }}
