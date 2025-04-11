@@ -5,18 +5,19 @@
 
 
   display: block;
-  max-width: 1160px;
-  margin: 0 auto;
+  //max-width: 1160px;
+  //margin: 0 auto;
   grid-template-rows: 20px 1fr 20px;
   align-items: center;
   justify-items: start;
   min-height: 100svh;
-  padding: 80px 10px 20px 10px;
+  //padding: 80px 10px 20px 10px;
   gap: 64px;
   //font-family: var(--font-geist-sans);
   font-family: 'Arial';
 
   color: #CCCCCC;
+  overflow: hidden;
 
 }
 
@@ -33,6 +34,10 @@
 
 .main {
   width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 80px 10px 20px 10px;
+
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -96,22 +101,6 @@ a.secondary {
   min-width: 158px;
 }
 
-//.footer {
-//  grid-row-start: 3;
-//  display: flex;
-//  gap: 24px;
-//}
-
-//.footer a {
-//  display: flex;
-//  align-items: center;
-//  gap: 8px;
-//}
-
-//.footer img {
-//  flex-shrink: 0;
-//}
-
 
 @media (max-width: 600px) {
   .page {
@@ -145,12 +134,6 @@ a.secondary {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    //filter: invert();
   }
 }
 
@@ -346,6 +329,11 @@ a.secondary {
   width: 100%;
   margin-top: 132px;
 
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 10px -5px #000000;
+  backdrop-filter: blur(2px);
+
+
   .footerTop {
     width: 100%;
     height: 100%;
@@ -353,15 +341,16 @@ a.secondary {
     padding: 20px;
     border-radius: 4px;
 
-    background: #3C3D3E;
-    border: 1px solid #000000;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 22px;
 
     .form {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
       p {
         font-size: 20px;
         color: #3D9ED6;
@@ -409,9 +398,28 @@ a.secondary {
 
     .logo {
       margin: 0 10px;
+      text-align: center;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 13px;
+
+      h3 {
+        font-size: 18px;
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 16px;
+        color: #737373;
+      }
     }
 
     .links {
+      display: flex;
+      gap: 76px;
       text-align: end;
 
       ul {
@@ -429,9 +437,41 @@ a.secondary {
         }
       }
 
+
       p {
         font-size: 16px;
         color: #A4A4A4;
+      }
+
+      .footerBtns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        button {
+          width: 65px;
+          height: auto;
+          padding: 0; // Сбрасываем стандартные отступы
+          border: none; // Убираем стандартную рамку
+          background: transparent; // Прозрачный фон
+          cursor: pointer; // Указатель при наведении
+          transition: transform 0.2s ease; // Анимация нажатия
+
+          &:hover {
+            transform: scale(1.05);
+          }
+
+          &:active {
+            transform: scale(0.95);
+          }
+
+          // Оптимизация для Next.js Image
+          > span {
+            display: block !important; // Убираем лишние обертки
+            line-height: 0; // Убираем лишние отступы
+          }
+        }
       }
     }
   }
@@ -444,6 +484,7 @@ a.secondary {
     align-items: center;
     justify-content: space-between;
   }
+
 }
 
 
