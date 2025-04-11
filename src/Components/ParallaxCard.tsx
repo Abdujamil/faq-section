@@ -49,16 +49,24 @@ const ParallaxCard: React.FC<ParallaxCardProps> = ({src, alt, style}) => {
         };
     }, []);
 
+    const setImageRef = (el: HTMLDivElement | null) => {
+        imagesRef.current[0] = el;
+    };
+
+    const setBackgroundRef = (el: HTMLDivElement | null) => {
+        backgroundsRef.current[0] = el;
+    };
+
     return (
         <div ref={cardRef} className={styles.logoOnHover} style={style}>
             <div
-                ref={(el) => (imagesRef.current[0] = el)}
+                ref={setImageRef}
                 className={styles.card__img}
             >
                 <Image src={src} alt={alt} width={155} height={155}/>
             </div>
             <div
-                ref={(el) => (backgroundsRef.current[0] = el)}
+                ref={setBackgroundRef}
                 className={styles.card__bg}
             ></div>
         </div>
