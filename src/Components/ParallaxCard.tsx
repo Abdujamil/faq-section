@@ -1,19 +1,25 @@
 "use client";
-import React, {useEffect, useRef} from "react";
-import Image from "next/image";
+import React, {useEffect, useRef, CSSProperties} from "react";
+import Image, {StaticImageData} from "next/image";
 import styles from '../app/page.module.scss';
 
-const range = 80;
+const range = 40;
 
-const calcValue = (a, b) => (a / b * range - range / 2).toFixed(1);
+const calcValue = (a: number, b: number): string => (a / b * range - range / 2).toFixed(1);
 
-const ParallaxCard = ({src, alt, style} ) => {
-    const cardRef = useRef(null);
-    const imagesRef = useRef([]);
-    const backgroundsRef = useRef([]);
+interface ParallaxCardProps {
+    src: string | StaticImageData;
+    alt: string;
+    style?: CSSProperties;
+}
+
+const ParallaxCard: React.FC<ParallaxCardProps> = ({src, alt, style}) => {
+    const cardRef = useRef<HTMLDivElement>(null);
+    const imagesRef = useRef<(HTMLDivElement | null)[]>([]);
+    const backgroundsRef = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
-        const handleMouseMove = ({x, y}) => {
+        const handleMouseMove = ({x, y}: { x: number; y: number }) => {
             const card = cardRef.current;
             const yValue = calcValue(y, window.innerHeight);
             const xValue = calcValue(x, window.innerWidth);
@@ -30,6 +36,7 @@ const ParallaxCard = ({src, alt, style} ) => {
 
             backgroundsRef.current.forEach((background) => {
                 if (background) {
+                    // @ts-ignore
                     background.style.backgroundPosition = `${xValue * 0.45}px ${-yValue * 0.45}px`;
                 }
             });
@@ -44,11 +51,16 @@ const ParallaxCard = ({src, alt, style} ) => {
 
     return (
         <div ref={cardRef} className={styles.logoOnHover} style={style}>
-            {/*{children}*/}
-            <div ref={(el) => (imagesRef.current[0] = el)} className={styles.card__img}>
-                <Image src={src} alt={alt} width={155} height={155}  />
+            <div
+                ref={(el) => (imagesRef.current[0] = el)}
+                className={styles.card__img}
+            >
+                <Image src={src} alt={alt} width={155} height={155}/>
             </div>
-            <div ref={(el) => (backgroundsRef.current[0] = el)} className={styles.card__bg}></div>
+            <div
+                ref={(el) => (backgroundsRef.current[0] = el)}
+                className={styles.card__bg}
+            ></div>
         </div>
     );
 };
