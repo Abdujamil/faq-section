@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
             </div>
             <div className={styles.footerBottom}>
                 <p>Политика конфиденциальности </p>
-                <p>ООО "АУДИОСЕКТОР"</p>
+                <p>ООО &quot;АУДИОСЕКТОР&quot;</p>
                 <p>ИНН 6000005874</p>
             </div>
         </footer>
