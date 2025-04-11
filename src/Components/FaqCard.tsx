@@ -146,7 +146,7 @@ import ParallaxCard from "./ParallaxCard";
 import {getFaqBackground} from "../utils/faqHelpers";
 
 interface FaqCardProps {
-    id: string;
+    id: number;
     num: string;
     question: string;
     answer: string;
