@@ -89,7 +89,7 @@ const Footer: React.FC = () => {
                             <defs>
                                 <filter id="filter0_dd_2378_748" x="-1.90735e-06" y="9.53674e-07" width="66.2"
                                         height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                     <feColorMatrix in="SourceAlpha" type="matrix"
                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                                                    result="hardAlpha"/>
@@ -127,7 +127,7 @@ const Footer: React.FC = () => {
                                 <filter id="filter0_dd_2378_749" x="-1.90735e-06" y="9.53674e-07" width="66.2"
                                         height="50"
                                         filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                     <feColorMatrix in="SourceAlpha" type="matrix"
                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
                                                    result="hardAlpha"/>
