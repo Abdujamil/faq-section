@@ -164,9 +164,9 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
     const background = getFaqBackground(id);
 
     return (
-        <div className={styles.faqCard}>
+        <div className={`${styles.faqCard} relative`}>
             <div
-                className={`${styles.question} ${isOpen ? styles.active : ""}`}
+                className={`${styles.question} ${isOpen ? styles.active : ""} w-full flex flex-row items-center p-5 rounded-[4px] `}
                 style={{
                     background,
                     paddingBottom: isOpen ? "0px" : "20px",
@@ -175,19 +175,19 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 }}
             >
                 <div
-                    className={styles.number}
+                    className={`${styles.number} p-[6px]`}
                     style={{
                         position: isOpen ? "relative" : "initial",
                         top: isOpen ? "-12px" : "0",
                     }}
                 >
-                    <p>{num}</p>
+                    <p className={`font-[300] w-[45px] text-[22px] transition-all ease-in-out duration-[0.2s] relative left-0`}>{num}</p>
                 </div>
-                <div className={styles.answerContainer}>
-                    <h3>{question}</h3>
+                <div className={`${styles.answerContainer} w-full`}>
+                    <h3 className={`w-full font-[400] text-[18px] transition-all ease-in-out duration-[0.3s] `}>{question}</h3>
 
                     <div
-                        className={styles.answer}
+                        className={`${styles.answer}`}
                         style={{
                             height: isOpen ? "auto" : "0px",
                             paddingTop: isOpen ? "30px" : "0px",
@@ -195,17 +195,20 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                             overflow: "hidden",
                         }}
                     >
-                        <div className={styles.texts}>
-                            <p>{answer}</p>
+                        <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
+                            <p className={`text-[18px] font-normal`}>{answer}</p>
                             <Image
-                                className={styles.logo}
+                                className={`${styles.logo} transition-all ease-in-out duration-[0.5s] h-full`}
                                 src={src}
                                 width={155}
                                 height={155}
                                 alt="FAQ image"
                             />
                         </div>
-                        <button>подробнее</button>
+                        <button
+                            className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>
+                            подробнее
+                        </button>
                     </div>
                 </div>
 
@@ -220,7 +223,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 <Image
                     src={src}
                     alt="FAQ image"
-                    className={styles.logoOnHover}
+                    className={`${styles.logoOnHover} absolute right-[10%] opacity-0 z-[99] rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
                     width={155}
                     height={155}
                     style={{
@@ -228,8 +231,9 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                     }}
                 />
 
-                <div className={styles.arrow} onClick={handleClick}>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                <div className={`${styles.arrow} cursor-pointer`} onClick={handleClick}>
+                    <svg className={`transition-all duration-[.2s] ease-in-out`} width="24" height="24"
+                         viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 5L19 19" stroke="#CCCCCC" strokeWidth="2" strokeLinecap="round"
                               strokeLinejoin="round"/>
