@@ -183,7 +183,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 >
                     <p>{num}</p>
                 </div>
-                <div>
+                <div className={styles.answerContainer}>
                     <h3>{question}</h3>
 
                     <div
