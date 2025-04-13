@@ -21,18 +21,18 @@
 
 }
 
-@media (prefers-color-scheme: dark) {
+
+
+.main {@media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
 
     --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
+    --button-secondary-hover: #000000;
   }
 }
-
-.main {
   width: 100%;
   max-width: 1160px;
   margin: 0 auto;
@@ -40,7 +40,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  //gap: 32px;
   grid-row-start: 2;
 }
 
@@ -178,7 +178,7 @@ a.secondary {
       }
 
       .logoOnHover {
-        opacity: 1;
+        opacity: .8;
       }
 
       .arrow {
@@ -213,13 +213,13 @@ a.secondary {
           opacity: 1;
         }
 
-        .arrow {
-          transform: rotate(190deg);
-
-          svg path {
-            stroke: #3D9ED6;
-          }
-        }
+        //.arrow {
+        //  transform: rotate(190deg);
+        //
+        //  svg path {
+        //    stroke: #3D9ED6;
+        //  }
+        //}
       }
 
       .answer {
@@ -276,13 +276,14 @@ a.secondary {
       right: 10%;
       opacity: 0;
       z-index: 99;
+      border-radius: 4px;
       transition: all 0.3s ease-in-out;
 
     }
 
     .arrow {
       cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      transition: all 0.2s ease-in-out;
     }
   }
 
@@ -329,7 +330,7 @@ a.secondary {
   width: 100%;
   margin-top: 132px;
 
-  background: rgba(255, 255, 255, 0.1);
+  background: #ffffff10;
   box-shadow: 0px 0px 10px -5px #000000;
   backdrop-filter: blur(2px);
 

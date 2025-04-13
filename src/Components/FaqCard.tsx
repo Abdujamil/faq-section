@@ -209,9 +209,20 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                     </div>
                 </div>
 
-                <ParallaxCard
+                {/*<ParallaxCard*/}
+                {/*    src={src}*/}
+                {/*    alt="FAQ image"*/}
+                {/*    style={{*/}
+                {/*        display: isOpen ? "none" : "block",*/}
+                {/*    }}*/}
+                {/*/>*/}
+
+                <Image
                     src={src}
                     alt="FAQ image"
+                    className={styles.logoOnHover}
+                    width={155}
+                    height={155}
                     style={{
                         display: isOpen ? "none" : "block",
                     }}
