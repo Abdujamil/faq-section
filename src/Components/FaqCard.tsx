@@ -37,12 +37,12 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 className={`${styles.question} w-full flex flex-row items-center p-5 rounded-[4px] `}
                 style={{
                     // background,
-                    paddingBottom: isOpen ? "0px" : "20px",
+                    // paddingBottom: isOpen ? "0px" : "20px",
                     height: isOpen ? "68px" : "68px",
                     alignItems: isOpen ? "start" : "center",
                     background: isOpen ? "#1A1A1A" : "",
                     borderBottom: isOpen ? "1px solid #CCCCCC" : "",
-                    // boxShadow: isOpen ? "inset -5px -5px 7px #000000, inset 5px 5px 7px #000000" : "",
+                    boxShadow: isOpen ? "none" : "none",
                     // borderBottomRightRadius: isOpen ? "0" : "4px",
                     // borderBottomLeftRadius: isOpen ? "0" : "4px",
                 }}
