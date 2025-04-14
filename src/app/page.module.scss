@@ -53,7 +53,7 @@
 .accordion {
 
   .faqCard {
-    background: rgba(83, 83, 83, 0.5);
+    //background: rgba(83, 83, 83, 0.5);
     border: 1px solid transparent;
     border-radius: 4px;
 
@@ -96,15 +96,17 @@
     }
 
     &:active {
-        background: #20272B !important;
-        box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000 !important;
-        //border: 1px solid #CCCCCC !important;
+        //background: #20272B !important;
+        //box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000 !important;
+        border: 1px solid #CCCCCC !important;
 
       .question {
-        transform: scale(.99);
+        //transform: scale(.99);
         //box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000;
 
-        &:active {
+
+        .questionContainer:active {
+          transform: scale(.99);
           //background: #20272B !important;
           //box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000 !important;
           border-radius: 4px;
@@ -130,7 +132,7 @@
         font-style: normal;
         font-size: 60px;
         left: -14px;
-        top: -24px;
+        top: 12px;
       }
     }
 

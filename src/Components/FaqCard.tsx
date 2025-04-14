@@ -28,75 +28,76 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
     return (
         <div
             className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer  s:py-[23px] group-active/window:text-[#FFF]`}
-            onClick={handleClick}
             style={{
                 borderColor: isOpen ? "#CCCCCC" : "transparent",
                 background: isOpen ? "#53535380" : "",
-                // boxShadow: isOpen ? "none" : "",
+                boxShadow: isOpen ? "none" : "",
             }}
         >
-            <div
-                className={`${styles.question} w-full flex flex-row items-center p-5 rounded-[4px] `}
-                style={{
-                    // background,
-                    // paddingBottom: isOpen ? "0px" : "20px",
-                    height: isOpen ? "68px" : "68px",
-                    alignItems: isOpen ? "start" : "center",
-                    background: isOpen ? "#1A1A1A" : "",
-                    borderBottom: isOpen ? "1px solid #CCCCCC" : "",
-                    // boxShadow: isOpen ? "none" : "none",
-                    // borderBottomRightRadius: isOpen ? "0" : "4px",
-                    // borderBottomLeftRadius: isOpen ? "0" : "4px",
-                }}
+            <div className={`${styles.question} 
+                    w-full flex flex-row items-center bg-[#5353537F] active:bg-[#20272B] rounded-[4px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
+                 onClick={handleClick}
+                 style={{
+                     // background,
+                     // paddingBottom: isOpen ? "0px" : "20px",
+                     height: isOpen ? "68px" : "68px",
+                     alignItems: isOpen ? "start" : "center",
+                     // background: isOpen ? "#1A1A1A" : "",
+                     borderBottom: isOpen ? "1px solid #CCCCCC" : "",
+                     // boxShadow: isOpen ? "none" : "none",
+                     // borderBottomRightRadius: isOpen ? "0" : "4px",
+                     // borderBottomLeftRadius: isOpen ? "0" : "4px",
+                 }}
             >
                 <div
-                    className={`${styles.number} p-[6px]`}
-                    style={{
-                        position: isOpen ? "relative" : "initial",
-                        top: isOpen ? "-12px" : "0",
-                    }}
-                >
-                    <p className={`font-[300] w-[45px] text-[22px] transition-all ease duration-[.1s] relative left-0`}>{num}</p>
-                </div>
-                <div className={`${styles.answerContainer} w-full`}>
-                    <h3 className={`w-full font-[400] text-[20px] transition-all ease-in-out duration-[0.3s] `}>{question}</h3>
-                </div>
+                    className={`${styles.questionContainer} w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s]`}>
+                    <div className={`${styles.number} p-[6px]`}
+                         style={{
+                             position: isOpen ? "relative" : "initial",
+                             top: isOpen ? "-12px" : "0",
+                         }}
+                    >
+                        <p className={`font-[300] w-[45px] text-[22px] transition-all ease duration-[.1s] relative left-0`}>{num}</p>
+                    </div>
+                    <div className={`${styles.answerContainer} w-full`}>
+                        <h3 className={`w-full font-[400] text-[20px] transition-all ease-in-out duration-[0.3s] `}>{question}</h3>
+                    </div>
 
-                {/*<ParallaxCard*/}
-                {/*    src={src}*/}
-                {/*    alt="FAQ image"*/}
-                {/*    style={{*/}
-                {/*        display: isOpen ? "none" : "block",*/}
-                {/*    }}*/}
-                {/*/>*/}
+                    {/*<ParallaxCard*/}
+                    {/*    src={src}*/}
+                    {/*    alt="FAQ image"*/}
+                    {/*    style={{*/}
+                    {/*        display: isOpen ? "none" : "block",*/}
+                    {/*    }}*/}
+                    {/*/>*/}
 
-                <div
-                    className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[99] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
-                    style={{
-                        display: isOpen ? "none" : "block",
-                    }}
-                >
-                    <Image
-                        src={src}
-                        className="rounded-[4px] opacity-[70%]"
-                        alt="FAQ image"
-                        width={155}
-                        height={155}
-                    />
-                </div>
+                    <div
+                        className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[99] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
+                        style={{
+                            display: isOpen ? "none" : "block",
+                        }}
+                    >
+                        <Image
+                            src={src}
+                            className="rounded-[4px] opacity-[70%]"
+                            alt="FAQ image"
+                            width={155}
+                            height={155}
+                        />
+                    </div>
 
-                <div className={`${styles.arrow}`}>
-                    <svg className={`transition-all duration-[.2s] ease-in-out`} width="24" height="24"
-                         viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 5L19 19" stroke="#CCCCCC" strokeWidth="2" strokeLinecap="round"
-                              strokeLinejoin="round"/>
-                        <path d="M19 11L19 19L11 19" stroke="#CCCCCC" strokeWidth="2" strokeLinecap="round"
-                              strokeLinejoin="round"/>
-                    </svg>
+                    <div className={`${styles.arrow}`}>
+                        <svg className={`transition-all duration-[.2s] ease-in-out`} width="24" height="24"
+                             viewBox="0 0 24 24" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 5L19 19" stroke="#CCCCCC" strokeWidth="2" strokeLinecap="round"
+                                  strokeLinejoin="round"/>
+                            <path d="M19 11L19 19L11 19" stroke="#CCCCCC" strokeWidth="2" strokeLinecap="round"
+                                  strokeLinejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
-
             <div
                 className={`${styles.answer} bg-[#1A1A1A]  rounded-[4px]`}
                 style={{
