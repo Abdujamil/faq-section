@@ -15,7 +15,6 @@ export const getFaqBackground = (id: number): GradientBackground => {
         '#494949',
         '#4E4E4E',
         '#535353',
-
     ];
 
     return gradients[id % gradients.length];

@@ -40,16 +40,16 @@ const Footer: React.FC = () => {
                 </div>
                 <div
                     className={`${styles.logo} mx-[10px] text-center flex flex-col justify-center items-center gap-[13px]`}>
-                    <p className="font-[400 text-[#737373] text-[16px]">Политика конфиденциальности </p>
+                    <p className="font-[400 text-[#737373] text-[16px]">ИНН 6000005874 </p>
                     <h3 className="text-[18px]">ООО &quot;АУДИОСЕКТОР&quot;</h3>
-                    <p className="font-[400 text-[#737373] text-[16px]">ИНН 6000005874</p>
+                    <p className="font-[400 text-[#737373] text-[16px]">Политика конфиденциальности</p>
                 </div>
                 <div className={`${styles.links} flex text-end gap-[76px] h-full`}>
                     <div className="flex items-end justify-between flex-col">
                         <ul className="flex items-center gap-[20px]">
                             <li><a href="#" className="text-[18px]">Блог</a></li>
-                            <li><a href="#" className="text-[18px]">Контакты</a></li>
                             <li><a href="#" className="text-[18px]">Лицензии</a></li>
+                            <li><a href="#" className="text-[18px]">Контакты</a></li>
                         </ul>
 
                         <p className="text-[16px] text-[#A4A4A4]">
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
                             </g>
                             <defs>
                                 <filter id="filter0_dd_2378_748" x="-1.90735e-06" y="9.53674e-07" width="66.2"
-                                        height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        height="50" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                     <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                     <feColorMatrix in="SourceAlpha" type="matrix"
                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
@@ -126,7 +126,7 @@ const Footer: React.FC = () => {
                             <defs>
                                 <filter id="filter0_dd_2378_749" x="-1.90735e-06" y="9.53674e-07" width="66.2"
                                         height="50"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                                     <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                                     <feColorMatrix in="SourceAlpha" type="matrix"
                                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
