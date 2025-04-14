@@ -1,12 +1,19 @@
 "use client";
 
-import React from "react";
+import React, {useState}from "react";
 import styles from '../app/page.module.scss';
 import FaqCard from "../Components/FaqCard";
 import Footer from "./footer";
 import {faqData} from "../data/faq";
 
 const Home: React.FC = () => {
+
+    const [openId, setOpenId] = useState<number | null>(null);
+
+    const handleToggle = (id: number) => {
+        setOpenId(prevId => prevId === id ? null : id);
+    };
+
     return (
         <div className={`${styles.page} block `}>
             <main className={`${styles.main} w-full max-w-[1160px] mx-auto pt-[80px] pr-[10px] pl-[10px] flex flex-col`}>
@@ -20,6 +27,8 @@ const Home: React.FC = () => {
                             question={item.question}
                             answer={item.answer}
                             src={item.src}
+                            isOpen={openId === item.id}
+                            onToggle={handleToggle}
                         />
                     ))}
                 </section>

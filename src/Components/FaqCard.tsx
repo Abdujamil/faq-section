@@ -12,13 +12,15 @@ interface FaqCardProps {
     answer: string;
     src: string | StaticImageData;
     defaultOpen?: boolean;
+    isOpen?: boolean;
+    onToggle?: any;
 }
 
-const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaultOpen = false}) => {
-    const [isOpen, setIsOpen] = useState(defaultOpen);
+const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaultOpen = false, isOpen, onToggle}) => {
+    // const [isOpen, setIsOpen] = useState(defaultOpen);
 
     const handleClick = () => {
-        setIsOpen(!isOpen);
+        onToggle(id);
     };
 
     // const background = getFaqBackground(id);
