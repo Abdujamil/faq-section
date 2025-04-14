@@ -44,7 +44,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                     <p className={`font-[300] w-[45px] text-[22px] transition-all ease-in-out duration-[0.2s] relative left-0`}>{num}</p>
                 </div>
                 <div className={`${styles.answerContainer} w-full`}>
-                    <h3 className={`w-full font-[400] text-[18px] transition-all ease-in-out duration-[0.3s] `}>{question}</h3>
+                    <h3 className={`w-full font-[400] text-[20px] transition-all ease-in-out duration-[0.3s] `}>{question}</h3>
 
                     <div
                         className={`${styles.answer}`}
@@ -88,11 +88,10 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 >
                     <Image
                         src={src}
-                        className="rounded-[4px] opacity-[60%]"
+                        className="rounded-[4px] opacity-[70%]"
                         alt="FAQ image"
                         width={155}
                         height={155}
-
                     />
                 </div>
 

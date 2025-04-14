@@ -26,10 +26,10 @@ export const metadata: Metadata = {
 // Добавляем тип для пропсов, но не меняем логику
 export default function RootLayout({children}: RootLayoutProps) {
     return (
-        <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-        </body>
+        <html lang="ru">
+            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                {children}
+            </body>
         </html>
     );
 }
