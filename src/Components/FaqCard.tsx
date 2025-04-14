@@ -38,13 +38,13 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 style={{
                     // background,
                     paddingBottom: isOpen ? "0px" : "20px",
-                    height: isOpen ? "70px" : "78px",
+                    height: isOpen ? "68px" : "68px",
                     alignItems: isOpen ? "start" : "center",
-                    background: isOpen ? "#20272B" : "",
+                    background: isOpen ? "#1A1A1A" : "",
                     borderBottom: isOpen ? "1px solid #CCCCCC" : "",
-                    boxShadow: isOpen ? "inset -5px -5px 7px #000000, inset 5px 5px 7px #000000" : "",
-                    borderBottomRightRadius: isOpen ? "0" : "4px",
-                    borderBottomLeftRadius: isOpen ? "0" : "4px",
+                    // boxShadow: isOpen ? "inset -5px -5px 7px #000000, inset 5px 5px 7px #000000" : "",
+                    // borderBottomRightRadius: isOpen ? "0" : "4px",
+                    // borderBottomLeftRadius: isOpen ? "0" : "4px",
                 }}
             >
                 <div
@@ -96,7 +96,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
             </div>
 
             <div
-                className={`${styles.answer}`}
+                className={`${styles.answer} bg-[#1A1A1A]`}
                 style={{
                     // height: isOpen ? "auto" : "0px",
                     // paddingTop: isOpen ? "30px" : "0px",
