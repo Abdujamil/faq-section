@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -5,6 +7,13 @@
 
   font-family: 'Arial';
   color: #CCCCCC;
+
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .main {
@@ -41,59 +50,66 @@
   }
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
 .accordion {
 
   .faqCard {
+    background: rgba(83, 83, 83, 0.5);
+    border: 1px solid transparent;
+    border-radius: 4px;
 
-    .active {
-      border: 1px solid #CCCCCC;
-
-      .number {
-        p {
-          color: #3D9ED6;
-
-          //font-family: 'Rubik';
-          font-style: normal;
-          font-size: 60px;
-          left: -14px;
-          top: -20px;
-        }
-      }
-
-      h3 {
-        //font-size: 22px;
-        color: #3D9ED6;
-        //font-weight: bold;
-      }
-
-      .answerContainer {
-        p, img, button {
-          animation: bounce 0.3s ease-out;
-        }
-      }
-
-      .logoOnHover {
-        opacity: 0;
-      }
-
-      .arrow {
-        svg {
-          transform: rotate(190deg);
-        }
-
-        svg path {
-          stroke: #3D9ED6;
-        }
-      }
-    }
+    //.active {
+    //  //border: 1px solid #CCCCCC;
+    //
+    //  .number {
+    //    p {
+    //      color: #3D9ED6;
+    //
+    //      //font-family: 'Rubik';
+    //      font-style: normal;
+    //      font-size: 60px;
+    //      left: -14px;
+    //      top: -20px;
+    //    }
+    //  }
+    //
+    //  h3 {
+    //    //font-size: 22px;
+    //    color: #3D9ED6;
+    //    //font-weight: bold;
+    //  }
+    //
+    //  //.answerContainer {
+    //  //  p, img, button {
+    //  //    animation: bounce 0.3s ease-out;
+    //  //  }
+    //  //}
+    //
+    //  .logoOnHover {
+    //    opacity: 0;
+    //  }
+    //
+    //  .arrow {
+    //    svg {
+    //      transform: rotate(-180deg);
+    //    }
+    //
+    //    svg path {
+    //      stroke: #3D9ED6;
+    //    }
+    //  }
+    //
+    //  .answer {
+    //    p, img, button {
+    //      animation: bounce 0.3s ease-out;
+    //    }
+    //  }
+    //}
 
     &:hover {
+        border: 1px solid #CCCCCC !important;
 
       .question {
         //background-color: #3D9ED6 !important  ;
-        border: 1px solid #CCCCCC;
 
 
         .number {
@@ -130,11 +146,60 @@
     }
 
     &:active {
-      background: #20272B;
-      box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000;
+        background: #20272B;
+        box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000;
+        border: 1px solid #CCCCCC !important;
 
       .question {
-        padding: 20px 35px;
+        transform: scale(.99);
+
+        .logoOnHover {
+          border: 0.97px solid #CCCCCC !important;
+          filter: drop-shadow(0px 0px 5.82px rgba(0, 0, 0, 0.8));
+          backdrop-filter: blur(2.425px);
+          border-radius: 3.88px;
+        }
+      }
+
+    }
+  }
+
+  .faqCard.active {
+    .number {
+      p {
+        color: #3D9ED6;
+
+        //font-family: 'Rubik';
+        font-style: normal;
+        font-size: 60px;
+        left: -14px;
+        top: -20px;
+      }
+    }
+
+    h3 {
+      //font-size: 22px;
+      color: #3D9ED6;
+      //font-weight: bold;
+    }
+
+    .logoOnHover {
+      opacity: 0;
+    }
+
+    .arrow {
+      svg {
+        transform: rotate(-180deg);
+      }
+
+      svg path {
+        stroke: #3D9ED6;
+      }
+    }
+
+    .answer {
+      p, img, button {
+        animation: bounce 0.3s ease-out;
       }
     }
   }
@@ -189,8 +254,8 @@
     //padding: 20px;
     //gap: 31px;
     position: relative;
-    background: rgba(83, 83, 83, 0.5);
-    border: 1px solid transparent;
+    //background: rgba(83, 83, 83, 0.5);
+    //border: 1px solid transparent;
     transition: all 0.1s ease-in-out;
 
     //background: #212121;
@@ -280,6 +345,8 @@
         //opacity: 0;
         //transition: all .5s ease-in-out;
         //height: 100%;
+
+        filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.8));
       }
 
       button {

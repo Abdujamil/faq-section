@@ -24,16 +24,23 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
     // const background = getFaqBackground(id);
     //
     return (
-        <div className={`${styles.faqCard} relative cursor-pointer  s:py-[23px] group-active/window:text-[#FFF]`} onClick={handleClick}>
+        <div className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer  s:py-[23px] group-active/window:text-[#FFF]`}
+             onClick={handleClick}
+             style={{
+                 borderColor: isOpen ? "#CCCCCC" : "transparent",
+                 background: isOpen ? "#53535380" : "",
+                 boxShadow: isOpen ? "none" : "",
+             }}
+        >
             <div
-                className={`${styles.question} ${isOpen ? styles.active : ""} w-full flex flex-row items-center p-5 rounded-[4px] `}
+                className={`${styles.question} w-full flex flex-row items-center p-5 rounded-[4px] `}
                 style={{
                     // background,
                     paddingBottom: isOpen ? "0px" : "20px",
-                    height: isOpen ? "auto" : "78px",
+                    height: isOpen ? "78px" : "78px",
                     alignItems: isOpen ? "start" : "center",
                 }}
-            >
+                >
                 <div
                     className={`${styles.number} p-[6px]`}
                     style={{
@@ -41,35 +48,10 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                         top: isOpen ? "-12px" : "0",
                     }}
                 >
-                    <p className={`font-[300] w-[45px] text-[22px] transition-all ease-in-out duration-[0.2s] relative left-0`}>{num}</p>
+                    <p className={`font-[300] w-[45px] text-[22px] transition-all ease duration-[.1s] relative left-0`}>{num}</p>
                 </div>
                 <div className={`${styles.answerContainer} w-full`}>
                     <h3 className={`w-full font-[400] text-[20px] transition-all ease-in-out duration-[0.3s] `}>{question}</h3>
-
-                    <div
-                        className={`${styles.answer}`}
-                        style={{
-                            height: isOpen ? "auto" : "0px",
-                            paddingTop: isOpen ? "30px" : "0px",
-                            paddingBottom: isOpen ? "30px" : "0px",
-                            overflow: "hidden",
-                        }}
-                    >
-                        <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
-                            <p className={`text-[18px] font-normal`}>{answer}</p>
-                            <Image
-                                className={`${styles.logo}  h-full`}
-                                src={src}
-                                width={155}
-                                height={155}
-                                alt="FAQ image"
-                            />
-                        </div>
-                        <button
-                            className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>
-                            подробнее
-                        </button>
-                    </div>
                 </div>
 
                 {/*<ParallaxCard*/}
@@ -81,7 +63,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 {/*/>*/}
 
                 <div
-                    className={`${styles.logoOnHover} absolute right-[10%] overflow-hidden opacity-0 z-[99] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
+                    className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[99] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
                     style={{
                         display: isOpen ? "none" : "block",
                     }}
@@ -105,6 +87,40 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                               strokeLinejoin="round"/>
                     </svg>
                 </div>
+            </div>
+
+            <div
+                className={`${styles.answer}`}
+                style={{
+                    // height: isOpen ? "auto" : "0px",
+                    // paddingTop: isOpen ? "30px" : "0px",
+                    // paddingBottom: isOpen ? "30px" : "0px",
+                    // paddingRight: isOpen ? "50px" : "0px",
+                    // overflow: "hidden",
+
+                    height: isOpen ? "auto" : "0px",
+                    paddingTop: isOpen ? "0px" : "0px",
+                    paddingBottom: isOpen ? "30px" : "0px",
+                    paddingRight: isOpen ? "90px" : "0px",
+                    paddingLeft: isOpen ? "80px" : "0px",
+                    overflow: "hidden",
+                }}
+            >
+                <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
+                    <p className={`text-[18px] font-normal`}>{answer}</p>
+
+                    <Image
+                        src={src}
+                        className="${styles.logo} w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[4px] opacity-[100%]"
+                        width={155}
+                        height={155}
+                        alt="FAQ image"
+                    />
+                </div>
+                <button
+                    className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>
+                    подробнее
+                </button>
             </div>
         </div>
     );
