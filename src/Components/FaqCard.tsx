@@ -47,10 +47,11 @@ const FaqCard: React.FC<FaqCardProps> = ({
         // Запускаем анимацию только при открытии
         if (!isOpen) {
             await buttonControls.start({
-                y: [0, -30, 0, -15, 0], // Значения для bounce-эффекта
+                y: [1, -1, 1, -1, 1], // Значения для bounce-эффекта
                 transition: {
-                    duration: 0.5, // 500ms как в вашем конфиге
-                    ease: [0.34, 1.56, 0.64, 1], // Аналог outBounce
+                    duration: 0.01, // 500ms как в вашем конфиге
+                    // ease: [0.34, 1.56, 0.64, 1], // Аналог outBounce
+                    ease: [0.1, 0.6, 0.4, 0.8], // Аналог outBounce
                     times: [0, 0.2, 0.5, 0.8, 1] // Тайминг ключевых кадров
                 }
             });
@@ -92,7 +93,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 >
                     <Image
                         src={src}
-                        className="rounded-[4px] transition-all ease-in-out duration-[1s]"
+                        className="rounded-[4px] transition-all ease-in-out duration-[.3s]"
                         style={{
                             objectFit: 'contain', // или 'cover' в зависимости от потребностей
                             aspectRatio: '1 / 1' // явное указание соотношения
