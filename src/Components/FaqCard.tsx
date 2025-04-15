@@ -4,6 +4,13 @@ import React, {useState, useRef, useEffect} from "react";
 import styles from '../app/page.module.scss';
 import ParallaxCard from "./ParallaxCard";
 import {getFaqBackground} from "../utils/faqHelpers";
+import {motion} from 'framer-motion';
+
+interface AnimationSettings {
+    duration: number;
+    bounce: number;
+    delay: number;
+}
 
 interface FaqCardProps {
     id: number;
@@ -14,70 +21,81 @@ interface FaqCardProps {
     defaultOpen?: boolean;
     isOpen?: boolean;
     onToggle?: any;
+    animationSettings?: AnimationSettings;
 }
 
 
-const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaultOpen = false, isOpen, onToggle}) => {
-    const cardRef = useRef<null | HTMLDivElement>(null);
-    const imageRef = useRef<HTMLDivElement>(null);
-    const [dimensions, setDimensions] = useState({width: 0, height: 0});
-    const [mouseX, setMouseX] = useState(0);
-    const [mouseY, setMouseY] = useState(0);
-    const [oldMousePX, setOldMousePX] = useState(0);
-    const [mouseLeaveDelay, setMouseLeaveDelay] = useState<NodeJS.Timeout | null>(null);
-
-    useEffect(() => {
-        const card = cardRef.current;
-        if (card) {
-            setDimensions({
-                width: card.offsetWidth,
-                height: card.offsetHeight
-            });
-        }
-    }, [cardRef.current]);
-
-    const mousePX = mouseX / dimensions.width;
-    const mousePY = mouseY / dimensions.height;
-
-    const cardStyle = {
-        transform: `rotateY(${(mousePX || 0) * 30}deg) rotateX(${(mousePY || 0) * -30}deg)`,
-        perspective: '1200px',
-        transition: 'transform 0.3s ease-out'
-    };
-
-    const textStyle = {
-        transform: `translate3d(${(mousePX || 0) * 20 * 2}px, ${(mousePY || 0) * 20 * 2}px, 0) scale(1.1)`,
-        transition: 'transform 0.3s ease-out',
-        willChange: 'transform'
-    };
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        const card = cardRef.current;
-        if (card) {
-            const rect = card.getBoundingClientRect();
-            setMouseX(e.clientX - rect.left - dimensions.width / 2);
-            setMouseY(e.clientY - rect.top - dimensions.height / 2);
-
-            setOldMousePX(e.clientX - rect.left - dimensions.width / 2)
-
-        }
-    };
-
-    const handleMouseEnter = () => {
-        if (mouseLeaveDelay) {
-            clearTimeout(mouseLeaveDelay);
-        }
-    };
-
-    const handleMouseLeave = () => {
-        setMouseLeaveDelay(setTimeout(() => {
-            setMouseX(0);
-            setMouseY(0);
-            setTimeout(() => {
-                setOldMousePX(0)
-            }, 500)
-        }, 1000));
-    };
+const FaqCard: React.FC<FaqCardProps> = ({
+                                             id,
+                                             num,
+                                             question,
+                                             answer,
+                                             src,
+                                             defaultOpen = false,
+                                             isOpen,
+                                             onToggle,
+                                             animationSettings
+                                         }) => {
+    // const cardRef = useRef<null | HTMLDivElement>(null);
+    // const imageRef = useRef<HTMLDivElement>(null);
+    // const [dimensions, setDimensions] = useState({width: 0, height: 0});
+    // const [mouseX, setMouseX] = useState(0);
+    // const [mouseY, setMouseY] = useState(0);
+    // const [oldMousePX, setOldMousePX] = useState(0);
+    // const [mouseLeaveDelay, setMouseLeaveDelay] = useState<NodeJS.Timeout | null>(null);
+    //
+    // useEffect(() => {
+    //     const card = cardRef.current;
+    //     if (card) {
+    //         setDimensions({
+    //             width: card.offsetWidth,
+    //             height: card.offsetHeight
+    //         });
+    //     }
+    // }, [cardRef.current]);
+    //
+    // const mousePX = mouseX / dimensions.width;
+    // const mousePY = mouseY / dimensions.height;
+    //
+    // const cardStyle = {
+    //     transform: `rotateY(${(mousePX || 0) * 30}deg) rotateX(${(mousePY || 0) * -30}deg)`,
+    //     perspective: '1200px',
+    //     transition: 'transform 0.3s ease-out'
+    // };
+    //
+    // const textStyle = {
+    //     transform: `translate3d(${(mousePX || 0) * 20 * 2}px, ${(mousePY || 0) * 20 * 2}px, 0) scale(1.1)`,
+    //     transition: 'transform 0.3s ease-out',
+    //     willChange: 'transform'
+    // };
+    //
+    // const handleMouseMove = (e: React.MouseEvent) => {
+    //     const card = cardRef.current;
+    //     if (card) {
+    //         const rect = card.getBoundingClientRect();
+    //         setMouseX(e.clientX - rect.left - dimensions.width / 2);
+    //         setMouseY(e.clientY - rect.top - dimensions.height / 2);
+    //
+    //         setOldMousePX(e.clientX - rect.left - dimensions.width / 2)
+    //
+    //     }
+    // };
+    //
+    // const handleMouseEnter = () => {
+    //     if (mouseLeaveDelay) {
+    //         clearTimeout(mouseLeaveDelay);
+    //     }
+    // };
+    //
+    // const handleMouseLeave = () => {
+    //     setMouseLeaveDelay(setTimeout(() => {
+    //         setMouseX(0);
+    //         setMouseY(0);
+    //         setTimeout(() => {
+    //             setOldMousePX(0)
+    //         }, 500)
+    //     }, 1000));
+    // };
 
     const handleClick = () => {
         onToggle(id);
@@ -87,7 +105,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
     //
     return (
         <div
-            className={`${styles.faqCard} ${isOpen ? styles.active : ""} transition-all ease duration-[.3s] relative cursor-pointer s:py-[23px] group-active/window:text-[#FFF]`}
+            className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer s:py-[23px] group-active/window:text-[#FFF]`}
             style={{
                 borderColor: isOpen ? "#CCCCCC" : "transparent",
                 background: isOpen ? "#53535380" : "",
@@ -110,6 +128,24 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                  }}
             >
                 <div
+                    className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[9999] w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
+                    style={{
+                        display: isOpen ? "none" : "block",
+                    }}
+                >
+                    <Image
+                        src={src}
+                        className="rounded-[4px]"
+                        style={{
+                            objectFit: 'contain', // или 'cover' в зависимости от потребностей
+                            aspectRatio: '1 / 1' // явное указание соотношения
+                        }}
+                        alt="FAQ image"
+                        width={155}
+                        height={155}
+                    />
+                </div>
+                <div
                     className={`${styles.questionContainer} relative z-[99] w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s]`}>
                     <div className={`${styles.number} p-[6px]`}
                          style={{
@@ -123,32 +159,24 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                         <h3 className={`w-full font-[400] text-[20px] transition-all ease-in-out duration-[0.3s] `}>{question}</h3>
                     </div>
 
-                    {/*<ParallaxCard*/}
-                    {/*    src={src}*/}
-                    {/*    alt="FAQ image"*/}
+                    {/*<div*/}
+                    {/*    className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[9999] w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}*/}
                     {/*    style={{*/}
                     {/*        display: isOpen ? "none" : "block",*/}
                     {/*    }}*/}
-                    {/*/>*/}
-
-                    <div
-                        className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[9999] w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
-                        style={{
-                            display: isOpen ? "none" : "block",
-                        }}
-                    >
-                        <Image
-                            src={src}
-                            className="rounded-[4px] opacity-[80%]"
-                            style={{
-                                objectFit: 'contain', // или 'cover' в зависимости от потребностей
-                                aspectRatio: '1 / 1' // явное указание соотношения
-                            }}
-                            alt="FAQ image"
-                            width={155}
-                            height={155}
-                        />
-                    </div>
+                    {/*>*/}
+                    {/*    <Image*/}
+                    {/*        src={src}*/}
+                    {/*        className="rounded-[4px] opacity-[80%]"*/}
+                    {/*        style={{*/}
+                    {/*            objectFit: 'contain', // или 'cover' в зависимости от потребностей*/}
+                    {/*            aspectRatio: '1 / 1' // явное указание соотношения*/}
+                    {/*        }}*/}
+                    {/*        alt="FAQ image"*/}
+                    {/*        width={155}*/}
+                    {/*        height={155}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
                     <div className={`${styles.arrow}`}>
                         <svg className={`transition-all duration-[.2s] ease-in-out`} width="24" height="24"
@@ -185,30 +213,54 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
                     <p className={`text-[18px] font-normal`}>{answer}</p>
 
-                    <div
-                        ref={cardRef}
-                        className={`${styles.faqCard} ${isOpen ? styles.active : ""} w-[170px] h-full max-h-[170px]`}
-                        style={cardStyle}
-                        onMouseMove={handleMouseMove}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onClick={handleClick}
-                    >
-                        <div ref={imageRef} style={textStyle}>
-                            <Image
-                                src={src}
-                                className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-100"
-                                width={155}
-                                height={155}
-                                alt="FAQ image"
-                            />
-                        </div>
-                    </div>
+                    {/*<div*/}
+                    {/*    ref={cardRef}*/}
+                    {/*    className={`${styles.faqCard} ${isOpen ? styles.active : ""} w-[155px] h-[155px]`}*/}
+                    {/*    style={cardStyle}*/}
+                    {/*    onMouseMove={handleMouseMove}*/}
+                    {/*    onMouseEnter={handleMouseEnter}*/}
+                    {/*    onMouseLeave={handleMouseLeave}*/}
+                    {/*    onClick={handleClick}*/}
+                    {/*    >*/}
+                    {/*    <div ref={imageRef} style={textStyle} className={`w-[155px] h-[155px]`}>*/}
+                    {/*        <Image*/}
+                    {/*            src={src}*/}
+                    {/*            className="mt-[7px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-100"*/}
+                    {/*            width={155}*/}
+                    {/*            height={155}*/}
+                    {/*            alt="FAQ image"*/}
+                    {/*        />*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+
+                    <Image
+                        src={src}
+                        className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
+                        width={155}
+                        height={155}
+                        alt="FAQ image"
+                    />
                 </div>
                 <button
                     className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>
                     подробнее
                 </button>
+
+                {/*{isOpen && (*/}
+                {/*    <motion.button*/}
+                {/*        initial={{y: -100, opacity: 0}}*/}
+                {/*        animate={{y: 0, opacity: 1}}*/}
+                {/*        transition={{*/}
+                {/*            type: "spring",*/}
+                {/*            bounce: animationSettings?.bounce ?? 0.5,*/}
+                {/*            duration: animationSettings?.duration ?? 0.8,*/}
+                {/*            delay: animationSettings?.delay ?? 0.1,*/}
+                {/*        }}*/}
+                {/*        className="py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC]"*/}
+                {/*    >*/}
+                {/*        подробнее*/}
+                {/*    </motion.button>*/}
+                {/*)}*/}
             </div>
         </div>
     );
