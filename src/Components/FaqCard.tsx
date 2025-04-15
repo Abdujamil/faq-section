@@ -35,7 +35,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
             }}
         >
             <div className={`${styles.question} 
-                    w-full flex flex-row items-center bg-[#5353537F] active:bg-[#20272B] rounded-[4px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
+                    w-full flex flex-row items-center bg-[#5353537F] active:bg-[#20272B] rounded-[6px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
                  onClick={handleClick}
                  style={{
                      // background,
@@ -103,7 +103,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 </div>
             </div>
             <div
-                className={`${styles.answer} bg-[#1A1A1A] rounded-[4px]`}
+                className={`${styles.answer} bg-[#1A1A1A] rounded-[6px]`}
                 style={{
                     // height: isOpen ? "auto" : "0px",
                     // paddingTop: isOpen ? "30px" : "0px",
@@ -127,7 +127,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
 
                     <Image
                         src={src}
-                        className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[4px] opacity-[100%]"
+                        className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
                         width={155}
                         height={155}
                         alt="FAQ image"
