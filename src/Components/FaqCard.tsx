@@ -50,7 +50,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                  }}
             >
                 <div
-                    className={`${styles.questionContainer} w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s]`}>
+                    className={`${styles.questionContainer} relative z-[99] w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s]`}>
                     <div className={`${styles.number} p-[6px]`}
                          style={{
                              position: isOpen ? "relative" : "initial",
