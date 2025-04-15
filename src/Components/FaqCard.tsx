@@ -81,8 +81,8 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                             src={src}
                             className="rounded-[4px] opacity-[80%]"
                             alt="FAQ image"
-                            width={155}
-                            height={155}
+                            width={173}
+                            height={153}
                         />
                     </div>
 
