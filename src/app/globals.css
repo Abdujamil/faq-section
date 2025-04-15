@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+::-webkit-scrollbar {
+    display: none; /* Полностью скрывает скроллбар */
+}
+
 body {
     color: #ededed;
     background: #000000;
@@ -7,4 +11,3 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-

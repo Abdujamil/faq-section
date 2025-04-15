@@ -40,10 +40,10 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                  style={{
                      // background,
                      // paddingBottom: isOpen ? "0px" : "20px",
-                     height: isOpen ? "68px" : "68px",
+                     height: isOpen ? "69px" : "69px",
                      alignItems: isOpen ? "start" : "center",
                      // background: isOpen ? "#1A1A1A" : "",
-                     borderBottom: isOpen ? "1px solid #CCCCCC" : "",
+                     // borderBottom: isOpen ? "1px solid #CCCCCC" : "",
                      // boxShadow: isOpen ? "none" : "none",
                      // borderBottomRightRadius: isOpen ? "0" : "4px",
                      // borderBottomLeftRadius: isOpen ? "0" : "4px",
@@ -72,14 +72,14 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                     {/*/>*/}
 
                     <div
-                        className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[99] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
+                        className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[9999] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
                         style={{
                             display: isOpen ? "none" : "block",
                         }}
                     >
                         <Image
                             src={src}
-                            className="rounded-[4px] opacity-[70%]"
+                            className="rounded-[4px] opacity-[80%]"
                             alt="FAQ image"
                             width={155}
                             height={155}
@@ -99,7 +99,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                 </div>
             </div>
             <div
-                className={`${styles.answer} bg-[#1A1A1A]  rounded-[4px]`}
+                className={`${styles.answer} bg-[#1A1A1A] rounded-[4px]`}
                 style={{
                     // height: isOpen ? "auto" : "0px",
                     // paddingTop: isOpen ? "30px" : "0px",
@@ -112,6 +112,9 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                     paddingBottom: isOpen ? "30px" : "0px",
                     paddingRight: isOpen ? "90px" : "0px",
                     paddingLeft: isOpen ? "80px" : "0px",
+                    borderTop: isOpen ? "1px solid #CCCCCC" : "",
+                    borderTopRightRadius: isOpen ? "0" : "4px",
+                    borderTopLeftRadius: isOpen ? "0" : "4px",
                     overflow: "hidden",
                 }}
             >
