@@ -72,7 +72,7 @@ const FaqCard: React.FC<FaqCardProps> = ({id, num, question, answer, src, defaul
                     {/*/>*/}
 
                     <div
-                        className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[9999] w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
+                        className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[9999] w-[173px] h-[153px] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
                         style={{
                             display: isOpen ? "none" : "block",
                         }}
