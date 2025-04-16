@@ -24,9 +24,9 @@ export const metadata: Metadata = {
 export default function RootLayout({children}: RootLayoutProps) {
     return (
         <html lang="ru">
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-        </body>
+            <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                {children}
+            </body>
         </html>
     );
 }

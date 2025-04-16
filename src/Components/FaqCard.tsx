@@ -5,7 +5,7 @@ import styles from '../app/page.module.scss';
 import ParallaxCard from "./ParallaxCard";
 import {getFaqBackground} from "../utils/faqHelpers";
 import {motion, useAnimation} from 'framer-motion';
-import { BounceEffect } from "../utils/BounceEffect";
+import {BounceEffect} from "../utils/BounceEffect";
 
 interface AnimationSettings {
     duration: number;
@@ -40,12 +40,12 @@ interface FaqCardProps {
 // }
 
 const defaultSettings: AnimationSettings = {
-    duration: 0.6,
+    duration: 0.7,
     bounce: 5,
     delay: 0,
     ease: [0.34, 1.56, 0.64, 1],
     times: [0, 0.2, 0.5, 0.8, 1],
-    y: [5, -5, 5, -5, 0],        // Дефолтные значения для движения по оси Y
+    y: [70, -3, 0, 0, 0],        // Дефолтные значения для движения по оси Y
     opacity: [0, 1, 1, 1, 1],    // Дефолтные значения для opacity
 };
 
@@ -93,7 +93,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 }
             });
             controlsImage.start({
-                y: [80, -85, 80, -60, 0],
+                y: [-80, 80, 0, 0, 0],
                 opacity: [0, 1, 1, 1, 1],
                 transition: {
                     duration: animationSettings.duration,
@@ -116,7 +116,6 @@ const FaqCard: React.FC<FaqCardProps> = ({
 
 
     // const background = getFaqBackground(id);
-    //
     return (
         <div
             className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer s:py-[23px] group-active/window:text-[#FFF]`}
@@ -126,19 +125,15 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 boxShadow: isOpen ? "none" : "",
             }}
         >
+
             <div className={`${styles.question} 
                     w-full flex flex-row items-center bg-[#5353537F] active:bg-[#20272B] rounded-[6px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
                  onClick={handleClick}
                  style={{
                      // background,
-                     // paddingBottom: isOpen ? "0px" : "20px",
                      height: isOpen ? "69px" : "69px",
                      alignItems: isOpen ? "start" : "center",
-                     // background: isOpen ? "#1A1A1A" : "",
                      borderBottom: isOpen ? "1px solid #CCCCCC" : "",
-                     // boxShadow: isOpen ? "none" : "none",
-                     // borderBottomRightRadius: isOpen ? "0" : "4px",
-                     // borderBottomLeftRadius: isOpen ? "0" : "4px",
                  }}
             >
                 <div
@@ -160,7 +155,8 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     />
                 </div>
 
-                <div className={`${styles.questionContainer} relative z-[99] w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s]`}>
+                <div
+                    className={`${styles.questionContainer} relative z-[99] w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s]`}>
                     <div className={`${styles.number} p-[6px]`}
                          style={{
                              position: isOpen ? "relative" : "initial",
@@ -227,22 +223,65 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
                     <p className={`text-[18px] font-normal`}>{answer}</p>
 
-                    <motion.img
-                        initial={{ y: 30, opacity: 0 }}
-                        animate={controlsImage}
-                        src={typeof src === 'string' ? src : src.src}
-                        className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
-                        width={155}
-                        height={155}
-                        alt="FAQ image"
-                    />
-                    {/*<Image*/}
-                    {/*    src={src}*/}
-                    {/*    className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"*/}
+                    {/*<motion.img*/}
+                    {/*    initial={{ y: 30, opacity: 0 }}*/}
+                    {/*    animate={controlsImage}*/}
+                    {/*    src={typeof src === 'string' ? src : src.src}*/}
+                    {/*    className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"*/}
                     {/*    width={155}*/}
                     {/*    height={155}*/}
                     {/*    alt="FAQ image"*/}
                     {/*/>*/}
+
+                    <svg width="0" height="0">
+                        <defs>
+                            {[0, 5, 12, 20, 35, 50].map((blur, index) => (
+                                <filter key={index} id={`blur${index}`}>
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation={`${blur} ${index > 3 ? 1 : 0}`}/>
+                                </filter>
+                            ))}
+                        </defs>
+                    </svg>
+
+                    <motion.div
+                        initial={{filter: 'url(#blur5)', scale: 1.5}}
+                        animate={isOpen ? {
+                            filter: [
+                                'url(#blur5)',
+                                'url(#blur4)',
+                                'url(#blur3)',
+                                'url(#blur2)',
+                                'url(#blur1)',
+                                'url(#blur0)'
+                            ],
+                            scale: [1.3, 1.1, 1, 1],
+                            transition: {
+                                duration: 0.6,
+                                ease: 'easeOut'
+                            }
+                        } : {
+                            filter: 'url(#blur5)',
+                            scale: 1.35,
+                            transition: {duration: 0.6}
+                        }}
+                    >
+                        <Image
+                            src={src}
+                            className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
+                            width={155}
+                            height={155}
+                            alt="FAQ image"
+                            style={{objectFit: 'cover'}}
+                        />
+                    </motion.div>
+
+                    <Image
+                        src={src}
+                        className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
+                        width={155}
+                        height={155}
+                        alt="FAQ image"
+                    />
                 </div>
 
                 {/*<button*/}
@@ -251,12 +290,12 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 {/*</button>*/}
 
                 <motion.button
-                    initial={{ y: 20, opacity: 0 }}
+                    initial={{y: 20, opacity: 0}}
                     animate={controls}
                     className="py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC]"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    style={{ display: isOpen ? 'block' : 'none' }}
+                    whileHover={{scale: 1.05}}
+                    whileTap={{scale: 0.95}}
+                    style={{display: isOpen ? 'block' : 'none'}}
                 >
                     подробнее
                 </motion.button>

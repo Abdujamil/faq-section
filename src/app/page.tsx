@@ -10,12 +10,12 @@ const Home: React.FC = () => {
 
     const [openId, setOpenId] = useState<number | null>(null);
     const [animationSettings, setAnimationSettings] = useState({
-        duration: 0.6,
+        duration: 0.7,
         bounce: 5,
         delay: 0,
         ease: [0.34, 1.56, 0.64, 1],
         times: [0, 0.2, 0.5, 0.8, 1],
-        y: [5, -5, 5, -5, 0],
+        y: [70, -3, 0, 0, 0],
         opacity: [0, 1, 1, 1, 1],
     });
 
