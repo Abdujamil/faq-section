@@ -223,9 +223,26 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
                     <p className={`text-[18px] font-normal`}>{answer}</p>
 
+                    <motion.div
+                        initial={{y: 20, opacity: 0}}
+                        animate={controls}
+                        whileHover={{scale: 1.05}}
+                        whileTap={{scale: 0.95}}
+                        style={{display: isOpen ? 'block' : 'none'}}
+                    >
+                        <Image
+                            src={src}
+                            className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"
+                            width={155}
+                            height={155}
+                            alt="FAQ image"
+                        />
+                    </motion.div>
+
+
                     {/*<motion.img*/}
                     {/*    initial={{ y: 30, opacity: 0 }}*/}
-                    {/*    animate={controlsImage}*/}
+                    {/*    animate={controls}*/}
                     {/*    src={typeof src === 'string' ? src : src.src}*/}
                     {/*    className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"*/}
                     {/*    width={155}*/}
@@ -233,55 +250,13 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     {/*    alt="FAQ image"*/}
                     {/*/>*/}
 
-                    <svg width="0" height="0">
-                        <defs>
-                            {[0, 5, 12, 20, 35, 50].map((blur, index) => (
-                                <filter key={index} id={`blur${index}`}>
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation={`${blur} ${index > 3 ? 1 : 0}`}/>
-                                </filter>
-                            ))}
-                        </defs>
-                    </svg>
-
-                    <motion.div
-                        initial={{filter: 'url(#blur5)', scale: 1.5}}
-                        animate={isOpen ? {
-                            filter: [
-                                'url(#blur5)',
-                                'url(#blur4)',
-                                'url(#blur3)',
-                                'url(#blur2)',
-                                'url(#blur1)',
-                                'url(#blur0)'
-                            ],
-                            scale: [1.3, 1.1, 1, 1],
-                            transition: {
-                                duration: 0.6,
-                                ease: 'easeOut'
-                            }
-                        } : {
-                            filter: 'url(#blur5)',
-                            scale: 1.35,
-                            transition: {duration: 0.6}
-                        }}
-                    >
-                        <Image
-                            src={src}
-                            className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
-                            width={155}
-                            height={155}
-                            alt="FAQ image"
-                            style={{objectFit: 'cover'}}
-                        />
-                    </motion.div>
-
-                    <Image
-                        src={src}
-                        className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
-                        width={155}
-                        height={155}
-                        alt="FAQ image"
-                    />
+                    {/*<Image*/}
+                    {/*    src={src}*/}
+                    {/*    className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"*/}
+                    {/*    width={155}*/}
+                    {/*    height={155}*/}
+                    {/*    alt="FAQ image"*/}
+                    {/*/>*/}
                 </div>
 
                 {/*<button*/}
