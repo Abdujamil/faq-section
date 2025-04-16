@@ -9,9 +9,12 @@ import { BounceEffect } from "../utils/BounceEffect";
 
 interface AnimationSettings {
     duration: number;
-    bounce: number;
-    delay: number;
-    // length: number;
+    bounce: number; // Амплитуда отскока
+    delay: number;   // Задержка
+    ease: any;  // ease кривая
+    times: number[]; // Временные точки для transition
+    y: number[];     // Массив значений для движения по оси Y
+    opacity: number[]; // Массив значений для opacity
 }
 
 interface FaqCardProps {
@@ -22,9 +25,39 @@ interface FaqCardProps {
     src: string | StaticImageData;
     defaultOpen?: boolean;
     isOpen?: boolean;
-    onToggle?: any;
+    onToggle?: (id: number) => void;
     animationSettings?: AnimationSettings;
 }
+
+// interface AnimationSettingsBounce {
+//     duration: number;
+//     bounce: number; // Амплитуда отскока
+//     delay: number;   // Задержка
+//     ease: [number, number, number, number];  // ease кривая
+//     times: number[]; // Временные точки для transition
+//     y: number[];     // Массив значений для движения по оси Y
+//     opacity: number[]; // Массив значений для opacity
+// }
+
+const defaultSettings: AnimationSettings = {
+    duration: 0.6,
+    bounce: 5,
+    delay: 0,
+    ease: [0.34, 1.56, 0.64, 1],
+    times: [0, 0.2, 0.5, 0.8, 1],
+    y: [5, -5, 5, -5, 0],        // Дефолтные значения для движения по оси Y
+    opacity: [0, 1, 1, 1, 1],    // Дефолтные значения для opacity
+};
+
+const defaultSettingsImg: AnimationSettings = {
+    duration: 0.6,
+    bounce: 5,
+    delay: 0,
+    ease: [0.34, 1.56, 0.64, 1],
+    times: [0, 0.2, 0.5, 0.8, 1],
+    y: [50, -55, 50, -40, 0],        // Дефолтные значения для движения по оси Y
+    opacity: [0, 1, 1, 1, 1],    // Дефолтные значения для opacity
+};
 
 
 const FaqCard: React.FC<FaqCardProps> = ({
@@ -36,27 +69,50 @@ const FaqCard: React.FC<FaqCardProps> = ({
                                              defaultOpen = false,
                                              isOpen,
                                              onToggle,
-                                             animationSettings
+                                             animationSettings = defaultSettings,
                                          }) => {
 
-    const buttonControls = useAnimation();
-
     const handleClick = async () => {
-        onToggle(id);
-
-        // Запускаем анимацию только при открытии
-        if (!isOpen) {
-            await buttonControls.start({
-                y: [1, -1, 1, -1, 1], // Значения для bounce-эффекта
-                transition: {
-                    duration: 0.01, // 500ms как в вашем конфиге
-                    // ease: [0.34, 1.56, 0.64, 1], // Аналог outBounce
-                    ease: [0.1, 0.6, 0.4, 0.8], // Аналог outBounce
-                    times: [0, 0.2, 0.5, 0.8, 1] // Тайминг ключевых кадров
-                }
-            });
+        if (onToggle) {
+            onToggle(id);
         }
     };
+
+    const controls = useAnimation();
+    const controlsImage = useAnimation();
+
+    useEffect(() => {
+        if (isOpen) {
+            controls.start({
+                y: animationSettings.y,
+                opacity: [0, 1, 1, 1, 1],
+                transition: {
+                    duration: animationSettings.duration,
+                    ease: animationSettings.ease,
+                    times: animationSettings.times
+                }
+            });
+            controlsImage.start({
+                y: [80, -85, 80, -60, 0],
+                opacity: [0, 1, 1, 1, 1],
+                transition: {
+                    duration: animationSettings.duration,
+                    ease: animationSettings.ease,
+                    times: animationSettings.times
+                }
+            });
+        } else {
+            controls.start({
+                y: 0,
+                opacity: 0
+            });
+
+            controlsImage.start({
+                y: 0,
+                opacity: 0
+            });
+        }
+    }, [isOpen]);
 
 
     // const background = getFaqBackground(id);
@@ -171,29 +227,39 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
                     <p className={`text-[18px] font-normal`}>{answer}</p>
 
-                    <Image
-                        src={src}
-                        className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
+                    <motion.img
+                        initial={{ y: 30, opacity: 0 }}
+                        animate={controlsImage}
+                        src={typeof src === 'string' ? src : src.src}
+                        className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
                         width={155}
                         height={155}
                         alt="FAQ image"
                     />
+                    {/*<Image*/}
+                    {/*    src={src}*/}
+                    {/*    className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"*/}
+                    {/*    width={155}*/}
+                    {/*    height={155}*/}
+                    {/*    alt="FAQ image"*/}
+                    {/*/>*/}
                 </div>
+
                 {/*<button*/}
                 {/*    className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>*/}
                 {/*    подробнее*/}
                 {/*</button>*/}
 
-                {isOpen && (
-                    <motion.button
-                        animate={buttonControls}
-                        className="py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC]"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        подробнее
-                    </motion.button>
-                )}
+                <motion.button
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={controls}
+                    className="py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC]"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{ display: isOpen ? 'block' : 'none' }}
+                >
+                    подробнее
+                </motion.button>
             </div>
         </div>
     );
