@@ -246,7 +246,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     </motion.div>
                 </div>
 
-                <div ref={setWrapperRef} className="btn relative max-w-[300px]">
+                <div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>
                     <motion.button
                         initial={{y: 20, opacity: 0}}
                         animate={controls}

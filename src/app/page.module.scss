@@ -312,9 +312,15 @@
 
     }
 
-    .btn {
+    .textsBtn {
       perspective: 200px;
       z-index: 10;
+
+      will-change: transform;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      backface-visibility: hidden;
     }
 
     .motionEffect {
@@ -323,8 +329,7 @@
 
       &:active {
         //box-shadow: inset 1px 1px 2px 0 #3d9ed6, inset -1px -1px 2px 0 #3d9ed6;
-        transform: perspective(300px) scale(.9) rotateY(var(--y)) translateZ(10px) !important;
-        will-change: transform;
+        transform: scale(.9) rotateY(var(--y)) translateZ(10px) !important;
       }
 
       &:before {
