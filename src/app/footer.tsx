@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
                         src="/microphone.png"
                         alt='microphone'
                         width={95}
-                        height={189}
+                        height={95}
                     />
                     <div>
                         <p className={`text-[20px] text-[#3D9ED6] mb-[28px]`}>Подписаться на новости</p>
@@ -57,25 +57,6 @@ const Footer: React.FC = () => {
                         </p>
                     </div>
                     <div className={`${styles.footerBtns} flex flex-col justify-center items-center relative`}>
-                        {/*<button className="w-[65px] h-auto p-0 rounded-0 bg-none cursor-pointer transition-all duration-[.2s] ease"  aria-label="Scroll to top" type="button">*/}
-                        {/*    <Image*/}
-                        {/*        src="/button-top.png"*/}
-                        {/*        alt=""*/}
-                        {/*        width={60}*/}
-                        {/*        height={60}*/}
-                        {/*        priority={false} // Для некритичных изображений*/}
-                        {/*    />*/}
-                        {/*</button>*/}
-                        {/*<button className="w-[65px] h-auto p-0 rounded-0 bg-none cursor-pointer transition-all duration-[.2s] ease"  aria-label="Scroll to bottom" type="button">*/}
-                        {/*    <Image*/}
-                        {/*        src="/button-bottom.png"*/}
-                        {/*        alt=""*/}
-                        {/*        width={60}*/}
-                        {/*        height={60}*/}
-                        {/*        priority={false}*/}
-                        {/*    />*/}
-                        {/*</button>*/}
-
                         <svg
                             className="cursor-pointer"
                             width="67"

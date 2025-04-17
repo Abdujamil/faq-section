@@ -27,7 +27,7 @@ const Home: React.FC = () => {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
+        const {name, value} = e.target;
 
         if (name === 'ease' || name === 'times' || name === 'openY' ||
             name === 'closeY' || name === 'opacity') {
@@ -49,63 +49,28 @@ const Home: React.FC = () => {
         }
     };
 
-    // const [animationSettings, setAnimationSettings] = useState({
-    //     duration: 0.8,
-    //     bounce: 0.5,
-    //     delay: 0.1
-    // });
-
     const handleToggle = (id: number) => {
         setOpenId(prevId => prevId === id ? null : id);
     };
 
+    // const animationDuration = 600; // или передавай из настроек, если надо динамически
+    //
+    // const handleToggle = (id: number) => {
+    //     if (openId === id) {
+    //         setTimeout(() => {
+    //             setOpenId(null);
+    //         }, animationDuration);
+    //     } else {
+    //         setOpenId(id);
+    //     }
+    // };
+
     return (
-        <div className={`${styles.page} block `}>
+        <div className={`${styles.page} block`}>
             <main
                 className={`${styles.main} w-full max-w-[1160px] mx-auto pt-[80px] pr-[10px] pl-[10px] flex flex-col`}>
                 <h2 className={`${styles.title} mb-[60px] font-normal text-4xl text-[#CCCCCC]`}>FAQ: Ответы на главные
                     вопросы</h2>
-                {/* 🎛 Настройки анимации */}
-                {/*<div className="flex flex-col gap-2 text-white mb-10">*/}
-                {/*    <label className="flex gap-2">*/}
-                {/*        <span className="block mb-1">Скорость анимации (чем больше — тем медленнее):</span>*/}
-                {/*        <input*/}
-                {/*            type="number"*/}
-                {/*            step="0.1"*/}
-                {/*            value={animationSettings.duration}*/}
-                {/*            onChange={(e) => setAnimationSettings({*/}
-                {/*                ...animationSettings,*/}
-                {/*                duration: parseFloat(e.target.value)*/}
-                {/*            })}*/}
-                {/*            className="ml-2 px-2 py-1 border border-[#cccccc]"*/}
-                {/*        />*/}
-                {/*    </label>*/}
-                {/*    <label className="flex gap-2">*/}
-                {/*        <span className="block mb-1">Сила отскока (от 0 до 1):</span>*/}
-                {/*        <input*/}
-                {/*            type="number"*/}
-                {/*            step="0.1"*/}
-                {/*            value={animationSettings.bounce}*/}
-                {/*            onChange={(e) => setAnimationSettings({*/}
-                {/*                ...animationSettings,*/}
-                {/*                bounce: parseFloat(e.target.value)*/}
-                {/*            })}*/}
-                {/*            className="ml-2 px-2 py-1 border border-[#cccccc]"*/}
-                {/*        />*/}
-                {/*    </label>*/}
-                {/*    <label className="flex gap-2">*/}
-                {/*        <span className="block mb-1">Задержка перед появлением (в секундах):</span>*/}
-                {/*        <input*/}
-                {/*            type="number"*/}
-                {/*            value={animationSettings.delay}*/}
-                {/*            onChange={(e) => setAnimationSettings({*/}
-                {/*                ...animationSettings,*/}
-                {/*                delay: parseFloat(e.target.value)*/}
-                {/*            })}*/}
-                {/*            className="ml-2 px-2 py-1 border border-[#cccccc]"*/}
-                {/*        />*/}
-                {/*    </label>*/}
-                {/*</div>*/}
 
                 <div>
                     <h3>Настройки анимации</h3>
@@ -123,16 +88,6 @@ const Home: React.FC = () => {
                                 })}
                             />
                         </label>
-                        {/*<label>*/}
-                        {/*    Bounce:*/}
-                        {/*    <input*/}
-                        {/*        type="number"*/}
-                        {/*        name="bounce"*/}
-                        {/*        value={animationSettings.bounce}*/}
-                        {/*        step="1"*/}
-                        {/*        onChange={e => setAnimationSettings({ ...animationSettings, bounce: parseInt(e.target.value) })}*/}
-                        {/*    />*/}
-                        {/*</label>*/}
                         <label>
                             Delay:
                             <input
@@ -179,7 +134,6 @@ const Home: React.FC = () => {
                                 onChange={handleChange}
                             />
                         </label>
-
                         <label>
                             Close Y:
                             <input
@@ -200,7 +154,6 @@ const Home: React.FC = () => {
                         </label>
                     </form>
                 </div>
-
                 <section className={`${styles.accordion} w-full flex flex-col gap-[5px]`}>
                     {faqData.map((item) => (
                         <FaqCard
@@ -217,7 +170,6 @@ const Home: React.FC = () => {
                     ))}
                 </section>
             </main>
-
             <Footer/>
         </div>
     );
