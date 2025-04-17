@@ -69,7 +69,7 @@ const Home: React.FC = () => {
         <div className={`${styles.page} block`}>
             <main
                 className={`${styles.main} w-full max-w-[1160px] mx-auto pt-[80px] pr-[10px] pl-[10px] flex flex-col`}>
-                <h2 className={`${styles.title} mb-[60px] font-normal text-4xl text-[#CCCCCC]`}>FAQ: Ответы на главные
+                <h2 className={`${styles.title} mb-[60px] font-normal text-[48px] text-[#CCCCCC]`}>FAQ: Ответы на главные
                     вопросы</h2>
 
                 <div>
