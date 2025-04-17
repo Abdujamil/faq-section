@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 .page {
   --gray-rgb: 0, 0, 0;
@@ -318,7 +318,8 @@
     }
 
     .motionEffect {
-        transition: transform 0.1s ease-out;
+      font-family: "Simple-Square", sans-serif;
+      transition: transform 0.1s ease-out;
 
       &:active {
         box-shadow: inset 1px 1px 2px 0 #3d9ed6, inset -1px -1px 2px 0 #3d9ed6;
