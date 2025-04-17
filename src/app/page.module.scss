@@ -319,11 +319,11 @@
 
     .motionEffect {
       font-family: "Simple-Square", sans-serif;
-      transition: transform 0.1s ease-out;
+      transition: transform 0.3s ease-out;
 
       &:active {
         //box-shadow: inset 1px 1px 2px 0 #3d9ed6, inset -1px -1px 2px 0 #3d9ed6;
-        transform: perspective(300px) scale(.9) rotateY(var(--y, 0deg)) translateZ(10px) !important;
+        transform: perspective(300px) scale(.9) rotateY(var(--y)) translateZ(10px) !important;
         will-change: transform;
       }
 

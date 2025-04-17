@@ -234,7 +234,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                         // whileHover={{scale: 1.05}}
                         // whileTap={{scale: 0.95}}
                         style={{display: isOpen ? 'block' : 'none'}}
-                        className="transition-all duration-[.3s] ease-out"
+                        className="transition-all duration-[.5s] ease-out"
                     >
                         <Image
                             src={src}
