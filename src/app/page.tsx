@@ -10,12 +10,13 @@ const Home: React.FC = () => {
 
     const [openId, setOpenId] = useState<number | null>(null);
     const [animationSettings, setAnimationSettings] = useState({
-        duration: 0.7,
+        duration: 0.6,
         bounce: 5,
         delay: 0,
         ease: [0.34, 1.56, 0.64, 1],
         times: [0, 0.2, 0.5, 0.8, 1],
-        y: [70, -3, 0, 0, 0],
+        openY: [0, 26, 0, 0, 0],
+        closeY: [60, -6, 0, 0, 0],
         opacity: [0, 1, 1, 1, 1],
     });
 
@@ -28,7 +29,8 @@ const Home: React.FC = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
-        if (name === 'ease' || name === 'times' || name === 'y' || name === 'opacity') {
+        if (name === 'ease' || name === 'times' || name === 'openY' ||
+            name === 'closeY' || name === 'opacity') {
             try {
                 setAnimationSettings(prev => ({
                     ...prev,
@@ -115,7 +117,10 @@ const Home: React.FC = () => {
                                 name="duration"
                                 value={animationSettings.duration}
                                 step="0.1"
-                                onChange={e => setAnimationSettings({ ...animationSettings, duration: parseFloat(e.target.value) })}
+                                onChange={e => setAnimationSettings({
+                                    ...animationSettings,
+                                    duration: parseFloat(e.target.value)
+                                })}
                             />
                         </label>
                         {/*<label>*/}
@@ -135,7 +140,10 @@ const Home: React.FC = () => {
                                 name="delay"
                                 value={animationSettings.delay}
                                 step="0.1"
-                                onChange={e => setAnimationSettings({ ...animationSettings, delay: parseFloat(e.target.value) })}
+                                onChange={e => setAnimationSettings({
+                                    ...animationSettings,
+                                    delay: parseFloat(e.target.value)
+                                })}
                             />
                         </label>
                         <label>
@@ -163,11 +171,21 @@ const Home: React.FC = () => {
                             />
                         </label>
                         <label>
-                            Y (Movement):
+                            Open Y:
                             <input
                                 type="text"
-                                name="y"
-                                value={JSON.stringify(animationSettings.y)}
+                                name="openY"
+                                value={JSON.stringify(animationSettings.openY)}
+                                onChange={handleChange}
+                            />
+                        </label>
+
+                        <label>
+                            Close Y:
+                            <input
+                                type="text"
+                                name="closeY"
+                                value={JSON.stringify(animationSettings.closeY)}
                                 onChange={handleChange}
                             />
                         </label>

@@ -13,7 +13,8 @@ interface AnimationSettings {
     delay: number;   // Задержка
     ease: any;  // ease кривая
     times: number[]; // Временные точки для transition
-    y: number[];     // Массив значений для движения по оси Y
+    openY: number[]; // Анимация при открытии
+    closeY: number[]; // Анимация при закрытии
     opacity: number[]; // Массив значений для opacity
 }
 
@@ -40,12 +41,13 @@ interface FaqCardProps {
 // }
 
 const defaultSettings: AnimationSettings = {
-    duration: 0.7,
+    duration: 0.6,
     bounce: 5,
     delay: 0,
     ease: [0.34, 1.56, 0.64, 1],
     times: [0, 0.2, 0.5, 0.8, 1],
-    y: [70, -3, 0, 0, 0],        // Дефолтные значения для движения по оси Y
+    openY: [0, 26, 0, 0, 0], // Анимация открытия
+    closeY: [60, -6, 0, 0, 0], // Анимация закрытия
     opacity: [0, 1, 1, 1, 1],    // Дефолтные значения для opacity
 };
 
@@ -55,7 +57,8 @@ const defaultSettingsImg: AnimationSettings = {
     delay: 0,
     ease: [0.34, 1.56, 0.64, 1],
     times: [0, 0.2, 0.5, 0.8, 1],
-    y: [50, -55, 50, -40, 0],        // Дефолтные значения для движения по оси Y
+    openY: [0, 26, 0, 0, 0], // Анимация открытия
+    closeY: [60, -6, 0, 0, 0], // Анимация закрытия
     opacity: [0, 1, 1, 1, 1],    // Дефолтные значения для opacity
 };
 
@@ -72,19 +75,23 @@ const FaqCard: React.FC<FaqCardProps> = ({
                                              animationSettings = defaultSettings,
                                          }) => {
 
+
     const handleClick = async () => {
         if (onToggle) {
             onToggle(id);
         }
     };
 
+    const [isAnswerVisible, setIsAnswerVisible] = useState(defaultOpen || isOpen);
+
     const controls = useAnimation();
     const controlsImage = useAnimation();
 
     useEffect(() => {
         if (isOpen) {
+            setIsAnswerVisible(true);
             controls.start({
-                y: animationSettings.y,
+                y: animationSettings.openY,
                 opacity: [0, 1, 1, 1, 1],
                 transition: {
                     duration: animationSettings.duration,
@@ -93,7 +100,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 }
             });
             controlsImage.start({
-                y: [-80, 80, 0, 0, 0],
+                y: animationSettings.openY,
                 opacity: [0, 1, 1, 1, 1],
                 transition: {
                     duration: animationSettings.duration,
@@ -103,16 +110,34 @@ const FaqCard: React.FC<FaqCardProps> = ({
             });
         } else {
             controls.start({
-                y: 0,
-                opacity: 0
+                y: animationSettings.closeY,
+                opacity: [1, 1, 1, 1, 0],
+                transition: {
+                    duration: animationSettings.duration,
+                    ease: animationSettings.ease,
+                    times: animationSettings.times
+                }
             });
 
             controlsImage.start({
-                y: 0,
-                opacity: 0
+                y: animationSettings.closeY,
+                opacity: [1, 1, 1, 1, 0],
+                transition: {
+                    duration: animationSettings.duration,
+                    ease: animationSettings.ease,
+                    times: animationSettings.times
+                }
+            }).then(() => {
+                // После завершения анимации сбросить позицию
+                controls.start({y: 0});
             });
+            const timeout = setTimeout(() => {
+                setIsAnswerVisible(false);
+            }, animationSettings.duration * 1000);
+
+            return () => clearTimeout(timeout);
         }
-    }, [isOpen]);
+    }, [isOpen, animationSettings]);
 
 
     // const background = getFaqBackground(id);
@@ -125,13 +150,12 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 boxShadow: isOpen ? "none" : "",
             }}
         >
-
             <div className={`${styles.question} 
                     w-full flex flex-row items-center bg-[#5353537F] active:bg-[#20272B] rounded-[6px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
                  onClick={handleClick}
                  style={{
                      // background,
-                     height: isOpen ? "69px" : "69px",
+                     height: isOpen ? "69px" : "68px",
                      alignItems: isOpen ? "start" : "center",
                      borderBottom: isOpen ? "1px solid #CCCCCC" : "",
                  }}
