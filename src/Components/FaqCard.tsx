@@ -132,9 +132,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     ease: animationSettings.ease,
                     times: animationSettings.times
                 }
-            }).then(() => {
-                setShouldRender(false); // скрыть после анимации
-            });
+            })
         }
     }, [isOpen, animationSettings]);
 
@@ -144,9 +142,9 @@ const FaqCard: React.FC<FaqCardProps> = ({
         <div
             className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer s:py-[23px] group-active/window:text-[#FFF]`}
             style={{
-                borderColor: shouldRender ? "#CCCCCC" : "transparent",
-                background: shouldRender ? "#53535380" : "",
-                boxShadow: shouldRender ? "none" : "",
+                borderColor: isOpen ? "#CCCCCC" : "transparent",
+                background: isOpen ? "#53535380" : "",
+                boxShadow: isOpen ? "none" : "",
             }}
         >
             <div className={`${styles.question} 
@@ -154,9 +152,9 @@ const FaqCard: React.FC<FaqCardProps> = ({
                  onClick={handleClick}
                  style={{
                      // background,
-                     height: shouldRender ? "69px" : "68px",
-                     alignItems: shouldRender ? "start" : "center",
-                     borderBottom: shouldRender ? "1px solid #CCCCCC" : "",
+                     height: isOpen ? "69px" : "68px",
+                     alignItems: isOpen ? "start" : "center",
+                     borderBottom: isOpen ? "1px solid #CCCCCC" : "",
                  }}
             >
                 <div
@@ -223,36 +221,36 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     </div>
                 </div>
             </div>
-            <div
-                className={`${styles.answer} bg-[#1A1A1A] rounded-[6px]`}
-                style={{
-                    // height: isOpen ? "auto" : "0px",
-                    // paddingTop: isOpen ? "30px" : "0px",
-                    // paddingBottom: isOpen ? "30px" : "0px",
-                    // paddingRight: isOpen ? "50px" : "0px",
-                    // overflow: "hidden",
+                <div
+                    className={`${styles.answer} bg-[#1A1A1A] rounded-[6px]`}
+                    style={{
+                        // height: isOpen ? "auto" : "0px",
+                        // paddingTop: isOpen ? "30px" : "0px",
+                        // paddingBottom: isOpen ? "30px" : "0px",
+                        // paddingRight: isOpen ? "50px" : "0px",
+                        // overflow: "hidden",
 
-                    height: shouldRender ? "auto" : "0px",
-                    paddingTop: shouldRender ? "30px" : "0px",
-                    paddingBottom: shouldRender ? "30px" : "0px",
-                    paddingRight: shouldRender ? "90px" : "0px",
-                    paddingLeft: shouldRender ? "80px" : "0px",
-                    // borderTop: isOpen ? "1px solid #CCCCCC" : "",
-                    borderTopRightRadius: shouldRender ? "0" : "4px",
-                    borderTopLeftRadius: shouldRender ? "0" : "4px",
-                    overflow: "hidden",
-                }}
-            >
-                <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
-                    <p className={`text-[18px] font-normal`}>{answer}</p>
+                        height: isOpen ? "auto" : "0px",
+                        paddingTop: isOpen ? "30px" : "0px",
+                        paddingBottom: isOpen ? "30px" : "0px",
+                        paddingRight: isOpen ? "90px" : "0px",
+                        paddingLeft: isOpen ? "80px" : "0px",
+                        // borderTop: isOpen ? "1px solid #CCCCCC" : "",
+                        borderTopRightRadius: isOpen ? "0" : "4px",
+                        borderTopLeftRadius: isOpen ? "0" : "4px",
+                        overflow: "hidden",
+                    }}
+                >
+                    <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
+                        <p className={`text-[18px] font-normal`}>{answer}</p>
 
-                    {shouldRender && (
+
                         <motion.div
                             initial={{y: 20, opacity: 0}}
                             animate={controls}
                             whileHover={{scale: 1.05}}
                             whileTap={{scale: 0.95}}
-                            style={{display: shouldRender ? 'block' : 'none'}}
+                            style={{display: isOpen ? 'block' : 'none'}}
                         >
                             <Image
                                 src={src}
@@ -262,34 +260,32 @@ const FaqCard: React.FC<FaqCardProps> = ({
                                 alt="FAQ image"
                             />
                         </motion.div>
-                    )}
 
 
-                    {/*<motion.img*/}
-                    {/*    initial={{ y: 30, opacity: 0 }}*/}
-                    {/*    animate={controls}*/}
-                    {/*    src={typeof src === 'string' ? src : src.src}*/}
-                    {/*    className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"*/}
-                    {/*    width={155}*/}
-                    {/*    height={155}*/}
-                    {/*    alt="FAQ image"*/}
-                    {/*/>*/}
+                        {/*<motion.img*/}
+                        {/*    initial={{ y: 30, opacity: 0 }}*/}
+                        {/*    animate={controls}*/}
+                        {/*    src={typeof src === 'string' ? src : src.src}*/}
+                        {/*    className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"*/}
+                        {/*    width={155}*/}
+                        {/*    height={155}*/}
+                        {/*    alt="FAQ image"*/}
+                        {/*/>*/}
 
-                    {/*<Image*/}
-                    {/*    src={src}*/}
-                    {/*    className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"*/}
-                    {/*    width={155}*/}
-                    {/*    height={155}*/}
-                    {/*    alt="FAQ image"*/}
-                    {/*/>*/}
-                </div>
+                        {/*<Image*/}
+                        {/*    src={src}*/}
+                        {/*    className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"*/}
+                        {/*    width={155}*/}
+                        {/*    height={155}*/}
+                        {/*    alt="FAQ image"*/}
+                        {/*/>*/}
+                    </div>
 
-                {/*<button*/}
-                {/*    className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>*/}
-                {/*    подробнее*/}
-                {/*</button>*/}
+                    {/*<button*/}
+                    {/*    className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>*/}
+                    {/*    подробнее*/}
+                    {/*</button>*/}
 
-                {shouldRender && (
                     <motion.button
                         initial={{y: 20, opacity: 0}}
                         animate={controls}
@@ -300,8 +296,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     >
                         подробнее
                     </motion.button>
-                )}
-            </div>
+                </div>
         </div>
     );
 };
