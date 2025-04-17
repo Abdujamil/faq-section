@@ -234,10 +234,11 @@ const FaqCard: React.FC<FaqCardProps> = ({
                         // whileHover={{scale: 1.05}}
                         // whileTap={{scale: 0.95}}
                         style={{display: isOpen ? 'block' : 'none'}}
+                        className="transition-all duration-[.3s] ease-out"
                     >
                         <Image
                             src={src}
-                            className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"
+                            className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"
                             width={155}
                             height={155}
                             alt="FAQ image"
@@ -245,12 +246,12 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     </motion.div>
                 </div>
 
-                <div ref={setWrapperRef} className="btn relative max-w-[250px]">
+                <div ref={setWrapperRef} className="btn relative max-w-[300px]">
                     <motion.button
                         initial={{y: 20, opacity: 0}}
                         animate={controls}
                         ref={setButtonRef}
-                        className={`${styles.motionEffect} py-[16px] px-[61px] bg-black active:bg-[#3d9ed601] text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC] active:border-[#3d9ed6] `}
+                        className={`${styles.motionEffect} py-[16px] px-[61px] bg-black  text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC] `}
                         // whileHover={{scale: 1.05}}
                         // whileTap={{scale: 0.95}}
                         style={{display: isOpen ? 'block' : 'none'}}

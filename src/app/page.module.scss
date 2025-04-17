@@ -1,4 +1,4 @@
-//@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 .page {
   --gray-rgb: 0, 0, 0;
@@ -322,8 +322,8 @@
       transition: transform 0.1s ease-out;
 
       &:active {
-        box-shadow: inset 1px 1px 2px 0 #3d9ed6, inset -1px -1px 2px 0 #3d9ed6;
-        transform: perspective(200px) scale(.9) rotateX(var(--x, 0deg)) rotateY(var(--y, 0deg)) translateZ(10px) !important;
+        //box-shadow: inset 1px 1px 2px 0 #3d9ed6, inset -1px -1px 2px 0 #3d9ed6;
+        transform: perspective(300px) scale(.9) rotateY(var(--y, 0deg)) translateZ(10px) !important;
         will-change: transform;
       }
 
