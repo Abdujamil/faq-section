@@ -82,18 +82,11 @@ const FaqCard: React.FC<FaqCardProps> = ({
         }
     };
 
-    const [isAnswerVisible, setIsAnswerVisible] = useState(defaultOpen || isOpen);
-    const [isClosing, setIsClosing] = useState(false);
-
-    const [shouldRender, setShouldRender] = useState(isOpen);
-
-
     const controls = useAnimation();
     const controlsImage = useAnimation();
 
     useEffect(() => {
         if (isOpen) {
-            setShouldRender(true);
             controls.start({
                 y: animationSettings.openY,
                 opacity: [0, 1, 1, 1, 1],
@@ -121,9 +114,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     ease: animationSettings.ease,
                     times: animationSettings.times
                 }
-            }).then(() => {
-                setShouldRender(false); // скрыть после анимации
-            });
+            })
             controlsImage.start({
                 y: animationSettings.closeY,
                 opacity: [1, 1, 1, 1, 0],
@@ -137,7 +128,6 @@ const FaqCard: React.FC<FaqCardProps> = ({
     }, [isOpen, animationSettings]);
 
 
-    // const background = getFaqBackground(id);
     return (
         <div
             className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer s:py-[23px] group-active/window:text-[#FFF]`}
@@ -151,7 +141,6 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     w-full flex flex-row items-center bg-[#5353537F] active:bg-[#20272B] rounded-[6px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
                  onClick={handleClick}
                  style={{
-                     // background,
                      height: isOpen ? "69px" : "68px",
                      alignItems: isOpen ? "start" : "center",
                      borderBottom: isOpen ? "1px solid #CCCCCC" : "",
@@ -222,20 +211,13 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 </div>
             </div>
                 <div
-                    className={`${styles.answer} bg-[#1A1A1A] rounded-[6px]`}
+                    className={`${styles.answer} bg-[#1A1A1A] rounded-[6px] `}
                     style={{
-                        // height: isOpen ? "auto" : "0px",
-                        // paddingTop: isOpen ? "30px" : "0px",
-                        // paddingBottom: isOpen ? "30px" : "0px",
-                        // paddingRight: isOpen ? "50px" : "0px",
-                        // overflow: "hidden",
-
                         height: isOpen ? "auto" : "0px",
                         paddingTop: isOpen ? "30px" : "0px",
                         paddingBottom: isOpen ? "30px" : "0px",
                         paddingRight: isOpen ? "90px" : "0px",
                         paddingLeft: isOpen ? "80px" : "0px",
-                        // borderTop: isOpen ? "1px solid #CCCCCC" : "",
                         borderTopRightRadius: isOpen ? "0" : "4px",
                         borderTopLeftRadius: isOpen ? "0" : "4px",
                         overflow: "hidden",
@@ -248,8 +230,8 @@ const FaqCard: React.FC<FaqCardProps> = ({
                         <motion.div
                             initial={{y: 20, opacity: 0}}
                             animate={controls}
-                            whileHover={{scale: 1.05}}
-                            whileTap={{scale: 0.95}}
+                            // whileHover={{scale: 1.05}}
+                            // whileTap={{scale: 0.95}}
                             style={{display: isOpen ? 'block' : 'none'}}
                         >
                             <Image

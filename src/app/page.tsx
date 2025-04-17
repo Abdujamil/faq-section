@@ -13,7 +13,7 @@ const Home: React.FC = () => {
         duration: 0.6,
         bounce: 5,
         delay: 0,
-        ease: [0.34, 1.56, 0.64, 1],
+        ease: [0.30, 1.7, 0.60, 1],
         times: [0, 0.2, 0.5, 0.8, 1],
         openY: [0, 26, 0, 0, 0],
         closeY: [60, -6, 0, 0, 0],
