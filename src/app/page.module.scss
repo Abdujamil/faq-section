@@ -16,19 +16,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.main {
-  //@media (prefers-color-scheme: dark) {
-  //  .page {
-  //    --gray-rgb: 255, 255, 255;
-  //    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-  //    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-  //
-  //    --button-primary-hover: #ccc;
-  //    --button-secondary-hover: #000000;
-  //  }
-  //}
-}
-
 //@keyframes bounce {
 //  20%, 80%, 100% {
 //    transform: translateY(0);
@@ -175,10 +162,11 @@
 
     .answer {
 
-      img{
+      img {
         transform: translateY(0%);
       }
-       img, button {
+
+      img, button {
         //animation: bounce 0.2s cubic-bezier(0.14, 0.56, 0.64, 1) forwards;
       }
 
@@ -291,9 +279,8 @@
       //margin-bottom: 30px;
 
       .motionBlurEffect {
-        animation:
-                motion-blur 0.12s linear forwards,
-                motion-blur-reverse 0.4s linear forwards 0.12s;
+        animation: motion-blur 0.12s linear forwards,
+        motion-blur-reverse 0.4s linear forwards 0.12s;
       }
 
 
@@ -303,7 +290,7 @@
         //font-size: 18px;
       }
 
-      img{
+      img {
         transform: translateY(-200%);
       }
 
@@ -323,6 +310,39 @@
         //cursor: pointer;
       }
 
+    }
+
+    .btn {
+      perspective: 200px;
+      z-index: 10;
+    }
+
+    .motionEffect {
+        transition: transform 0.1s ease-out;
+
+      &:active {
+        box-shadow: inset 1px 1px 2px 0 #3d9ed6, inset -1px -1px 2px 0 #3d9ed6;
+        transform: perspective(200px) scale(.9) rotateX(var(--x, 0deg)) rotateY(var(--y, 0deg)) translateZ(10px) !important;
+        will-change: transform;
+      }
+
+      &:before {
+        background: radial-gradient(250px circle at var(--mouse-x) var(--mouse-y), hsla(0, 0%, 78%, .22), transparent 30%);
+        border-radius: inherit;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        opacity: 0;
+        transition: opacity .3s ease;
+        z-index: 20;
+      }
+
+      &:hover:before {
+        opacity: 1;
+      }
     }
   }
 }

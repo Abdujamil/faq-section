@@ -1,10 +1,11 @@
 "use client";
 import Image, {StaticImageData} from "next/image";
-import React, {useState, useRef, useEffect} from "react";
+import React, {useState, useRef, useEffect, useCallback} from "react";
 import styles from '../app/page.module.scss';
 import ParallaxCard from "./ParallaxCard";
 import {getFaqBackground} from "../utils/faqHelpers";
 import {motion, useAnimation} from 'framer-motion';
+import {useButton} from "../utils/useButton";
 import {BounceEffect} from "../utils/BounceEffect";
 
 interface AnimationSettings {
@@ -126,7 +127,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
             })
         }
     }, [isOpen, animationSettings]);
-
+    const {setButtonRef, setWrapperRef} = useButton();
 
     return (
         <div
@@ -210,75 +211,54 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     </div>
                 </div>
             </div>
-                <div
-                    className={`${styles.answer} bg-[#1A1A1A] rounded-[6px] `}
-                    style={{
-                        height: isOpen ? "auto" : "0px",
-                        paddingTop: isOpen ? "30px" : "0px",
-                        paddingBottom: isOpen ? "30px" : "0px",
-                        paddingRight: isOpen ? "90px" : "0px",
-                        paddingLeft: isOpen ? "80px" : "0px",
-                        borderTopRightRadius: isOpen ? "0" : "4px",
-                        borderTopLeftRadius: isOpen ? "0" : "4px",
-                        overflow: "hidden",
-                    }}
-                >
-                    <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
-                        <p className={`text-[18px] font-normal`}>{answer}</p>
+            <div
+                className={`${styles.answer} bg-[#1A1A1A] rounded-[6px] `}
+                style={{
+                    height: isOpen ? "auto" : "0px",
+                    paddingTop: isOpen ? "30px" : "0px",
+                    paddingBottom: isOpen ? "30px" : "0px",
+                    paddingRight: isOpen ? "90px" : "0px",
+                    paddingLeft: isOpen ? "80px" : "0px",
+                    borderTopRightRadius: isOpen ? "0" : "4px",
+                    borderTopLeftRadius: isOpen ? "0" : "4px",
+                    overflow: "hidden",
+                }}
+            >
+                <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
+                    <p className={`text-[18px] font-normal`}>{answer}</p>
 
 
-                        <motion.div
-                            initial={{y: 20, opacity: 0}}
-                            animate={controls}
-                            // whileHover={{scale: 1.05}}
-                            // whileTap={{scale: 0.95}}
-                            style={{display: isOpen ? 'block' : 'none'}}
-                        >
-                            <Image
-                                src={src}
-                                className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"
-                                width={155}
-                                height={155}
-                                alt="FAQ image"
-                            />
-                        </motion.div>
+                    <motion.div
+                        initial={{y: 20, opacity: 0}}
+                        animate={controls}
+                        // whileHover={{scale: 1.05}}
+                        // whileTap={{scale: 0.95}}
+                        style={{display: isOpen ? 'block' : 'none'}}
+                    >
+                        <Image
+                            src={src}
+                            className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"
+                            width={155}
+                            height={155}
+                            alt="FAQ image"
+                        />
+                    </motion.div>
+                </div>
 
-
-                        {/*<motion.img*/}
-                        {/*    initial={{ y: 30, opacity: 0 }}*/}
-                        {/*    animate={controls}*/}
-                        {/*    src={typeof src === 'string' ? src : src.src}*/}
-                        {/*    className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] backdrop-blur-[2.5px] transition-all ease-in-out duration-[0.3s] rounded-[6px] opacity-[100%]"*/}
-                        {/*    width={155}*/}
-                        {/*    height={155}*/}
-                        {/*    alt="FAQ image"*/}
-                        {/*/>*/}
-
-                        {/*<Image*/}
-                        {/*    src={src}*/}
-                        {/*    className=" mt-[7px] w-full min-w-[155px] h-[155px]  border border-[#CCCCCC] backdrop-blur-[2.5px transition-all ease-in-out duration-[0.2s] rounded-[6px] opacity-[100%]"*/}
-                        {/*    width={155}*/}
-                        {/*    height={155}*/}
-                        {/*    alt="FAQ image"*/}
-                        {/*/>*/}
-                    </div>
-
-                    {/*<button*/}
-                    {/*    className={`py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border-1 border-[#CCCCCC]`}>*/}
-                    {/*    подробнее*/}
-                    {/*</button>*/}
-
+                <div ref={setWrapperRef} className="btn relative max-w-[250px]">
                     <motion.button
                         initial={{y: 20, opacity: 0}}
                         animate={controls}
-                        className="py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC]"
-                        whileHover={{scale: 1.05}}
-                        whileTap={{scale: 0.95}}
+                        ref={setButtonRef}
+                        className={`${styles.motionEffect} py-[16px] px-[61px] bg-black active:bg-[#3d9ed601] text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC] active:border-[#3d9ed6] `}
+                        // whileHover={{scale: 1.05}}
+                        // whileTap={{scale: 0.95}}
                         style={{display: isOpen ? 'block' : 'none'}}
                     >
                         подробнее
                     </motion.button>
                 </div>
+            </div>
         </div>
     );
 };
