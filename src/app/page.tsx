@@ -72,88 +72,88 @@ const Home: React.FC = () => {
                 <h2 className={`${styles.title} mb-[60px] font-normal text-[48px] text-[#CCCCCC]`}>FAQ: Ответы на главные
                     вопросы</h2>
 
-                <div>
-                    <h3>Настройки анимации</h3>
-                    <form className="flex gap-3 flex-wrap mb-5 border-2 p-5 rounded-[4px]">
-                        <label>
-                            Duration:
-                            <input
-                                type="number"
-                                name="duration"
-                                value={animationSettings.duration}
-                                step="0.1"
-                                onChange={e => setAnimationSettings({
-                                    ...animationSettings,
-                                    duration: parseFloat(e.target.value)
-                                })}
-                            />
-                        </label>
-                        <label>
-                            Delay:
-                            <input
-                                type="number"
-                                name="delay"
-                                value={animationSettings.delay}
-                                step="0.1"
-                                onChange={e => setAnimationSettings({
-                                    ...animationSettings,
-                                    delay: parseFloat(e.target.value)
-                                })}
-                            />
-                        </label>
-                        <label>
-                            Ease:
-                            <div className="flex gap-2">
-                                {animationSettings.ease.map((val, i) => (
-                                    <input
-                                        key={i}
-                                        type="number"
-                                        value={val}
-                                        step="0.01"
-                                        onChange={(e) => handleEaseChange(i, e.target.value)}
-                                        className="w-12"
-                                    />
-                                ))}
-                            </div>
-                        </label>
-                        <label>
-                            Times:
-                            <input
-                                type="text"
-                                name="times"
-                                value={JSON.stringify(animationSettings.times)}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Open Y:
-                            <input
-                                type="text"
-                                name="openY"
-                                value={JSON.stringify(animationSettings.openY)}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Close Y:
-                            <input
-                                type="text"
-                                name="closeY"
-                                value={JSON.stringify(animationSettings.closeY)}
-                                onChange={handleChange}
-                            />
-                        </label>
-                        <label>
-                            Opacity:
-                            <input
-                                type="text"
-                                name="opacity"
-                                value={JSON.stringify(animationSettings.opacity)}
-                                onChange={handleChange}
-                            />
-                        </label>
-                    </form>
-                </div>
+                {/*<div>*/}
+                {/*    <h3>Настройки анимации</h3>*/}
+                {/*    <form className="flex gap-3 flex-wrap mb-5 border-2 p-5 rounded-[4px]">*/}
+                {/*        <label>*/}
+                {/*            Duration:*/}
+                {/*            <input*/}
+                {/*                type="number"*/}
+                {/*                name="duration"*/}
+                {/*                value={animationSettings.duration}*/}
+                {/*                step="0.1"*/}
+                {/*                onChange={e => setAnimationSettings({*/}
+                {/*                    ...animationSettings,*/}
+                {/*                    duration: parseFloat(e.target.value)*/}
+                {/*                })}*/}
+                {/*            />*/}
+                {/*        </label>*/}
+                {/*        <label>*/}
+                {/*            Delay:*/}
+                {/*            <input*/}
+                {/*                type="number"*/}
+                {/*                name="delay"*/}
+                {/*                value={animationSettings.delay}*/}
+                {/*                step="0.1"*/}
+                {/*                onChange={e => setAnimationSettings({*/}
+                {/*                    ...animationSettings,*/}
+                {/*                    delay: parseFloat(e.target.value)*/}
+                {/*                })}*/}
+                {/*            />*/}
+                {/*        </label>*/}
+                {/*        <label>*/}
+                {/*            Ease:*/}
+                {/*            <div className="flex gap-2">*/}
+                {/*                {animationSettings.ease.map((val, i) => (*/}
+                {/*                    <input*/}
+                {/*                        key={i}*/}
+                {/*                        type="number"*/}
+                {/*                        value={val}*/}
+                {/*                        step="0.01"*/}
+                {/*                        onChange={(e) => handleEaseChange(i, e.target.value)}*/}
+                {/*                        className="w-12"*/}
+                {/*                    />*/}
+                {/*                ))}*/}
+                {/*            </div>*/}
+                {/*        </label>*/}
+                {/*        <label>*/}
+                {/*            Times:*/}
+                {/*            <input*/}
+                {/*                type="text"*/}
+                {/*                name="times"*/}
+                {/*                value={JSON.stringify(animationSettings.times)}*/}
+                {/*                onChange={handleChange}*/}
+                {/*            />*/}
+                {/*        </label>*/}
+                {/*        <label>*/}
+                {/*            Open Y:*/}
+                {/*            <input*/}
+                {/*                type="text"*/}
+                {/*                name="openY"*/}
+                {/*                value={JSON.stringify(animationSettings.openY)}*/}
+                {/*                onChange={handleChange}*/}
+                {/*            />*/}
+                {/*        </label>*/}
+                {/*        <label>*/}
+                {/*            Close Y:*/}
+                {/*            <input*/}
+                {/*                type="text"*/}
+                {/*                name="closeY"*/}
+                {/*                value={JSON.stringify(animationSettings.closeY)}*/}
+                {/*                onChange={handleChange}*/}
+                {/*            />*/}
+                {/*        </label>*/}
+                {/*        <label>*/}
+                {/*            Opacity:*/}
+                {/*            <input*/}
+                {/*                type="text"*/}
+                {/*                name="opacity"*/}
+                {/*                value={JSON.stringify(animationSettings.opacity)}*/}
+                {/*                onChange={handleChange}*/}
+                {/*            />*/}
+                {/*        </label>*/}
+                {/*    </form>*/}
+                {/*</div>*/}
                 <section className={`${styles.accordion} w-full flex flex-col gap-[5px]`}>
                     {faqData.map((item) => (
                         <FaqCard

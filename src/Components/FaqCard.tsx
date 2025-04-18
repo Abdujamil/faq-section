@@ -231,10 +231,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     <motion.div
                         initial={{y: 20, opacity: 0}}
                         animate={controls}
-                        // whileHover={{scale: 1.05}}
-                        // whileTap={{scale: 0.95}}
                         style={{display: isOpen ? 'block' : 'none'}}
-                        // className="transition-all duration-[.5s] ease-out"
                     >
                         <Image
                             src={src}
@@ -252,8 +249,6 @@ const FaqCard: React.FC<FaqCardProps> = ({
                         animate={controls}
                         ref={setButtonRef}
                         className={`${styles.motionEffect} py-[16px] px-[61px] bg-black  text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC] `}
-                        // whileHover={{scale: 1.05}}
-                        // whileTap={{scale: 0.95}}
                         style={{display: isOpen ? 'block' : 'none'}}
                     >
                         подробнее
