@@ -2,12 +2,12 @@
 
 import React, {useState} from "react";
 import styles from '../app/page.module.scss';
-import FaqCard from "../Components/FaqCard";
+// import FaqCard from "../сomponents/FaqCard";
+import FaqCard from '../сomponents/FaqCard/index'
 import Footer from "./footer";
 import {faqData} from "../data/faq";
 
 const Home: React.FC = () => {
-
     const [openId, setOpenId] = useState<number | null>(null);
     const [animationSettings, setAnimationSettings] = useState({
         duration: 0.6,
@@ -20,58 +20,17 @@ const Home: React.FC = () => {
         opacity: [0, 1, 1, 1, 1],
     });
 
-    const handleEaseChange = (index: number, value: string) => {
-        const newEase = [...animationSettings.ease] as [number, number, number, number];
-        newEase[index] = parseFloat(value) || 0;
-        setAnimationSettings({...animationSettings, ease: newEase});
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} = e.target;
-
-        if (name === 'ease' || name === 'times' || name === 'openY' ||
-            name === 'closeY' || name === 'opacity') {
-            try {
-                setAnimationSettings(prev => ({
-                    ...prev,
-                    [name]: JSON.parse(value)
-                }));
-            } catch {
-                console.error('Invalid JSON input');
-            }
-        } else {
-            setAnimationSettings(prev => ({
-                ...prev,
-                [name]: name === 'duration' || name === 'delay'
-                    ? parseFloat(value)
-                    : parseInt(value)
-            }));
-        }
-    };
-
     const handleToggle = (id: number) => {
         setOpenId(prevId => prevId === id ? null : id);
     };
-
-    // const animationDuration = 600; // или передавай из настроек, если надо динамически
-    //
-    // const handleToggle = (id: number) => {
-    //     if (openId === id) {
-    //         setTimeout(() => {
-    //             setOpenId(null);
-    //         }, animationDuration);
-    //     } else {
-    //         setOpenId(id);
-    //     }
-    // };
 
     return (
         <div className={`${styles.page} block`}>
             <main
                 className={`${styles.main} w-full max-w-[1160px] mx-auto pt-[80px] pr-[10px] pl-[10px] flex flex-col`}>
-                <h2 className={`${styles.title} mb-[60px] font-normal text-[48px] text-[#CCCCCC]`}>FAQ: Ответы на главные
+                <h2 className={`${styles.title} mb-[60px] font-normal text-[48px] text-[#CCCCCC]`}>FAQ: Ответы на
+                    главные
                     вопросы</h2>
-
                 {/*<div>*/}
                 {/*    <h3>Настройки анимации</h3>*/}
                 {/*    <form className="flex gap-3 flex-wrap mb-5 border-2 p-5 rounded-[4px]">*/}
