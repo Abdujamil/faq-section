@@ -1,6 +1,7 @@
 import {motion, useAnimation} from "framer-motion";
 import Image from "next/image";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import { useRouter } from "next/navigation";
 import styles from '../../app/page.module.scss';
 import {useButton} from "../../utils/useButton";
 import {AnimationSettings} from "../../utils/types";
@@ -17,6 +18,14 @@ interface Props {
 const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSettings}) => {
     const controls = useAnimation();
     const {setButtonRef, setWrapperRef} = useButton();
+    const router = useRouter();
+    const [clicked, setClicked] = useState(false);
+
+    const handleClick = async () => {
+        setClicked(true); // Запускаем эффект исчезновения
+        await new Promise(resolve => setTimeout(resolve, 300)); // Ждем 300мс (или сколько нужно)
+        router.push(`/faqPage/${id}`);
+    };
 
     useEffect(() => {
         const target = {
@@ -62,7 +71,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 </motion.div>
             </div>
 
-            <Link href={`/faqPage/${id}`} className="w-[300px]">
+            {/*<Link href={`/faqPage/${id}`} className="w-[300px]">*/}
                 <div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>
                     <motion.button
                         ref={setButtonRef}
@@ -70,11 +79,13 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                         animate={controls}
                         className={`${styles.motionEffect} py-[16px] px-[61px] bg-black  text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC] `}
                         style={{display: isOpen ? "block" : "none"}}
+                        onClick={handleClick}
+                        disabled={clicked}
                     >
                         подробнее
                     </motion.button>
                 </div>
-            </Link>
+            {/*</Link>*/}
         </div>
     );
 };

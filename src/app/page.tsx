@@ -121,6 +121,7 @@ const Home: React.FC = () => {
                             num={item.num}
                             question={item.question}
                             answer={item.answer}
+                            fullAnswer={""}
                             src={item.src}
                             isOpen={openId === item.id}
                             onToggle={handleToggle}

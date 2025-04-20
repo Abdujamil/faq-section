@@ -35,7 +35,7 @@ const CardListt: React.FC = () => {
                     isOpen={openId === item.id}
                     onToggle={handleToggle}
                     animationSettings={animationSettings}
-                    answer={""}                />
+                    answer={""}/>
             ))}
         </div>
     );

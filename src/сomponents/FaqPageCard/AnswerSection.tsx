@@ -46,7 +46,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, fullAnswer, src, animationS
             }}
         >
             <div className={`${styles.texts}`}>
-                <p className="text-[18px] font-normal">{fullAnswer}</p>
+                <div className="text-[18px] font-normal">{fullAnswer}</div>
                 <motion.div
                     initial={{y: 20, opacity: 0}}
                     animate={controls}
