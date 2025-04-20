@@ -11,7 +11,7 @@ interface FaqItem {
     question: string;
     answer: string;
     fullAnswer?: any;
-    aside?: AsideItem[];
+    aside: AsideItem[];
     src: string | StaticImageData;
 }
 

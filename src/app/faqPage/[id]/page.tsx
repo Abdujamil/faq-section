@@ -39,7 +39,7 @@ export default async function FaqPage({params}: Props) {
                 </Link>
 
                 <ul className="space-y-4 text-[#737373] font-bold text-sm">
-                    {faqItem.aside.map(item => (
+                    {faqItem.aside?.map(item => (
                         <li key={item.id}>
                             <a href={item.id}>{item.title}</a>
                         </li>
