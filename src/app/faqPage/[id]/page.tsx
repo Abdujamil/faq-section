@@ -5,6 +5,11 @@ import Link from "next/link";
 import styles from "../../page.module.scss";
 import CardListt from "../../../сomponents/FaqPageCard/ShowCardList";
 
+export async function generateStaticParams() {
+    return faqData.map((item) => ({
+        id: item.id.toString(),
+    }));
+}
 export default async function FaqPage({
                                           params,
                                       }: {
