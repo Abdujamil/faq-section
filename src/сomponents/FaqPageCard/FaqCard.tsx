@@ -9,7 +9,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                                              id,
                                              num,
                                              question,
-                                             answer,
+                                             fullAnswer,
                                              src,
                                              defaultOpen = false,
                                              isOpen,
@@ -22,9 +22,9 @@ const FaqCard: React.FC<FaqCardProps> = ({
 
     return (
         <div
-            className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer s:py-[23px] active:border-[#3D9ED6] group-active/window:text-[#FFF]`}
+            className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer s:py-[23px] mb-[5px] group-active/window:text-[#FFF]`}
             style={{
-                borderColor: isOpen ? "#CCCCCC" : "transparent",
+                borderColor: isOpen ? "#CCCCCC" : "",
                 background: isOpen ? "#53535380" : "",
                 boxShadow: isOpen ? "none" : "",
             }}
@@ -40,7 +40,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
             <AnswerSection
                 id={id}
                 isOpen={isOpen}
-                answer={answer}
+                fullAnswer={fullAnswer}
                 src={src}
                 animationSettings={animationSettings}
             />

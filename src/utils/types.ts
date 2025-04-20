@@ -16,6 +16,7 @@ export interface FaqCardProps {
     num: string;
     question: string;
     answer: string;
+    fullAnswer: any;
     src: string | StaticImageData;
     defaultOpen?: boolean;
     isOpen?: boolean;

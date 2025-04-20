@@ -9,12 +9,12 @@ import Link from "next/link";
 interface Props {
     id: number;
     isOpen: boolean | undefined;
-    answer: string;
+    fullAnswer: string;
     src: any;
     animationSettings: AnimationSettings;
 }
 
-const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSettings}) => {
+const AnswerSection: React.FC<Props> = ({id, isOpen, fullAnswer, src, animationSettings}) => {
     const controls = useAnimation();
     const {setButtonRef, setWrapperRef} = useButton();
 
@@ -38,43 +38,22 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 height: isOpen ? "auto" : "0px",
                 paddingTop: isOpen ? "30px" : "0px",
                 paddingBottom: isOpen ? "30px" : "0px",
-                paddingRight: isOpen ? "90px" : "0px",
-                paddingLeft: isOpen ? "80px" : "0px",
+                paddingRight: isOpen ? "30px" : "0px",
+                paddingLeft: isOpen ? "30px" : "0px",
                 borderTopRightRadius: isOpen ? "0" : "4px",
                 borderTopLeftRadius: isOpen ? "0" : "4px",
                 overflow: "hidden",
             }}
         >
-            <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
-                <p className="text-[18px] font-normal">{answer}</p>
+            <div className={`${styles.texts}`}>
+                <p className="text-[18px] font-normal">{fullAnswer}</p>
                 <motion.div
                     initial={{y: 20, opacity: 0}}
                     animate={controls}
                     style={{display: isOpen ? "block" : "none"}}
                 >
-                    <Image
-                        src={src}
-                        alt="FAQ image"
-                        width={155}
-                        height={155}
-                        className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] rounded-[6px]"
-                    />
                 </motion.div>
             </div>
-
-            <Link href={`/faqPage/${id}`} className="w-[300px]">
-                <div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>
-                    <motion.button
-                        ref={setButtonRef}
-                        initial={{y: 20, opacity: 0}}
-                        animate={controls}
-                        className={`${styles.motionEffect} py-[16px] px-[61px] bg-black  text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC] `}
-                        style={{display: isOpen ? "block" : "none"}}
-                    >
-                        подробнее
-                    </motion.button>
-                </div>
-            </Link>
         </div>
     );
 };
