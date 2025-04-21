@@ -1,12 +1,17 @@
 "use client";
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styles from '../../app/page.module.scss';
 import FaqCard from "./FaqCard";
 import {faqData} from "../../data/faq";
 
-const CardListt: React.FC = () => {
-    const [openId, setOpenId] = useState<number | null>(null);
+type Props = {
+    initialOpenId?: number;
+};
+
+const CardListt: React.FC<Props> = ({ initialOpenId }) => {
+    const [openId, setOpenId] = useState<number | null>(initialOpenId ?? null);
+    const [activeHash, setActiveHash] = useState("");
     const [animationSettings, setAnimationSettings] = useState({
         duration: 0.6,
         bounce: 5,
@@ -21,6 +26,18 @@ const CardListt: React.FC = () => {
     const handleToggle = (id: number) => {
         setOpenId(prevId => prevId === id ? null : id);
     };
+
+    // Отслеживаем hash из URL (например, #about) и подсвечиваем
+    useEffect(() => {
+        const updateHash = () => {
+            setActiveHash(window.location.hash);
+        };
+
+        window.addEventListener("hashchange", updateHash);
+        updateHash(); // установить начальный hash
+
+        return () => window.removeEventListener("hashchange", updateHash);
+    }, []);
 
     return (
         <div className={`${styles.pageFaq} block`}>

@@ -24,11 +24,11 @@ const FaqCard: React.FC<FaqCardProps> = ({
     return (
         <div
             className={`${styles.faqCard} ${isOpen ? styles.active : ""} `}
-            // style={{
-            //     borderColor: isOpen ? "#CCCCCC" : "transparent",
-            //     background: isOpen ? "#53535380" : "",
-            //     boxShadow: isOpen ? "none" : "",
-            // }}
+            style={{
+                // borderColor: isOpen ? "#CCCCCC" : "transparent",
+                background: isOpen ? "#53535380" : "",
+                boxShadow: isOpen ? "none" : "",
+            }}
         >
             <QuestionHeader
                 id={id}

@@ -70,11 +70,19 @@ export default async function FaqPage({ params }: Props) {
                 </Link>
 
                 <ul className="space-y-4 text-[#737373] font-bold text-sm">
-                    {faqItem.aside?.map((item) => (
-                        <li key={item.id}>
-                            <a href={item.id}>{item.title}</a>
-                        </li>
-                    ))}
+                    {faqItem.aside?.map((item) => {
+                        const isActive = typeof window !== "undefined" && window.location.hash === item.id;
+                        return (
+                            <li key={item.id}>
+                                <a
+                                    href={item.id}
+                                    className={isActive ? "text-[#3D9ED6]" : ""}
+                                >
+                                    {item.title}
+                                </a>
+                            </li>
+                        );
+                    })}
                 </ul>
             </aside>
 
@@ -83,7 +91,7 @@ export default async function FaqPage({ params }: Props) {
                 <section
                     className={`${styles.accordion} w-full flex flex-col gap-[5px]`}
                 >
-                    <CardListt/>
+                    <CardListt initialOpenId={id} />
                 </section>
             </main>
         </div>
