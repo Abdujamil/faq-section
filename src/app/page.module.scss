@@ -175,6 +175,7 @@
 
   .question {
     position: relative;
+    border: 1px solid transparent !important;
 
     .number {
 
@@ -260,7 +261,7 @@
       //border: 1px solid #CCCCCC !important;
 
       .question {
-        border: 1px solid #737373 !important;
+        border: 1px solid #4a738c !important;
 
           &:active {
             border-color: #4a738c !important;
@@ -289,6 +290,10 @@
         font-size: 18px;
         line-height: 130%;
       }
+    }
+
+    .question {
+      border: 1px solid #737373 !important;
     }
   }
 }
@@ -335,5 +340,6 @@
     }
   }
 }
+
 
 
