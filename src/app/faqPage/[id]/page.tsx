@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "../../page.module.scss";
 import CardListt from "../../../сomponents/FaqPageCard/ShowCardList";
 import React from "react";
+import FaqAside from "../../../сomponents/FaqPageCard/FaqAside";
 
 
 type Props = {
@@ -39,12 +40,12 @@ export default async function FaqPage({params}: Props) {
                 <div className="w-full h-[110vh] bg-[url(/bg.png)] bg-no-repeat bg-cover bg-top absolute left-0 top-0 z-[-1]"></div>
 
                 {/* Sidebar */}
-                <aside className="w-1/4 sticky top-20 pt-[80px]">
+                <aside  className="w-1/4 sticky top-20 pt-[80px]">
                     <Image
-                        src={faqItem.src}
+                        src={faqItem.largeImgSrc}
                         alt={faqItem.question}
-                        width={323}
-                        height={323}
+                        width={260}
+                        height={260}
                         className="rounded-lg mb-6 opacity-[90%]"
                     />
 
@@ -75,25 +76,13 @@ export default async function FaqPage({params}: Props) {
                         </button>
                     </Link>
 
-                    <ul className="space-y-4 text-[#737373] font-bold text-sm">
-                        {faqItem.aside?.map((item) => {
-                            const isActive = typeof window !== "undefined" && window.location.hash === item.id;
-                            return (
-                                <li key={item.id}>
-                                    <a
-                                        href={item.id}
-                                        className={`${isActive ? "text-[#3D9ED6]" : ""}text-[16px] font-normal `}
-                                    >
-                                        {item.title}
-                                    </a>
-                                </li>
-                            );
-                        })}
-                    </ul>
+                    <FaqAside items={faqItem.aside} />
                 </aside>
 
+
+
                 {/* Main content */}
-                <div className="w-3/4 h-[100vh] overflow-auto">
+                <div className="w-3/4 h-[110vh] overflow-auto">
                     <div className="pt-[80px] pb-[40px]">
                         <h2 className={`${styles.title} mb-[40px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>FAQ:
                             Ответы на главные вопросы

@@ -13,6 +13,7 @@ interface FaqItem {
     fullAnswer?: any;
     aside: AsideItem[];
     src: string | StaticImageData;
+     largeImgSrc: string | StaticImageData;
 }
 
 export const faqData: FaqItem[] = [
@@ -90,6 +91,7 @@ export const faqData: FaqItem[] = [
         ],
 
         src: "/img.png",
+         largeImgSrc: "/01.png",
     },
     {
         id: 2,
@@ -147,10 +149,12 @@ export const faqData: FaqItem[] = [
             </>
         ),
         aside: [
-            {id: "#about", title: "О сервисе"},
-            {id: "#tech", title: "Технологии"},
+            {id: "#speedTranslate", title: "Как быстро работает транскрибация?"},
+            {id: "#effectTranslate", title: "AudioSector: Скорость и Эффективность в Мире Транскрибации?"},
+            {id: "#speedKing", title: "Почему AudioSector — лидер по скорости?"},
         ],
         src: "/img-1.png",
+         largeImgSrc: "/02.png",
     },
     {
         id: 3,
@@ -175,6 +179,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-2.png",
+         largeImgSrc: "/03.png",
     },
     {
         id: 4,
@@ -199,6 +204,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-3.png",
+         largeImgSrc: "/04.png",
     },
     {
         id: 5,
@@ -223,6 +229,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-4.png",
+         largeImgSrc: "/05.png",
     },
     {
         id: 6,
@@ -247,6 +254,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-5.png",
+         largeImgSrc: "/06.png",
     },
     {
         id: 7,
@@ -271,6 +279,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-6.png",
+         largeImgSrc: "/07.png",
     },
     {
         id: 8,
@@ -295,6 +304,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-7.png",
+         largeImgSrc: "/08.png",
     },
     {
         id: 9,
@@ -319,6 +329,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-8.png",
+         largeImgSrc: "/09.png",
     },
     {
         id: 10,
@@ -343,6 +354,7 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-9.png",
+         largeImgSrc: "/10.png",
     },
     {
         id: 11,
@@ -367,5 +379,6 @@ export const faqData: FaqItem[] = [
             {id: "#tech", title: "Технологии"},
         ],
         src: "/img-10.png",
+         largeImgSrc: "/11.png",
     },
 ];
