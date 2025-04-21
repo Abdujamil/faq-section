@@ -71,7 +71,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 </motion.div>
             </div>
 
-            {/*<Link href={`/faqPage/${id}`} className="w-[300px]">*/}
+            <Link href={`/faqPage/${id}`} className="w-[300px]">
                 <div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>
                     <motion.button
                         ref={setButtonRef}
@@ -85,7 +85,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                         подробнее
                     </motion.button>
                 </div>
-            {/*</Link>*/}
+            </Link>
         </div>
     );
 };

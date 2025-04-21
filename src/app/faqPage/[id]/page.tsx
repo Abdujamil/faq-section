@@ -5,16 +5,26 @@ import Link from "next/link";
 import styles from "../../page.module.scss";
 import CardListt from "../../../сomponents/FaqPageCard/ShowCardList";
 
+
+type Props = {
+    params: { id: string };
+};
+
 export async function generateStaticParams() {
     return faqData.map((item) => ({
         id: item.id.toString(),
     }));
 }
-export default async function FaqPage({
-                                          params,
-                                      }: {
-    params: { id: string };
-}) {
+
+// interface Params {
+//     params: {
+//         id: string;
+//     };
+// }
+
+
+
+export default async function FaqPage({ params }: Props) {
     const id = parseInt(params.id);
     const faqItem = faqData.find((item) => item.id === id);
 
