@@ -23,7 +23,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
 
     const handleClick = async () => {
         setClicked(true); // Запускаем эффект исчезновения
-        await new Promise(resolve => setTimeout(resolve, 300)); // Ждем 300мс (или сколько нужно)
+        await new Promise(resolve => setTimeout(resolve, 200)); // Ждем 300мс
         router.push(`/faqPage/${id}`);
     };
 
@@ -51,6 +51,8 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 paddingLeft: isOpen ? "80px" : "0px",
                 borderTopRightRadius: isOpen ? "0" : "4px",
                 borderTopLeftRadius: isOpen ? "0" : "4px",
+                border: isOpen ? "1px solid #CCCCCC" : "",
+                borderTopColor: isOpen ? "transparent" : "",
                 overflow: "hidden",
             }}
         >
