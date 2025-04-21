@@ -26,7 +26,6 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <div className="w-full h-[800px] bg-[url(/bg.png)] bg-no-repeat bg-cover bg-top absolute top-0 z-[-1]"></div>
             <div className={`${styles.page} block`}>
                 <main
                     className={`${styles.main} w-full max-w-[1160px] mx-auto pt-[80px] pr-[10px] pl-[10px] flex flex-col`}>

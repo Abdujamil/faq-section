@@ -16,7 +16,6 @@ interface Props {
 
 const AnswerSection: React.FC<Props> = ({id, isOpen, fullAnswer, src, animationSettings}) => {
     const controls = useAnimation();
-    const {setButtonRef, setWrapperRef} = useButton();
 
     useEffect(() => {
         const target = {
@@ -42,6 +41,8 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, fullAnswer, src, animationS
                 paddingLeft: isOpen ? "30px" : "0px",
                 borderTopRightRadius: isOpen ? "0" : "4px",
                 borderTopLeftRadius: isOpen ? "0" : "4px",
+                border: isOpen ? "1px solid #737373" : "",
+                borderTopColor: isOpen ? "transparent" : "",
                 overflow: "hidden",
             }}
         >

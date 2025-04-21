@@ -22,9 +22,9 @@ const FaqCard: React.FC<FaqCardProps> = ({
 
     return (
         <div
-            className={`${styles.faqCard} ${isOpen ? styles.active : ""} relative cursor-pointer s:py-[23px] mb-[5px] group-active/window:text-[#FFF]`}
+            className={`${styles.faqCard} ${isOpen ? styles.active : ""} mb-[5px]`}
             style={{
-                borderColor: isOpen ? "#CCCCCC" : "",
+                // borderColor: isOpen ? "#CCCCCC" : "",
                 background: isOpen ? "#53535380" : "",
                 boxShadow: isOpen ? "none" : "",
             }}

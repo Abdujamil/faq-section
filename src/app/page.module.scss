@@ -60,12 +60,12 @@
 
     }
 
-      //background: #20272B !important;
-      //box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000 !important;
-      //border: 1px solid #CCCCCC !important;
+    //background: #20272B !important;
+    //box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000 !important;
+    //border: 1px solid #CCCCCC !important;
 
-      .question {
-        &:active {
+    .question {
+      &:active {
         //transform: scale(.99);
         //box-shadow: inset -5px -5px 7px #000000, inset 5px 5px 7px #000000;
         border-color: #4a738c !important;
@@ -247,6 +247,46 @@
 
       &:hover:before {
         opacity: 1;
+      }
+    }
+  }
+}
+
+.pageFaq {
+  .faqCard {
+
+    &:hover {
+      //border: 1px solid #CCCCCC !important;
+
+      .question {
+        border: 1px solid #737373 !important;
+
+          &:active {
+            border-color: #4a738c !important;
+          }
+      }
+    }
+
+    .texts{
+      color: #CCCCCC;
+
+      h3{
+        font-size: 24px;
+        font-weight: bold;
+        color: #CCCCCC;
+      }
+
+      h4{
+        color: #3D9ED6;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        margin-top: 22px;
+      }
+
+      p{
+        font-size: 18px;
+        line-height: 130%;
       }
     }
   }

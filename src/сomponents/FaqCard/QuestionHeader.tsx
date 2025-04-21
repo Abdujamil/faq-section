@@ -62,10 +62,6 @@ const QuestionHeader: React.FC<Props> = ({id, num, question, src, isOpen, handle
                     </svg>
                 </div>
             </div>
-
-            <style jsx>{`
-              
-            `}</style>
         </div>
     );
 };

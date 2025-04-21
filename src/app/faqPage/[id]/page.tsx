@@ -4,6 +4,7 @@ import {faqData} from "../../../data/faq";
 import Link from "next/link";
 import styles from "../../page.module.scss";
 import CardListt from "../../../сomponents/FaqPageCard/ShowCardList";
+import React from "react";
 
 
 type Props = {
@@ -23,8 +24,7 @@ export async function generateStaticParams() {
 // }
 
 
-
-export default async function FaqPage({ params }: Props) {
+export default async function FaqPage({params}: Props) {
     const id = parseInt(params.id);
     const faqItem = faqData.find((item) => item.id === id);
 
@@ -32,17 +32,20 @@ export default async function FaqPage({ params }: Props) {
 
     return (
         <>
-            <div className="w-full h-[800px] bg-[url(/bg.png)] bg-no-repeat bg-cover bg-top absolute top-0 z-[-1]"></div>
             <div
-                className="w-full max-w-[1160px] mx-auto pt-[80px] pr-[10px] pl-[10px] flex gap-[58px]">
+                className="w-full max-w-[1160px] mx-auto pr-[10px] pl-[10px] mb-[100px] flex gap-[58px]">
+
+                {/* Background */}
+                <div className="w-full h-[110vh] bg-[url(/bg.png)] bg-no-repeat bg-cover bg-top absolute left-0 top-0 z-[-1]"></div>
+
                 {/* Sidebar */}
-                <aside className="w-1/4 sticky top-20">
+                <aside className="w-1/4 sticky top-20 pt-[80px]">
                     <Image
                         src={faqItem.src}
                         alt={faqItem.question}
                         width={323}
                         height={323}
-                        className="rounded-lg mb-6 border border-[#3D9ED6]"
+                        className="rounded-lg mb-6 opacity-[90%]"
                     />
 
                     <Link href={`/`} className="group">
@@ -79,7 +82,7 @@ export default async function FaqPage({ params }: Props) {
                                 <li key={item.id}>
                                     <a
                                         href={item.id}
-                                        className={isActive ? "text-[#3D9ED6]" : ""}
+                                        className={`${isActive ? "text-[#3D9ED6]" : ""}text-[16px] font-normal `}
                                     >
                                         {item.title}
                                     </a>
@@ -90,13 +93,17 @@ export default async function FaqPage({ params }: Props) {
                 </aside>
 
                 {/* Main content */}
-                <main className="w-3/4">
-                    <section
-                        className={`${styles.accordion} w-full flex flex-col gap-[5px]`}
-                    >
-                        <CardListt initialOpenId={id}/>
-                    </section>
-                </main>
+                <div className="w-3/4 h-[100vh] overflow-auto">
+                    <div className="pt-[80px] pb-[40px]">
+                        <h2 className={`${styles.title} mb-[40px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>FAQ:
+                            Ответы на главные вопросы
+                        </h2>
+
+                        <section className={`${styles.accordion} w-full flex flex-col gap-[5px]`}>
+                            <CardListt initialOpenId={id}/>
+                        </section>
+                    </div>
+                </div>
             </div>
         </>
 
