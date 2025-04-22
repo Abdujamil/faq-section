@@ -11,11 +11,11 @@ const Footer: React.FC = () => {
                 className={`${styles.footerTop} w-full h-full max-h-[127px] p-[20px] rounded-[4px] flex items-center justify-between`}>
                 <div className={`${styles.form} flex items-center gap-[30px]`}>
                     <Image
-                        className="absolute bottom-[-2]"
+                        className="absolute bottom-[0] h-[137px]"
                         src="/micro.png"
                         alt='micro'
                         width={95}
-                        height={95}
+                        height={90}
                     />
                     <div className="pl-[135px]">
                         <p className={`text-[20px] text-[#3D9ED6] mb-[28px]`}>Подписаться на новости</p>
