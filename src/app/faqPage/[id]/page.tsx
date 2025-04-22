@@ -33,14 +33,12 @@ export default async function FaqPage({params}: Props) {
 
     return (
         <>
-            <div
-                className="w-full max-w-[1160px] mx-auto pr-[10px] pl-[10px] mb-[100px] flex gap-[58px]">
+            {/* Background */}
+            <div className="w-full h-[110vh] bg-[url(/bg.png)] bg-no-repeat bg-cover bg-top absolute left-0 top-0 z-[-1]"></div>
 
-                {/* Background */}
-                <div className="w-full h-[110vh] bg-[url(/bg.png)] bg-no-repeat bg-cover bg-top absolute left-0 top-0 z-[-1]"></div>
-
-                {/* Sidebar */}
-                <aside  className="w-1/4 sticky top-20 pt-[80px]">
+            <div className="w-full max-w-[1160px] mx-auto px-[10px] mb-[100px] grid grid-cols-4 gap-[58px]">
+                {/* Sidebar - 1 колонка */}
+                <aside className="sticky top-20 h-fit">
                     <Image
                         src={faqItem.largeImgSrc}
                         alt={faqItem.question}
@@ -50,8 +48,7 @@ export default async function FaqPage({params}: Props) {
                     />
 
                     <Link href={`/`} className="group">
-                        <button
-                            className="group-hover:border-[#3D9ED6] transition-all duration-[.3s] ease-in flex justify-between w-full cursor-pointer font-bold text-left items-center mb-5 py-3 border-b border-[#CCCCCC]">
+                        <button className="group-hover:border-[#3D9ED6] transition-all duration-[.3s] ease-in flex justify-between w-full cursor-pointer font-bold text-left items-center mb-5 py-3 border-b border-[#CCCCCC]">
                             Краткое содержание
                             <svg
                                 width="10"
@@ -79,22 +76,19 @@ export default async function FaqPage({params}: Props) {
                     <FaqAside items={faqItem.aside} />
                 </aside>
 
-
-
-                {/* Main content */}
-                <div className="w-3/4 h-[110vh] overflow-auto">
+                {/* Main content - 3 колонки */}
+                <div className="col-span-3">
                     <div className="pt-[80px] pb-[40px]">
-                        <h2 className={`${styles.title} mb-[40px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>FAQ:
-                            Ответы на главные вопросы
+                        <h2 className={`${styles.title} mb-[40px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>
+                            FAQ: Ответы на главные вопросы
                         </h2>
 
                         <section className={`${styles.accordion} w-full flex flex-col gap-[5px]`}>
-                            <CardListt initialOpenId={id}/>
+                            <CardListt initialOpenId={id} />
                         </section>
                     </div>
                 </div>
             </div>
         </>
-
     );
 }

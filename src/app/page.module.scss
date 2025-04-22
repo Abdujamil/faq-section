@@ -19,7 +19,7 @@
   .faqCard {
     border: 1px solid transparent;
     border-radius: 6px;
-    transition: border ease-in-out .3s ;
+    transition: border ease-in-out .3s;
 
 
     &:hover {
@@ -256,47 +256,67 @@
 
 .pageFaq {
   .faqCard {
+    .question {
+      &:hover {
+        border: 1px solid #CCCCCC !important;
+        background-color: rgba(61, 158, 214, 0.07);
 
-    &:hover {
-      //border: 1px solid #CCCCCC !important;
+        h3 {
+          color: #CCCCCC !important;
+        }
 
-      .question {
-        border: 1px solid #4a738c !important;
+        .arrow {
 
-          &:active {
-            border-color: #4a738c !important;
+          svg path {
+            stroke: #CCCCCC;
           }
+        }
+
+        &:active {
+          border-color: #CCCCCC !important;
+          background-color: #20272B;
+        }
       }
     }
 
-    .texts{
+    .texts {
       color: #CCCCCC;
 
-      h3{
+      ul {
+        list-style: disc;
+
+          padding-left: 20px;
+        li {
+
+        }
+      }
+
+      h3 {
         font-size: 24px;
         font-weight: bold;
         color: #CCCCCC;
       }
 
-      h4{
-        color: #3D9ED6;
+      h4 {
+        //color: #3D9ED6;
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 10px;
         margin-top: 22px;
       }
 
-      p{
+      p {
         font-size: 18px;
         line-height: 130%;
       }
     }
 
     .question {
-      border: 1px solid #737373 !important;
+      border: 1px solid #353535 !important;
     }
   }
 }
+
 
 .footer {
   .footerTop {

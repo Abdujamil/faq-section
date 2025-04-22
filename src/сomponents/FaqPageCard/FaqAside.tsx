@@ -8,6 +8,7 @@ type AsideItem = {
     title: string;
 };
 
+
 export default function FaqAside({items}: { items: AsideItem[] }) {
     const [activeHash, setActiveHash] = useState("");
 
