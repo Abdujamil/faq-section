@@ -22,7 +22,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
 
     return (
         <div
-            className={`${styles.faqCard} ${isOpen ? styles.active : ""} mb-[5px]  bg-[rgba(0, 0, 0, 0.07)] border  backdrop-blur-sm transition-[border] duration-[.3s] ease-in-out`}
+            className={`${styles.faqCard} ${isOpen ? styles.active : ""} bg-[rgba(0, 0, 0, 0.07)] border  backdrop-blur-sm transition-[border] duration-[.3s] ease-in-out`}
             style={{
                 // borderColor: isOpen ? "#CCCCCC" : "",
                 background: isOpen ? "rgba(61,158,214,0.07)" : "",

@@ -35,7 +35,7 @@
 
             //font-family: 'Rubik';
             font-style: normal;
-            font-size: 60px;
+            font-size: 50px;
             left: -14px;
           }
         }
@@ -95,7 +95,7 @@
         color: #3D9ED6;
 
         font-style: normal;
-        font-size: 60px;
+        font-size: 50px;
         left: -14px;
         top: 12px;
       }
@@ -156,7 +156,7 @@
     .active {
       .number {
         p {
-          left: -18 !important;
+          left: -12 !important;
         }
       }
     }
@@ -165,7 +165,7 @@
       .question {
         .number {
           p {
-            left: -18 !important;
+            left: -12 !important;
           }
         }
       }
@@ -175,7 +175,7 @@
 
   .question {
     position: relative;
-    border: 1px solid transparent !important;
+    border: 1px solid transparent;
 
     .number {
 
@@ -312,7 +312,7 @@
     }
 
     .question {
-      border: 1px solid #353535 !important;
+      border: 1px solid #353535;
     }
   }
 }

@@ -42,7 +42,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
 
     return (
         <div
-            className={`${styles.answer} bg-[#1A1A1A] rounded-[6px] `}
+            className={`${styles.answer} bg-[#1A1A1A] rounded-[6px]`}
             style={{
                 height: isOpen ? "auto" : "0px",
                 paddingTop: isOpen ? "30px" : "0px",
@@ -53,12 +53,14 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 borderTopLeftRadius: isOpen ? "0" : "4px",
                 border: isOpen ? "1px solid #CCCCCC" : "",
                 borderTopColor: isOpen ? "transparent" : "",
+                marginTop: isOpen ? "-2px" : "",
                 overflow: "hidden",
             }}
         >
             <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
                 <p className="text-[18px] font-normal">{answer}</p>
                 <motion.div
+                    className="w-[145.5px] max-h-[145.5px] mt-[7px]"
                     initial={{y: 20, opacity: 0}}
                     animate={controls}
                     style={{display: isOpen ? "block" : "none"}}
@@ -66,14 +68,14 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                     <Image
                         src={src}
                         alt="FAQ image"
-                        width={155}
-                        height={155}
-                        className="mt-[7px] w-full min-w-[155px] h-[155px] border border-[#CCCCCC] rounded-[6px]"
+                        width={145.5}
+                        height={145.5}
+                        className="w-full min-w-[145.5px] h-[145.5px] border border-[#CCCCCC] rounded-[6px]"
                     />
                 </motion.div>
             </div>
 
-            {/*<Link href={`/faqPage/${id}`} className="w-[300px]">*/}
+            <Link href={`/faqPage/${id}`} className="w-[300px]">
                 <div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>
                     <motion.button
                         ref={setButtonRef}
@@ -81,13 +83,13 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                         animate={controls}
                         className={`${styles.motionEffect} py-[16px] px-[61px] bg-black  text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC] `}
                         style={{display: isOpen ? "block" : "none"}}
-                        onClick={handleClick}
-                        disabled={clicked}
+                        // onClick={handleClick}
+                        // disabled={clicked}
                     >
                         подробнее
                     </motion.button>
                 </div>
-            {/*</Link>*/}
+            </Link>
         </div>
     );
 };

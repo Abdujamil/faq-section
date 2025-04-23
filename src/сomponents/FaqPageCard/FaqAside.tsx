@@ -28,10 +28,10 @@ export default function FaqAside({items}: { items: AsideItem[] }) {
     return (
         <ul className="space-y-4 text-[#737373] font-bold text-sm">
             {items.map((item) => (
-                <li key={item.id}>
+                <li key={item.id} className="group">
                     <a
                         href={item.id}
-                        className={`text-[16px] font-normal transition-colors duration-200 ${
+                        className={`text-[16px] font-normal transition-colors duration-300 group-hover:text-[#3D9ED6] ${
                             activeHash === item.id ? "text-[#3D9ED6]" : ""
                         }`}
                     >

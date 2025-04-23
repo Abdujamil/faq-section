@@ -41,7 +41,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, fullAnswer, src, animationS
                 paddingLeft: isOpen ? "30px" : "0px",
                 // borderTopRightRadius: isOpen ? "0" : "4px",
                 // borderTopLeftRadius: isOpen ? "0" : "4px",
-                border: isOpen ? "1px solid #353535" : "",
+                border: isOpen ? "1px solid #CCCCCC" : "",
                 // borderTopColor: isOpen ? "transparent" : "",
                 overflow: "hidden",
             }}
