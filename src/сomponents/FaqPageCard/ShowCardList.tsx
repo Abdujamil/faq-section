@@ -7,9 +7,10 @@ import {faqData} from "../../data/faq";
 
 type Props = {
     initialOpenId?: number;
+    onToggle?: (id: number | null) => void;
 };
 
-const CardListt: React.FC<Props> = ({ initialOpenId }) => {
+const CardListt: React.FC<Props> = ({ initialOpenId, onToggle  }) => {
     const [openId, setOpenId] = useState<number | null>(initialOpenId ?? null);
     const [activeHash, setActiveHash] = useState("");
     const [animationSettings, setAnimationSettings] = useState({
@@ -24,7 +25,13 @@ const CardListt: React.FC<Props> = ({ initialOpenId }) => {
     });
 
     const handleToggle = (id: number) => {
-        setOpenId(prevId => prevId === id ? null : id);
+        const newOpenId = openId === id ? null : id;
+        setOpenId(newOpenId);
+
+        // Вызываем колбэк из родителя, если он передан
+        if (onToggle) {
+            onToggle(newOpenId);
+        }
     };
 
     // Отслеживаем hash из URL (например, #about) и подсвечиваем
@@ -50,7 +57,7 @@ const CardListt: React.FC<Props> = ({ initialOpenId }) => {
                     fullAnswer={item.fullAnswer}
                     src={item.src}
                     isOpen={openId === item.id}
-                    onToggle={handleToggle}
+                    onToggle={() => handleToggle(item.id)}
                     animationSettings={animationSettings}
                     answer={""}/>
             ))}
