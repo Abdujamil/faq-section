@@ -65,12 +65,16 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                     animate={controls}
                     style={{display: isOpen ? "block" : "none"}}
                 >
-                    <Image
-                        src={src}
-                        alt="FAQ image"
-                        width={155}
-                        height={155}
-                        className="w-full min-w-[155px] h-[155px] border border-[#CCCCCC] rounded-[6px]"
+                    {/*<Image*/}
+                    {/*    src={src}*/}
+                    {/*    alt="FAQ image"*/}
+                    {/*    width={155}*/}
+                    {/*    height={155}*/}
+                    {/*    className="w-full min-w-[155px] h-[155px] border border-[#CCCCCC] rounded-[6px]"*/}
+                    {/*/>*/}
+
+                    <img src={src} alt="FAQ image"
+                         className="w-full min-w-[155px] h-[155px] border border-[#CCCCCC] rounded-[6px]"
                     />
                 </motion.div>
             </div>
