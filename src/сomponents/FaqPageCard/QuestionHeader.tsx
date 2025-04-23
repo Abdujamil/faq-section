@@ -24,6 +24,7 @@ const QuestionHeader: React.FC<Props> = ({id, num, question, src, isOpen, handle
                 border: isOpen ? "1px solid #CCCCCC" : "",
             }}
         >
+
             <div
                 className={`${styles.questionContainer} relative z-[99] w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s] `}>
 
