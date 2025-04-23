@@ -25,9 +25,9 @@ const QuestionHeader: React.FC<Props> = ({id, num, question, src, isOpen, handle
         >
 
             <div
-                className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden opacity-0 z-[9999] w-[157px] h-[157px] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
+                className={`${styles.logoOnHover} absolute right-[8%] overflow-hidden hidden z-[9999] w-[157px] h-[157px] border border-[#CCCCCC] backdrop-blur-[2.5px]  rounded-[4px] transition-all ease-in-out duration-[0.3s]`}
                 style={{
-                    display: isOpen ? "none" : "block",
+                    display: isOpen ? "none" : "",
                 }}
             >
                 <Image

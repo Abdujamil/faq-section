@@ -6,6 +6,7 @@ import styles from "../../page.module.scss";
 import CardListt from "../../../сomponents/FaqPageCard/ShowCardList";
 import React from "react";
 import FaqAside from "../../../сomponents/FaqPageCard/FaqAside";
+import Footer from "../../footer";
 
 
 type Props = {
@@ -97,6 +98,8 @@ export default async function FaqPage({params}: Props) {
                     </div>
                 </div>
             </div>
+
+            <Footer />
         </>
     );
 }
