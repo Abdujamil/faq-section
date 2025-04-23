@@ -60,7 +60,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
             <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
                 <p className="text-[18px] font-normal">{answer}</p>
                 <motion.div
-                    className="w-[145.5px] max-h-[145.5px] mt-[7px]"
+                    className="w-[155px] max-h-[155px] mt-[7px]"
                     initial={{y: 20, opacity: 0}}
                     animate={controls}
                     style={{display: isOpen ? "block" : "none"}}
@@ -68,9 +68,9 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                     <Image
                         src={src}
                         alt="FAQ image"
-                        width={145.5}
-                        height={145.5}
-                        className="w-full min-w-[145.5px] h-[145.5px] border border-[#CCCCCC] rounded-[6px]"
+                        width={155}
+                        height={155}
+                        className="w-full min-w-[155px] h-[155px] border border-[#CCCCCC] rounded-[6px]"
                     />
                 </motion.div>
             </div>

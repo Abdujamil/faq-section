@@ -28,7 +28,7 @@ export default function FaqAside({items}: { items: AsideItem[] }) {
     return (
         <ul className="space-y-4 text-[#737373] font-bold text-sm">
             {items.map((item) => (
-                <li key={item.id} className="group">
+                <li key={item.id} className="group cursor-pointer">
                     <a
                         href={item.id}
                         className={`text-[16px] font-normal transition-colors duration-300 group-hover:text-[#3D9ED6] ${
