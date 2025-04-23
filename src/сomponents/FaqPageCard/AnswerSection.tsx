@@ -40,7 +40,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, fullAnswer, src, animationS
                 paddingRight: isOpen ? "30px" : "0px",
                 paddingLeft: isOpen ? "30px" : "0px",
                 border: isOpen ? "1px solid #CCCCCC" : "",
-                marginTop: isOpen ? "7px" : "",
+                marginTop: isOpen ? "6px" : "",
                 overflow: "hidden",
             }}
         >
