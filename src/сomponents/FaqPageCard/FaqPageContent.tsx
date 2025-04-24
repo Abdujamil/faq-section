@@ -1,14 +1,22 @@
 "use client";
-
-import {useState} from "react";
+import {motion, useAnimation} from "framer-motion";
+import {useEffect, useState} from "react";
 import Image from "next/image";
 import {faqData} from "../../data/faq";
+import {AnimationSettings} from "../../utils/types";
 import CardListt from "./ShowCardList";
 import FaqAside from "./FaqAside";
 import styles from '../../app/page.module.scss'
+import GlassButton from "../GlassButton/GlassButton";
+
+interface Props {
+    animationSettings: AnimationSettings;
+}
 
 export default function FaqPageContent({id}: { id: number }) {
+    const controls = useAnimation();
     const [openQuestionId, setOpenQuestionId] = useState<number | null>(id);
+
 
     // Данные текущей страницы (из URL)
     const currentFaqItem = faqData.find((item) => item.id === id);
@@ -16,6 +24,7 @@ export default function FaqPageContent({id}: { id: number }) {
     const openFaqItem = faqData.find((item) => item.id === openQuestionId) || currentFaqItem;
 
     if (!currentFaqItem || !openFaqItem) return null;
+
 
     return (
         <>
@@ -27,22 +36,32 @@ export default function FaqPageContent({id}: { id: number }) {
                     <p className={`${styles.text} mb-[16px] text-[#3D9ED6] text-[20px] font-[400] leading-[110%]`}>
                         При регистрации дарим 30 минут!
                     </p>
-                    <button
-                        className={`${styles.btn} text-[#CCCCCC] text-[20px] h-[51px] w-full  px-[36px] border border-[#353535] backdrop-blur-[2px] rounded-[4px] cursor-pointer hover:border-[#CCCCCC] transition-[border] duration-300 ease-in`}>
+                    <GlassButton>
                         Попробовать
-                    </button>
+                    </GlassButton>
+                    {/*<button*/}
+                    {/*    className={`${styles.btn} text-[#CCCCCC] text-[20px] h-[51px] w-full max-w-[200px] px-[30px] border border-[#353535] backdrop-blur-[2px] rounded-[4px] cursor-pointer hover:border-[#CCCCCC] transition-[border] duration-300 ease-in`}>*/}
+                    {/*    Попробовать*/}
+                    {/*</button>*/}
                 </div>
 
                 {/* Картинка и якоря (используют данные открытой карточки) */}
                 {openQuestionId && (
                     <>
+                    {/*<motion.div*/}
+                    {/*    className="w-full max-h-full mb-[20px]"*/}
+                    {/*    initial={{y: 20, opacity: 0}}*/}
+                    {/*    animate={controls}*/}
+                    {/*>*/}
                         <Image
                             src={openFaqItem.largeImgSrc}
                             alt={openFaqItem.question}
                             width={260}
                             height={260}
-                            className="rounded-lg mb-[20px] opacity-[90%]"
+                            className="rounded-lg mb-[20px]"
                         />
+                    {/*</motion.div>*/}
+
                         <FaqAside items={openFaqItem.aside}/>
                     </>
                 )}

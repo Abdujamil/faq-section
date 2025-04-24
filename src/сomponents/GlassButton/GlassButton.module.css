@@ -1,0 +1,62 @@
+.glassButton {
+    --mouse-x: 0;
+    --mouse-y: 0;
+
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    height: 51px;
+    padding: 5px 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+
+    background-color: rgba(45, 47, 47, 0.1);
+    backdrop-filter: blur(4px);
+    border: 1px solid #353535;
+
+    color: #CCCCCC;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-out,
+    box-shadow 150ms ease;
+}
+
+.glassButton::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+            250px circle at var(--mouse-x) var(--mouse-y),
+            #c7c7c738,
+            transparent 30%
+    );
+    opacity: 0;
+    transition: opacity 300ms ease;
+    z-index: 1;
+}
+
+.glassButton:hover::before {
+    opacity: 1;
+}
+
+.glassButton:active {
+    box-shadow: inset 2px 2px 4px 0 rgba(27, 27, 27, 0.5),
+    inset -2px -2px 4px 0 rgba(27, 27, 27, 0.5);
+    transform: scale(0.97);
+}
+
+.label {
+    z-index: 2;
+    transform: translateZ(0);
+}
