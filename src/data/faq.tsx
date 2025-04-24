@@ -293,9 +293,9 @@ export const faqData: FaqItem[] = [
         ),
 
         aside: [
-            {id: "#about", title: "О сервисе"},
-            {id: "#formats", title: "Поддерживаемые форматы"},
-            {id: "#supported-formats", title: "Технические детали"},
+            {id: "#about", title: "Какие форматы поддерживает транскрибация?"},
+            {id: "#formats", title: "AudioSector: Форматы? Мы поддерживаем ВСЕ!"},
+            {id: "#supported-formats", title: "Какие форматы поддерживает AudioSector?"},
             {id: "#conclusion", title: "Заключение"},
         ],
         src: "/img-2.png",
