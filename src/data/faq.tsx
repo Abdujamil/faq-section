@@ -471,9 +471,9 @@ export const faqData: FaqItem[] = [
         ),
 
         aside: [
-            {id: "#transcription-time", title: "Время транскрибации"},
-            {id: "#transcription-process", title: "Процесс обработки"},
-            {id: "#transcription-speed", title: "Скорость работы"},
+            {id: "#transcription-time", title: "Сколько времени занимает транскрибация видео в текст?"},
+            {id: "#transcription-process", title: "AudioSector: Сколько времени занимает транскрибирование?"},
+            {id: "#transcription-speed", title: "Скорость транскрибирования? Очень быстро!"},
             {id: "#time-summary", title: "Заключение"},
         ],
 
@@ -557,10 +557,10 @@ export const faqData: FaqItem[] = [
         ),
 
         aside: [
-            {id: "#large-files", title: "Длинные файлы"},
-            {id: "#no-length-limit", title: "Без ограничений"},
-            {id: "#easy-processing", title: "Лёгкая обработка"},
-            {id: "#conclusion1", title: "Заключение"},
+            {id: "#large-files", title: "Загружать даже длинные файлы? Без проблем!"},
+            {id: "#no-length-limit", title: "AudioSector: Длина файла? Да хоть целый день!"},
+            {id: "#easy-processing", title: "Длинные файлы? ЛегЧЕ ЛЁГКОГО!"},
+            {id: "#conclusion1", title: "В заключение"},
         ],
 
 
@@ -576,8 +576,8 @@ export const faqData: FaqItem[] = [
         fullAnswer: (
             <>
                 <h2 id="editing"
-                    className="mb-[30px] text-[24px] leading-[120%] font-bold text-[#CCCCCC]">Редактирование результатов
-                    транскрибации?</h2>
+                    className="mb-[30px] text-[24px] leading-[120%] font-bold text-[#CCCCCC]">Загружать даже длинные
+                    файлы? Без проблем!</h2>
                 <p>Да, в AudioSector вы можете легко редактировать результаты транскрипции. Наша платформа предоставляет
                     удобный редактор, который позволяет вносить изменения прямо в текст. Это особенно полезно для
                     уточнения специфических терминов или исправления возможных ошибок. После транскрипции вы получаете
@@ -587,13 +587,12 @@ export const faqData: FaqItem[] = [
                     требованиям.</p>
 
 
-                <h3 id="editing-features" className="my-[30px]">AudioSector: Редактирование транскрипций? Конечно
-                    можешь!</h3>
+                <h3 id="editing-features" className="my-[30px]">AudioSector: Длина файла? Да хоть целый день!</h3>
                 <p>Мы знаем, что иногда даже самый продвинутый ИИ может упустить нюансы или сделать небольшие ошибки.
                     Поэтому, в AudioSector, мы не только обеспечиваем вам молниеносные и точные транскрипции, но и даём
                     возможность редактировать результаты по вашему усмотрению. Давайте разберёмся, как это работает.</p>
 
-                <h3 id="easy-editing" className="mt-[30px]">Редактирование транскрипций? Легко!</h3>
+                <h3 id="easy-editing" className="mt-[30px]">Длинные файлы? ЛегЧЕ ЛЁГКОГО!</h3>
                 <h4>1. Простое и интуитивное редактирование</h4>
                 <ul>
                     <li><p>Наша платформа предлагает удобный редактор, который позволяет легко и быстро вносить
@@ -639,10 +638,10 @@ export const faqData: FaqItem[] = [
         ),
 
         aside: [
-            {id: "#editing", title: "Редактирование результатов транскрибации?"},
-            {id: "#editing-features", title: "AudioSector: Редактирование транскрипций? Конечно можешь!"},
-            {id: "#easy-editing", title: "Редактирование транскрипций? Легко!"},
-            {id: "#conclusion2", title: "Заключение"},
+            {id: "#editing", title: "Загружать даже длинные файлы? Без проблем!"},
+            {id: "#editing-features", title: "AudioSector: Длина файла? Да хоть целый день!"},
+            {id: "#easy-editing", title: "Длинные файлы? ЛегЧЕ ЛЁГКОГО!"},
+            {id: "#conclusion2", title: "В заключение"},
         ],
 
 
@@ -872,8 +871,8 @@ export const faqData: FaqItem[] = [
         fullAnswer: (
             <>
                 <h2 id="editing"
-                    className="mb-[30px] text-[24px] leading-[120%] font-bold text-[#CCCCCC]">Массовая транскрибация
-                    аудио в текст?</h2>
+                    className="mb-[30px] text-[24px] leading-[120%] font-bold text-[#CCCCCC]">Загружать даже длинные
+                    файлы? Без проблем!</h2>
                 <p>Если вам нужно транскрибировать сто, двести или даже тысячи файлов одновременно, AudioSector
                     справится с этой задачей без проблем. Наша платформа построена на масштабируемой инфраструктуре,
                     которая позволяет обрабатывать большое количество файлов параллельно. Вы можете загружать любые
@@ -883,12 +882,11 @@ export const faqData: FaqItem[] = [
                     лёгкой и доступной для всех!</p>
 
 
-                <h3 id="editing-features" className="my-[30px]">AudioSector: Транскрибирование сотен и тысяч файлов
-                    одновременно? Легко!</h3>
+                <h3 id="editing-features" className="my-[30px]">AudioSector: Длина файла? Да хоть целый день!</h3>
                 <p>У вас есть сотня, двести или даже тысячи файлов для транскрибирования? Без проблем! В AudioSector мы
                     готовы справиться с любыми объёмами работы, и вот как мы это делаем</p>
 
-                <h3 id="easy-editing" className="mt-[30px]">Обработка больших объёмов файлов? Легче лёгкого!</h3>
+                <h3 id="easy-editing" className="mt-[30px]">Длинные файлы? ЛегЧЕ ЛЁГКОГО!</h3>
                 <h4>1. Масштабируемая инфраструктура</h4>
                 <ul>
                     <li>
@@ -954,10 +952,10 @@ export const faqData: FaqItem[] = [
         ),
 
         aside: [
-            {id: "#editing", title: "Редактирование результатов транскрибации?"},
-            {id: "#editing-features", title: "AudioSector: Редактирование транскрипций? Конечно можешь!"},
-            {id: "#easy-editing", title: "Редактирование транскрипций? Легко!"},
-            {id: "#conclusion2", title: "Заключение"},
+            {id: "#editing", title: "Загружать даже длинные файлы? Без проблем!"},
+            {id: "#editing-features", title: "AudioSector: Длина файла? Да хоть целый день!"},
+            {id: "#easy-editing", title: "Длинные файлы? ЛегЧЕ ЛЁГКОГО!"},
+            {id: "#conclusion2", title: "В заключение"},
         ],
 
         src: "/img-9.png",

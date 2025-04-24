@@ -1,14 +1,8 @@
-import Image from "next/image";
 import {notFound} from "next/navigation";
 import {faqData} from "../../../data/faq";
-import Link from "next/link";
-import styles from "../../page.module.scss";
-import CardListt from "../../../сomponents/FaqPageCard/ShowCardList";
 import React from "react";
-import FaqAside from "../../../сomponents/FaqPageCard/FaqAside";
 import Footer from "../../footer";
 import FaqPageContent from "../../../сomponents/FaqPageCard/FaqPageContent";
-
 
 type Props = {
     params: { id: string };
@@ -28,8 +22,11 @@ export async function generateStaticParams() {
 
 
 export default async function FaqPage({params}: Props) {
-    const id = parseInt(params.id);
+    const { id: idString } = await params;
+    const id = parseInt(idString);
     const faqItem = faqData.find((item) => item.id === id);
+
+    if (!faqItem) return notFound();
 
     if (!faqItem) return notFound();
 

@@ -1,6 +1,6 @@
 "use client";
 
-import {useState, useRef, useEffect} from 'react';
+import { useRef, useEffect } from 'react';
 import styles from './GlassButton.module.css';
 
 export default function GlassButton({
@@ -9,7 +9,6 @@ export default function GlassButton({
                                         ...props
                                     }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
     const buttonRef = useRef<HTMLButtonElement>(null);
-    const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
         const btn = buttonRef.current;
@@ -29,24 +28,20 @@ export default function GlassButton({
             btn.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
         };
 
-        const handleMouseLeave = () => {
+        const resetTransform = () => {
             btn.style.transform = 'rotateX(0deg) rotateY(0deg) translateZ(0px)';
-            setIsHovered(false);
         };
 
-        if (isHovered) {
-            btn.addEventListener('mousemove', handleMouseMove);
-        }
-
-        btn.addEventListener('mouseenter', () => setIsHovered(true));
-        btn.addEventListener('mouseleave', handleMouseLeave);
+        btn.addEventListener('mousemove', handleMouseMove);
+        btn.addEventListener('mouseleave', resetTransform);
+        btn.addEventListener('blur', resetTransform);
 
         return () => {
             btn.removeEventListener('mousemove', handleMouseMove);
-            btn.removeEventListener('mouseenter', () => setIsHovered(true));
-            btn.removeEventListener('mouseleave', handleMouseLeave);
+            btn.removeEventListener('mouseleave', resetTransform);
+            btn.removeEventListener('blur', resetTransform);
         };
-    }, [isHovered]);
+    }, []);
 
     return (
         <button
