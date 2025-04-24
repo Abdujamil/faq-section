@@ -20,7 +20,7 @@ export default function FaqPageContent({id}: { id: number }) {
     return (
         <>
             {/* Sidebar - всегда видим, контент зависит от openQuestionId */}
-            <aside className="sticky top-20 h-fit w-[260px]">
+            <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm ">
                 {/* Блок с кнопкой (всегда использует данные текущей страницы) */}
                 <div
                     className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[6px]`}>
@@ -28,7 +28,7 @@ export default function FaqPageContent({id}: { id: number }) {
                         При регистрации дарим 30 минут!
                     </p>
                     <button
-                        className={`${styles.btn} text-[#CCCCCC] text-[24px] py-[12px] px-[36px] border border-[#353535] backdrop-blur-[2px] rounded-[4px] cursor-pointer hover:border-[#CCCCCC] transition-[border] duration-300 ease-in`}>
+                        className={`${styles.btn} text-[#CCCCCC] text-[20px] h-[51px] w-full  px-[36px] border border-[#353535] backdrop-blur-[2px] rounded-[4px] cursor-pointer hover:border-[#CCCCCC] transition-[border] duration-300 ease-in`}>
                         Попробовать
                     </button>
                 </div>
