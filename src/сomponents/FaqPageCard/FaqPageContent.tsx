@@ -70,7 +70,7 @@ export default function FaqPageContent({id}: { id: number }) {
             {/* Main content */}
             <div className="col-span-3">
                 <div className="pt-[80px] pb-[40px]">
-                    <h2 className={`${styles.title} mb-[40px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>
+                    <h2 className={`${styles.title} mb-[30px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>
                         FAQ: Ответы на главные вопросы
                     </h2>
 
