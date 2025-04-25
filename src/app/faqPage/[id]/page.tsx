@@ -35,7 +35,7 @@ export default async function FaqPage({params}: Props) {
                 className="fixed w-full h-screen bg-[url(/bg.png)] bg-no-repeat bg-cover bg-top left-0 top-0 z-[-1]"
                 style={{ backgroundAttachment: 'fixed' }}
             >
-                <div className="absolute inset-0 bg-black/20"></div>
+                {/*<div className="absolute inset-0 bg-black/20"></div>*/}
             </div>
 
             <div className="w-full max-w-[1160px] mx-auto px-[10px] mb-[100px] grid grid-cols-4 gap-[58px]">
