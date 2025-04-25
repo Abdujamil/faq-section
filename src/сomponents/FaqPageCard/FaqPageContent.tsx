@@ -1,79 +1,150 @@
+// "use client";
+// import { useState, useMemo, useEffect } from "react";
+// import Image from "next/image";
+// import { faqData } from "../../data/faq";
+// import CardListt from "./ShowCardList";
+// import FaqAside from "./FaqAside";
+// import styles from '../../app/page.module.scss';
+// import GlassButton from "../GlassButton/GlassButton";
+//
+// export default function FaqPageContent({ id }: { id: number }) {
+//     const [openQuestionId, setOpenQuestionId] = useState<number | null>(id);
+//     const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
+//
+//     // Предзагрузка изображений при монтировании
+//     useEffect(() => {
+//         faqData.forEach(item => {
+//             if (typeof item.largeImgSrc === 'string') {
+//                 const img = new window.Image();
+//                 img.src = item.largeImgSrc;
+//                 img.onload = () => {
+//                     setLoadedImages(prev => ({ ...prev, [item.id]: true }));
+//                 };
+//             }
+//         });
+//     }, []);
+//
+//     const { currentFaqItem, openFaqItem } = useMemo(() => {
+//         const current = faqData.find((item) => item.id === id);
+//         const open = faqData.find((item) => item.id === openQuestionId) || current;
+//         return { currentFaqItem: current, openFaqItem: open };
+//     }, [id, openQuestionId]);
+//
+//     if (!currentFaqItem || !openFaqItem) return null;
+//
+//     return (
+//         <>
+//             <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm">
+//                 <div className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[6px]`}>
+//                     <p className={`${styles.text} mb-[16px] text-[#3D9ED6] text-[20px] font-[400] leading-[110%]`}>
+//                         При регистрации дарим 30 минут!
+//                     </p>
+//                     <GlassButton>Попробовать</GlassButton>
+//                 </div>
+//
+//                 {openQuestionId && (
+//                     <>
+//                         <div className="relative w-[260px] h-[260px] mb-[20px]">
+//                             <Image
+//                                 src={openFaqItem.largeImgSrc}
+//                                 alt={openFaqItem.question}
+//                                 fill
+//                                 sizes="260px"
+//                                 className="rounded-lg object-cover"
+//                                 priority={openFaqItem.id === id}
+//                                 quality={85}
+//                                 onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [openFaqItem.id]: true }))}
+//                             />
+//                             {!loadedImages[openFaqItem.id] && (
+//                                 <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-lg" />
+//                             )}
+//                         </div>
+//                         <FaqAside items={openFaqItem.aside} />
+//                     </>
+//                 )}
+//             </aside>
+//
+//             <div className="col-span-3">
+//                 <div className="pt-[80px] pb-[40px]">
+//                     <h2 className={`${styles.title} mb-[30px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>
+//                         FAQ: Ответы на главные вопросы
+//                     </h2>
+//                     <section className={`${styles.accordion} w-full flex flex-col gap-[5px]`}>
+//                         <CardListt
+//                             initialOpenId={id}
+//                             onToggle={(id) => setOpenQuestionId(id)}
+//                         />
+//                     </section>
+//                 </div>
+//             </div>
+//         </>
+//     );
+// }
+
 "use client";
-import {motion, useAnimation} from "framer-motion";
-import {useEffect, useState} from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
-import {faqData} from "../../data/faq";
-import {AnimationSettings} from "../../utils/types";
+import { faqData } from "../../data/faq";
 import CardListt from "./ShowCardList";
 import FaqAside from "./FaqAside";
-import styles from '../../app/page.module.scss'
+import styles from '../../app/page.module.scss';
 import GlassButton from "../GlassButton/GlassButton";
 
-interface Props {
-    animationSettings: AnimationSettings;
-}
-
-export default function FaqPageContent({id}: { id: number }) {
-    const controls = useAnimation();
+export default function FaqPageContent({ id }: { id: number }) {
     const [openQuestionId, setOpenQuestionId] = useState<number | null>(id);
+    const [isImageLoaded, setIsImageLoaded] = useState(false);
 
+    const { currentFaqItem, openFaqItem } = useMemo(() => {
+        const current = faqData.find((item) => item.id === id);
+        const open = faqData.find((item) => item.id === openQuestionId) || current;
+        return { currentFaqItem: current, openFaqItem: open };
+    }, [id, openQuestionId]);
 
-    // Данные текущей страницы (из URL)
-    const currentFaqItem = faqData.find((item) => item.id === id);
-    // Данные открытой карточки (может отличаться от текущей страницы)
-    const openFaqItem = faqData.find((item) => item.id === openQuestionId) || currentFaqItem;
+    // Сбрасываем состояние загрузки при изменении открытой карточки
+    useEffect(() => {
+        setIsImageLoaded(false);
+    }, [openQuestionId]);
 
     if (!currentFaqItem || !openFaqItem) return null;
 
-
     return (
         <>
-            {/* Sidebar - всегда видим, контент зависит от openQuestionId */}
-            <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm ">
-                {/* Блок с кнопкой (всегда использует данные текущей страницы) */}
-                <div
-                    className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[6px]`}>
+            <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm">
+                <div className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[6px]`}>
                     <p className={`${styles.text} mb-[16px] text-[#3D9ED6] text-[20px] font-[400] leading-[110%]`}>
                         При регистрации дарим 30 минут!
                     </p>
-                    <GlassButton>
-                        Попробовать
-                    </GlassButton>
-                    {/*<button*/}
-                    {/*    className={`${styles.btn} text-[#CCCCCC] text-[20px] h-[51px] w-full max-w-[200px] px-[30px] border border-[#353535] backdrop-blur-[2px] rounded-[4px] cursor-pointer hover:border-[#CCCCCC] transition-[border] duration-300 ease-in`}>*/}
-                    {/*    Попробовать*/}
-                    {/*</button>*/}
+                    <GlassButton>Попробовать</GlassButton>
                 </div>
 
-                {/* Картинка и якоря (используют данные открытой карточки) */}
                 {openQuestionId && (
                     <>
-                    {/*<motion.div*/}
-                    {/*    className="w-full max-h-full mb-[20px]"*/}
-                    {/*    initial={{y: 20, opacity: 0}}*/}
-                    {/*    animate={controls}*/}
-                    {/*>*/}
-                        <Image
-                            src={openFaqItem.largeImgSrc}
-                            alt={openFaqItem.question}
-                            width={260}
-                            height={260}
-                            className="rounded-lg mb-[20px]"
-                        />
-                    {/*</motion.div>*/}
-
-                        <FaqAside items={openFaqItem.aside}/>
+                        <div className="relative w-[260px] h-[260px] mb-[20px]">
+                            <Image
+                                src={openFaqItem.largeImgSrc}
+                                alt={openFaqItem.question}
+                                width={260}
+                                height={260}
+                                className="rounded-lg object-cover"
+                                priority={openFaqItem.id === id}
+                                quality={85}
+                                onLoad={() => setIsImageLoaded(true)}
+                                onError={() => setIsImageLoaded(true)} // На случай ошибки загрузки
+                            />
+                            {!isImageLoaded && (
+                                <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-lg" />
+                            )}
+                        </div>
+                        <FaqAside items={openFaqItem.aside} />
                     </>
                 )}
             </aside>
 
-            {/* Main content */}
             <div className="col-span-3">
                 <div className="pt-[80px] pb-[40px]">
                     <h2 className={`${styles.title} mb-[30px] font-normal leading-[110%] text-[48px] text-[#CCCCCC]`}>
                         FAQ: Ответы на главные вопросы
                     </h2>
-
                     <section className={`${styles.accordion} w-full flex flex-col gap-[5px]`}>
                         <CardListt
                             initialOpenId={id}

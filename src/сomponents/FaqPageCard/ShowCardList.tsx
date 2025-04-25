@@ -1,3 +1,4 @@
+// ShowCardList.tsx
 "use client";
 
 import React, {useState, useEffect} from "react";
@@ -10,10 +11,11 @@ type Props = {
     onToggle?: (id: number | null) => void;
 };
 
-const CardListt: React.FC<Props> = ({ initialOpenId, onToggle  }) => {
-    const [openId, setOpenId] = useState<number | null>(initialOpenId ?? null);
+const CardListt: React.FC<Props> = ({ initialOpenId, onToggle }) => {
+    const [openIds, setOpenIds] = useState<number[]>(initialOpenId ? [initialOpenId] : []);
     const [activeHash, setActiveHash] = useState("");
-    const [animationSettings, setAnimationSettings] = useState({
+
+    const [animationSettings] = useState({
         duration: 0.6,
         bounce: 5,
         delay: 0,
@@ -25,24 +27,24 @@ const CardListt: React.FC<Props> = ({ initialOpenId, onToggle  }) => {
     });
 
     const handleToggle = (id: number) => {
-        const newOpenId = openId === id ? null : id;
-        setOpenId(newOpenId);
+        const newOpenIds = openIds.includes(id)
+            ? openIds.filter(openId => openId !== id)
+            : [...openIds, id];
 
-        // Вызываем колбэк из родителя, если он передан
+        setOpenIds(newOpenIds);
+
+        // Для совместимости с FaqPageContent передаем последний открытый ID
         if (onToggle) {
-            onToggle(newOpenId);
+            onToggle(newOpenIds.length > 0 ? newOpenIds[newOpenIds.length - 1] : null);
         }
     };
 
-    // Отслеживаем hash из URL (например, #about) и подсвечиваем
     useEffect(() => {
         const updateHash = () => {
             setActiveHash(window.location.hash);
         };
-
         window.addEventListener("hashchange", updateHash);
-        updateHash(); // установить начальный hash
-
+        updateHash();
         return () => window.removeEventListener("hashchange", updateHash);
     }, []);
 
@@ -56,10 +58,11 @@ const CardListt: React.FC<Props> = ({ initialOpenId, onToggle  }) => {
                     question={item.question}
                     fullAnswer={item.fullAnswer}
                     src={item.src}
-                    isOpen={openId === item.id}
+                    isOpen={openIds.includes(item.id)}
                     onToggle={() => handleToggle(item.id)}
                     animationSettings={animationSettings}
-                    answer={""}/>
+                    answer={""}
+                />
             ))}
         </div>
     );

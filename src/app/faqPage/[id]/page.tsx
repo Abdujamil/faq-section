@@ -28,8 +28,6 @@ export default async function FaqPage({params}: Props) {
 
     if (!faqItem) return notFound();
 
-    if (!faqItem) return notFound();
-
     return (
         <>
             {/* Background */}
