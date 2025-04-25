@@ -258,9 +258,13 @@
 .pageFaq {
   .faqCard {
     .question {
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6), inset 0px 0px 10px rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(2px);
+
       &:hover {
         border: 1px solid #CCCCCC !important;
         background-color: rgba(61, 158, 214, 0.07);
+
 
         h3 {
           color: #CCCCCC !important;
@@ -276,8 +280,10 @@
         &:active {
           border-color: #CCCCCC !important;
           background-color: #20272B;
+          box-shadow: inset -2px -2px 4px #000000, inset 2px 2px 4px #000000;
         }
       }
+
     }
 
     .texts {
@@ -286,7 +292,8 @@
       ul {
         list-style: disc;
 
-          padding-left: 20px;
+        padding-left: 20px;
+
         li {
 
         }
@@ -318,21 +325,27 @@
   }
 }
 
-.registerBlock{
+.registerBlock {
   background: rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6), inset 0px 0px 10px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+
+
   //background: rgba(0, 0, 0, 0.07);
   //filter: blur(2px);
 
-  .btn{
+  .btn {
     background: rgba(45, 47, 47, 0.1);
   }
 }
 
-.linear{
-background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+.linear {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
 }
 
-
+.faqBg{
+  background-position: 0 -40px;
+}
 
 
 .footer {
@@ -377,6 +390,7 @@ background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
     }
   }
 }
+
 
 
 
