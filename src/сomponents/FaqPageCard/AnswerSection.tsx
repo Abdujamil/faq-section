@@ -32,7 +32,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, fullAnswer, src, animationS
 
     return (
         <div
-            className={`${styles.answer} bg-[#1A1A1A] rounded-[6px]`}
+            className={`${styles.answer} bg-[#1A1A1A] rounded-[8px]`}
             style={{
                 height: isOpen ? "auto" : "0px",
                 paddingTop: isOpen ? "30px" : "0px",

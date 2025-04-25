@@ -15,7 +15,7 @@ const QuestionHeader: React.FC<Props> = ({id, num, question, src, isOpen, handle
     return (
         <div
             className={`${styles.question}
-                    w-full flex flex-row cursor-pointer items-center border border-[#737373] active:bg-[#20272B] rounded-[6px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
+                    w-full flex flex-row cursor-pointer items-center border border-[#737373] active:bg-[#20272B] rounded-[8px] active:shadow-[2px_2px_4px_0px_#000000CC_inset,-2px_-2px_4px_0px_#000000CC_inset]`}
             onClick={handleClick}
             style={{
                 height: isOpen ? "68px" : "68px",
