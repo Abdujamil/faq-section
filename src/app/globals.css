@@ -20,6 +20,9 @@
     display: none; /* Полностью скрывает скроллбар */
 }
 
+html, body {
+    height: 100%;
+}
 body {
     color: #ededed;
     background: #000000;
@@ -31,6 +34,8 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     -webkit-tap-highlight-color: transparent;
+    height: 100%;
+
 
     /*overflow: hidden;*/
 }

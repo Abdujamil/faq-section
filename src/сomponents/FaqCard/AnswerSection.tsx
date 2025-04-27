@@ -1,7 +1,7 @@
 import {motion, useAnimation} from "framer-motion";
 import Image from "next/image";
 import {useEffect, useState} from "react";
-import { useRouter } from "next/navigation";
+import {useRouter} from "next/navigation";
 import styles from '../../app/page.module.scss';
 import {useButton} from "../../utils/useButton";
 import {AnimationSettings} from "../../utils/types";
@@ -79,8 +79,8 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 </motion.div>
             </div>
 
-            <Link href={`/faqPage/${id}`} className="w-[300px]">
-                <div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>
+            <div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>
+                <Link href={`/faqPage/${id}`} className="w-[300px]">
                     <motion.button
                         ref={setButtonRef}
                         initial={{y: 20, opacity: 0}}
@@ -92,8 +92,8 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                     >
                         подробнее
                     </motion.button>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </div>
     );
 };
