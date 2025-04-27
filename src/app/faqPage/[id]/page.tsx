@@ -33,7 +33,7 @@ export default async function FaqPage({params}: Props) {
         <>
             {/* Background */}
             <div
-                className={`${styles.faqBg} fixed w-full h-screen bg-[url(/bg-1.svg)] max-2xl:bg-[url(/bg-2.svg)] bg-no-repeat left-0 top-0 z-[-1]`}
+                className={`${styles.faqBg} fixed w-full h-screen bg-[url(/bg.svg)] bg-no-repeat left-0 top-0 z-[-1]`}
                 style={{ backgroundAttachment: 'fixed', }}
             >
                 <div className={`${styles.linear}  absolute inset-0 bg-black/20`}></div>
