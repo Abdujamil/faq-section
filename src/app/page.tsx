@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 
     return (
         <>
-            <div className={`${styles.page} block `}>
+            <div className={`${styles.page} block h-full`}>
                 <main
                     className={`${styles.main} w-full max-w-[1160px] h-full mx-auto py-[80px] pr-[10px] pl-[10px] flex flex-col`}>
                     <h2 className={`${styles.title} mb-[60px] font-normal text-[48px] text-[#CCCCCC]`}>FAQ: Ответы на

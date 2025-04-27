@@ -34,7 +34,7 @@ export default function FaqPageContent({ id }: { id: number }) {
 
     return (
         <>
-            <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm">
+            <aside className="sticky top-20 h-fit w-[260px] lg:w-[230px] backdrop-blur-sm">
                 <div className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[8px]`}>
                     <p className={`${styles.text} mb-[16px] text-[#3D9ED6] text-[20px] font-[400] leading-[110%]`}>
                         При регистрации дарим 30 минут!
@@ -44,7 +44,7 @@ export default function FaqPageContent({ id }: { id: number }) {
 
                 {openQuestionId && (
                     <>
-                        <div className="relative w-[260px] h-[260px] mb-[20px] rounded-[8px]">
+                        <div className="relative w-full h-[260px] mb-[20px] rounded-[8px]">
                             <Image
                                 src={openFaqItem.largeImgSrc}
                                 alt={openFaqItem.question}
