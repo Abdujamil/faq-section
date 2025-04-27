@@ -956,7 +956,7 @@ export const faqData: FaqItem[] = [
                     заканчивают работу.</p>
 
 
-                <h3 id="conclusion3" className="my-[30px]">В заключение</h3>
+                <h3 id="conclusion4" className="my-[30px]">В заключение</h3>
                 <p className="my-[22px]">
                     AudioSector — это идеальный выбор для обработки больших объёмов файлов. Независимо от того, сколько
                     записей у вас есть, мы справимся с ними быстро и эффективно. Наша платформа обеспечивает
@@ -972,7 +972,7 @@ export const faqData: FaqItem[] = [
             {id: "#editing", title: "Загружать даже длинные файлы? Без проблем!"},
             {id: "#editing-features", title: "AudioSector: Длина файла? Да хоть целый день!"},
             {id: "#easy-editing", title: "Длинные файлы? ЛегЧЕ ЛЁГКОГО!"},
-            {id: "#conclusion3", title: "В заключение"},
+            {id: "#conclusion4", title: "В заключение"},
         ],
 
         src: "/img-9.png",
