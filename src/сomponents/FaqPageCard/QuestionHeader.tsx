@@ -29,10 +29,8 @@ const QuestionHeader: React.FC<Props> = ({id, num, question, src, isOpen, handle
                 className={`${styles.questionContainer} relative z-[99] w-full h-full p-5 inline-flex flex-row items-center transition-all ease duration-[.1s] `}>
 
                 <div className={`${styles.answerContainer} w-full`}>
-                    <h3 className={`w-full font-[400] text-[20px] text-[#737373] transition-all ease-in-out duration-[0.3s] `}
-                        style={{
-                            color: isOpen ? "#3D9ED6" : "",
-                        }}
+                    <h3 className={`w-full font-[400] text-[20px] text-[#CCCCCC] transition-all ease-in-out duration-[0.3s] `}
+                        style={{color: isOpen ? "#3D9ED6" : "",}}
                     >{question}</h3>
                 </div>
 
