@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @font-face {
     font-family: 'Simple-Square';
     src: url('./fonts/ST-SimpleSquare.woff2') format('woff2');
@@ -7,7 +6,6 @@
     font-style: normal;
     font-display: swap;
 }
-
 @font-face {
     font-family: 'Rubik';
     src: url('./fonts/Rubik-Light.ttf') format('truetype');
@@ -15,11 +13,9 @@
     font-style: normal;
     font-display: swap;
 }
-
 ::-webkit-scrollbar {
     display: none; /* Полностью скрывает скроллбар */
 }
-
 html, body {
     height: 100%;
 }
