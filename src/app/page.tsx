@@ -29,7 +29,7 @@ const Home: React.FC = () => {
             <div className={`${styles.page} block h-full`}>
                 <main
                     className={`${styles.main} w-full max-w-[1160px] h-full mx-auto py-[80px] pr-[10px] pl-[10px] flex flex-col`}>
-                    <h2 className={`${styles.title} mb-[40px] font-normal leading-[110%] text-[40px] text-[#FFFFFF]`}>FAQ: Ответы на
+                    <h2 className={`${styles.title} mb-[60px] font-normal leading-[110%] text-[48px] text-[#FFFFFF]`}>FAQ: Ответы на
                         главные
                         вопросы</h2>
                     {/*<div>*/}
@@ -133,6 +133,21 @@ const Home: React.FC = () => {
                 </main>
                 <Footer/>
             </div>
+
+            <script type="application/ld+json">
+                {JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": faqData.map(q => ({
+                        "@type": "Question",
+                        "name": q.question,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": q.answer
+                        }
+                    }))
+                })}
+            </script>
         </>
     );
 };
