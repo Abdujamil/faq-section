@@ -29,7 +29,7 @@ const Home: React.FC = () => {
             <div className={`${styles.page} block h-full`}>
                 <main
                     className={`${styles.main} w-full max-w-[1160px] h-full mx-auto py-[80px] pr-[10px] pl-[10px] flex flex-col`}>
-                    <h2 className={`${styles.title} mb-[60px] font-normal leading-[110%] text-[48px] text-[#FFFFFF]`}>FAQ: Ответы на
+                    <h2 className={`${styles.title} font-normal leading-[110%] text-[48px] text-[#ccc]`}>FAQ: Ответы на
                         главные
                         вопросы</h2>
                     {/*<div>*/}
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
                     {/*        </label>*/}
                     {/*    </form>*/}
                     {/*</div>*/}
-                    <section className={`${styles.accordion} w-full flex flex-col gap-[5px]`}>
+                    <section className={`${styles.accordion} w-full flex flex-col gap-[5px] mt-[60px]`}>
                         {faqData.map((item) => (
                             <FaqCard
                                 id={item.id}
