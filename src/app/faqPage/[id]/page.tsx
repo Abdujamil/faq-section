@@ -4,6 +4,7 @@ import React from "react";
 import Footer from "../../footer";
 import FaqPageContent from "../../../сomponents/FaqPageCard/FaqPageContent";
 import styles from "../../page.module.scss";
+import Header from "../../../сomponents/header/Header";
 
 type Props = {
     params: { id: string };
@@ -31,6 +32,7 @@ export default async function FaqPage({params}: Props) {
 
     return (
         <>
+            <Header />
             {/* Background */}
             <div
                 className={`${styles.faqBg} fixed w-full h-full bg-[url(/bg.png)] bg-no-repeat left-0 top-0 z-[-1]`}
@@ -39,7 +41,7 @@ export default async function FaqPage({params}: Props) {
                 <div className={`${styles.linear}  absolute inset-0 bg-black/20`}></div>
             </div>
 
-            <div className="w-full max-w-[1160px] h-auto min-h-dvh mx-auto px-[10px] mb-[100px] grid grid-cols-4 gap-[58px]">
+            <div className="w-full max-w-[1160px] h-auto min-h-dvh mx-auto mt-[60px] px-[10px] mb-[100px] grid grid-cols-4 gap-[58px]">
                 <FaqPageContent id={id} />
             </div>
 
