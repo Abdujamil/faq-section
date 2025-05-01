@@ -355,6 +355,63 @@
   //}
 }
 
+.btn {
+  background: rgba(42, 42, 42, 0.1);
+  backdrop-filter: blur(2px);
+  border-radius: 4px;
+
+  &:hover {
+    color: #ccc;
+
+    svg path {
+      fill: #ccc;
+    }
+
+    svg rect{
+      fill: #ccc;
+    }
+  }
+
+  .sendIconLeft {
+    position: absolute;
+    left: 20px;
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  .sendIconRight {
+
+  }
+
+  &:hover {
+    color: #ccc;
+
+    span {
+      transform: translateX(70px);
+    }
+
+    .pdfBtn {
+      transform: translateX(40px);
+    }
+
+
+    .sendIconLeft {
+      transform: translateX(0);
+      left: 20px;
+      //left: 10px;
+      opacity: 1;
+    }
+
+    img.sendIconRight {
+      transform: translateX(60px);
+    }
+
+    .sendIconRight {
+      transform: translateX(58px);
+    }
+  }
+}
+
 .footer {
   .footerTop {
     .form {
