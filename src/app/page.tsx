@@ -30,7 +30,6 @@ const Home: React.FC = () => {
             <div className={`${styles.page} block h-full`}>
                 <main
                     className={`${styles.main} w-full h-full`}>
-                    <Header/>
                     <div className={`w-full max-w-[1160px] h-full mx-auto py-[80px] pr-[10px] pl-[10px] flex flex-col`}>
                         <h2 className={`${styles.title} font-normal leading-[110%] text-[48px] text-[#ccc]`}>FAQ: Ответы
                             на
