@@ -6,7 +6,7 @@ import styles from '../../app/page.module.scss';
 import {useButton} from "../../utils/useButton";
 import {AnimationSettings} from "../../utils/types";
 import HeaderStyles from "../header/Header.module.css";
-import Link from "next/link";
+// import Link from "next/link";
 
 interface Props {
     id: number;
@@ -71,19 +71,6 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                     />
                 </motion.div>
             </div>
-
-            {/*<div ref={setWrapperRef} className={`${styles.textsBtn} relative max-w-[300px]`}>*/}
-            {/*<motion.button*/}
-            {/*    ref={setButtonRef}*/}
-            {/*    initial={{y: 20, opacity: 0}}*/}
-            {/*    animate={controls}*/}
-            {/*    className={`${styles.motionEffect} py-[16px] px-[61px] bg-black text-[24px] leading-[18px] cursor-pointer rounded-[4px] border border-[#CCCCCC]`}*/}
-            {/*    style={{display: isOpen ? "block" : "none"}}*/}
-            {/*    onClick={() => router.push(`/faqPage/${id}`)}*/}
-            {/*>*/}
-            {/*    подробнее*/}
-            {/*</motion.button>*/}
-
 
             <motion.div
                 ref={setButtonRef}

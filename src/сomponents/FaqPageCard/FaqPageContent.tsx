@@ -34,7 +34,7 @@ export default function FaqPageContent({ id }: { id: number }) {
 
     return (
         <>
-            <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm">
+            <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm z-[999999]">
                 <div className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[8px]`}>
                     <p className={`${styles.text} mb-[16px] text-[#3D9ED6] text-[20px] font-[400] leading-[110%]`}>
                         При регистрации дарим 30 минут!
@@ -55,9 +55,12 @@ export default function FaqPageContent({ id }: { id: number }) {
                                 quality={85}
                                 onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [openFaqItem.id]: true }))}
                             />
+
                             {!loadedImages[openFaqItem.id] && (
                                 <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-[8px]" />
                             )}
+
+
                         </div>
                         <FaqAside items={openFaqItem.aside} />
                     </>
@@ -79,3 +82,4 @@ export default function FaqPageContent({ id }: { id: number }) {
         </>
     );
 }
+
