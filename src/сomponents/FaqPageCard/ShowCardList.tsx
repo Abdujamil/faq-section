@@ -1,10 +1,120 @@
 // ShowCardList.tsx
-"use client";
-
-import React, {useState, useEffect} from "react";
+// "use client";
+//
+// import React, {useState, useEffect, useRef} from "react";
+// import styles from '../../app/page.module.scss';
+// import FaqCard from "./FaqCard";
+// import {faqData} from "../../data/faq";
+//
+// type Props = {
+//     initialOpenId?: number;
+//     onToggle?: (id: number | null) => void;
+// };
+//
+// const CardListt: React.FC<Props> = ({initialOpenId, onToggle}) => {
+//     const [openIds, setOpenIds] = useState<number[]>(initialOpenId ? [initialOpenId] : []);
+//     const [activeHash, setActiveHash] = useState("");
+//
+//     const cardRefs = useRef<Record<number, HTMLDivElement | null>>({});
+//     const observer = useRef<IntersectionObserver | null>(null);
+//
+//     const [animationSettings] = useState({
+//         duration: 0.6,
+//         bounce: 5,
+//         delay: 0,
+//         ease: [0.30, 1.7, 0.60, 1],
+//         times: [0, 0.2, 0.5, 0.8, 1],
+//         openY: [0, 26, 0, 0, 0],
+//         closeY: [60, -6, 0, 0, 0],
+//         opacity: [0, 1, 1, 1, 1],
+//     });
+//
+//     // const handleToggle = (id: number) => {
+//     //     const newOpenIds = openIds.includes(id)
+//     //         ? openIds.filter(openId => openId !== id)
+//     //         : [...openIds, id];
+//     //
+//     //     setOpenIds(newOpenIds);
+//     //
+//     //     // Для совместимости с FaqPageContent передаем последний открытый ID
+//     //     if (onToggle) {
+//     //         onToggle(newOpenIds.length > 0 ? newOpenIds[newOpenIds.length - 1] : null);
+//     //     }
+//     // };
+//     //
+//     // useEffect(() => {
+//     //     const updateHash = () => {
+//     //         setActiveHash(window.location.hash);
+//     //     };
+//     //     window.addEventListener("hashchange", updateHash);
+//     //     updateHash();
+//     //     return () => window.removeEventListener("hashchange", updateHash);
+//     // }, []);
+//
+//
+//     useEffect(() => {
+//         if (observer.current) observer.current.disconnect();
+//
+//         observer.current = new IntersectionObserver((entries) => {
+//             const visibleEntry = entries.find((entry) => entry.isIntersecting);
+//             if (visibleEntry) {
+//                 const visibleId = Number(visibleEntry.target.getAttribute("data-id"));
+//                 if (openIds.includes(visibleId)) {
+//                     onToggle?.(visibleId);
+//                 }
+//             }
+//         }, {
+//             threshold: 0.5,
+//         });
+//
+//         Object.values(cardRefs.current).forEach((ref) => {
+//             if (ref) observer.current?.observe(ref);
+//         });
+//
+//         return () => observer.current?.disconnect();
+//     }, [openIds, onToggle]);
+//
+//     const handleToggle = (id: number) => {
+//         const newOpenIds = openIds.includes(id)
+//             ? openIds.filter(openId => openId !== id)
+//             : [id]; // Только одна открытая карточка
+//
+//         setOpenIds(newOpenIds);
+//         if (onToggle) {
+//             onToggle(newOpenIds.length > 0 ? newOpenIds[0] : null);
+//         }
+//     };
+//
+//     return (
+//         <div className={`${styles.pageFaq} block`}>
+//             {faqData.map((item) => (
+//                 <div key={item.id}
+//                      ref={(el) => cardRefs.current[item.id] = el}
+//                      data-id={item.id}
+//                 >
+//                     <FaqCard
+//                         id={item.id}
+//                         key={item.id}
+//                         num={item.num}
+//                         question={item.question}
+//                         fullAnswer={item.fullAnswer}
+//                         src={item.src}
+//                         isOpen={openIds.includes(item.id)}
+//                         onToggle={() => handleToggle(item.id)}
+//                         animationSettings={animationSettings}
+//                         answer={""}
+//                     />
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// };
+//
+// export default CardListt;
+import React, { useState, useEffect, useRef } from "react";
 import styles from '../../app/page.module.scss';
 import FaqCard from "./FaqCard";
-import {faqData} from "../../data/faq";
+import { faqData } from "../../data/faq";
 
 type Props = {
     initialOpenId?: number;
@@ -13,56 +123,79 @@ type Props = {
 
 const CardListt: React.FC<Props> = ({ initialOpenId, onToggle }) => {
     const [openIds, setOpenIds] = useState<number[]>(initialOpenId ? [initialOpenId] : []);
-    const [activeHash, setActiveHash] = useState("");
 
-    const [animationSettings] = useState({
-        duration: 0.6,
-        bounce: 5,
-        delay: 0,
-        ease: [0.30, 1.7, 0.60, 1],
-        times: [0, 0.2, 0.5, 0.8, 1],
-        openY: [0, 26, 0, 0, 0],
-        closeY: [60, -6, 0, 0, 0],
-        opacity: [0, 1, 1, 1, 1],
-    });
+    // Используем useRef для хранения всех ссылок на карточки
+    const cardRefs = useRef<Record<number, React.RefObject<HTMLDivElement>>>({}); // Явно указываем тип
+
+    const observer = useRef<IntersectionObserver | null>(null);
+
+    useEffect(() => {
+        if (observer.current) observer.current.disconnect();
+
+        // Создаем новый IntersectionObserver для наблюдения за видимостью карточек
+        observer.current = new IntersectionObserver((entries) => {
+            const visibleEntry = entries.find((entry) => entry.isIntersecting);
+            if (visibleEntry) {
+                const visibleId = Number(visibleEntry.target.getAttribute("data-id"));
+                if (openIds.includes(visibleId)) {
+                    onToggle?.(visibleId);
+                }
+            }
+        }, {
+            threshold: 0.5,
+        });
+
+        // Подключаем observer к каждому элементу карточки через реф
+        Object.values(cardRefs.current).forEach((ref) => {
+            if (ref.current) observer.current?.observe(ref.current);
+        });
+
+        return () => observer.current?.disconnect();
+    }, [openIds, onToggle]);
 
     const handleToggle = (id: number) => {
         const newOpenIds = openIds.includes(id)
-            ? openIds.filter(openId => openId !== id)
-            : [...openIds, id];
+            ? openIds.filter(openId => openId !== id)  // Убираем карточку из открытых
+            : [...openIds, id]; // Добавляем в открытые
 
         setOpenIds(newOpenIds);
-
-        // Для совместимости с FaqPageContent передаем последний открытый ID
         if (onToggle) {
-            onToggle(newOpenIds.length > 0 ? newOpenIds[newOpenIds.length - 1] : null);
+            onToggle(newOpenIds.length > 0 ? newOpenIds[newOpenIds.length - 1] : null); // Отправляем последний открытый ID
         }
     };
-
-    useEffect(() => {
-        const updateHash = () => {
-            setActiveHash(window.location.hash);
-        };
-        window.addEventListener("hashchange", updateHash);
-        updateHash();
-        return () => window.removeEventListener("hashchange", updateHash);
-    }, []);
 
     return (
         <div className={`${styles.pageFaq} block`}>
             {faqData.map((item) => (
-                <FaqCard
-                    id={item.id}
+                <div
                     key={item.id}
-                    num={item.num}
-                    question={item.question}
-                    fullAnswer={item.fullAnswer}
-                    src={item.src}
-                    isOpen={openIds.includes(item.id)}
-                    onToggle={() => handleToggle(item.id)}
-                    animationSettings={animationSettings}
-                    answer={""}
-                />
+                    ref={(el) => {
+                        // Обновляем рефы, используя useRef для каждой карточки
+                        cardRefs.current[item.id] = el ? { current: el } : cardRefs.current[item.id];
+                    }}
+                    data-id={item.id}
+                >
+                    <FaqCard
+                        id={item.id}
+                        num={item.num}
+                        question={item.question}
+                        fullAnswer={item.fullAnswer}
+                        src={item.src}
+                        isOpen={openIds.includes(item.id)} // проверяем, открыта ли карточка
+                        onToggle={() => handleToggle(item.id)}
+                        animationSettings={{
+                            duration: 0.6,
+                            bounce: 5,
+                            delay: 0,
+                            ease: [0.30, 1.7, 0.60, 1],
+                            times: [0, 0.2, 0.5, 0.8, 1],
+                            openY: [0, 26, 0, 0, 0],
+                            closeY: [60, -6, 0, 0, 0],
+                            opacity: [0, 1, 1, 1, 1],
+                        }}
+                        answer=""
+                    />
+                </div>
             ))}
         </div>
     );
