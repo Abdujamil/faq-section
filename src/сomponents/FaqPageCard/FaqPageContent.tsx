@@ -48,7 +48,7 @@ export default function FaqPageContent({id}: { id: number }) {
                             data-text=""
                          >
                         <span className="font-normal  text-[20px] leading-[120%]">
-                          Войти
+                          Попробовать
                         </span>
                         </button>
                         <div className={styles.highlight}/>
