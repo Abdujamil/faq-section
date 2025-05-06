@@ -6,6 +6,7 @@ import styles from '../../app/page.module.scss';
 import {useButton} from "../../utils/useButton";
 import {AnimationSettings} from "../../utils/types";
 import HeaderStyles from "../header/Header.module.css";
+import Header from "../header/Header";
 // import Link from "next/link";
 
 interface Props {
@@ -20,13 +21,6 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
     const controls = useAnimation();
     const {setButtonRef, setWrapperRef} = useButton();
     const router = useRouter();
-    const [clicked, setClicked] = useState(false);
-
-    const handleClick = async () => {
-        setClicked(true); // Запускаем эффект исчезновения
-        await new Promise(resolve => setTimeout(resolve, 200)); // Ждем 300мс
-        router.push(`/faqPage/${id}`);
-    };
 
     useEffect(() => {
         const target = {
@@ -58,6 +52,9 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 overflow: "hidden",
             }}
         >
+            <div className={`hidden`}>
+                <Header />
+            </div>
             <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
                 <p className="text-[18px] font-normal">{answer}</p>
                 <motion.div
@@ -103,8 +100,8 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
 
                     <span
                         className="text-[20px] !transition-all !duration-[.15s] !ease-in !group-hover:text-[#ccc]">
-                                          подробнее
-                                        </span>
+                                    ПОДРОБНЕЕ
+                    </span>
                     <svg className={`${styles.sendIconRight}  transition-all !duration-[.15s] ease-in`} width="26"
                          height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="1" y="1" width="24" height="24" rx="2" fill="#737373"/>

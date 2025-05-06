@@ -31,7 +31,7 @@ const Home: React.FC = () => {
                     className={`${styles.main} w-full h-full`}>
                     <div className={`w-full h-full my-[80px]`}>
                         <section className={`${styles.accordion} w-full mx-auto max-w-[1160px] pr-[10px] pl-[10px]`}>
-                            <h2 className={`${styles.title} font-normal leading-[110%] text-[48px] text-[#ccc] mb-[50px]`}>FAQ:
+                            <h2 className={`${styles.title} ${styles.txtGradientRight} font-normal leading-[110%] text-[48px] text-[#ccc] mb-[50px]`}>FAQ:
                                 Ответы
                                 на
                                 главные

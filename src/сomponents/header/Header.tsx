@@ -96,7 +96,6 @@ const MenuItem: React.FC<{ item: MenuItem; isActive: boolean }> = React.memo(
     );
   }
 );
-
 MenuItem.displayName = "MenuItem";
 
 const Header: React.FC = () => {
@@ -213,7 +212,7 @@ const Header: React.FC = () => {
   });
 
   return (
-    <header className={`${styles.header} flex items-center w-full h-[70px]`}>
+    <header className={`${styles.header} flex items-center w-full h-[60px]`}>
       <div className="flex items-center justify-between w-full px-[30px]">
         <Link
           href="/"

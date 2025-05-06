@@ -363,9 +363,9 @@
   &:hover {
     color: #ccc;
 
-    svg path {
-      fill: #ccc;
-    }
+    //svg path {
+    //  fill: #ccc;
+    //}
 
     svg rect{
       fill: #ccc;
@@ -387,7 +387,7 @@
     color: #ccc;
 
     span {
-      transform: translateX(70px);
+      transform: translateX(55px);
     }
 
     .pdfBtn {
@@ -410,6 +410,13 @@
       transform: translateX(58px);
     }
   }
+}
+
+.txtGradientRight {
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(90deg, #ccc, #cccccc71);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .highlight {
