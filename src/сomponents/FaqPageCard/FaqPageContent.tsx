@@ -1,13 +1,14 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import React, {useState, useMemo, useEffect} from "react";
 import Image from "next/image";
-import { faqData } from "../../data/faq";
+import {faqData} from "../../data/faq";
 import CardListt from "./ShowCardList";
 import FaqAside from "./FaqAside";
 import styles from '../../app/page.module.scss';
-import GlassButton from "../GlassButton/GlassButton";
+import HeaderStyles from '../header/Header.module.css';
+// import GlassButton from "../GlassButton/GlassButton";
 
-export default function FaqPageContent({ id }: { id: number }) {
+export default function FaqPageContent({id}: { id: number }) {
     const [openQuestionId, setOpenQuestionId] = useState<number | null>(id);
     const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
 
@@ -18,16 +19,16 @@ export default function FaqPageContent({ id }: { id: number }) {
                 const img = new window.Image();
                 img.src = item.largeImgSrc;
                 img.onload = () => {
-                    setLoadedImages(prev => ({ ...prev, [item.id]: true }));
+                    setLoadedImages(prev => ({...prev, [item.id]: true}));
                 };
             }
         });
     }, []);
 
-    const { currentFaqItem, openFaqItem } = useMemo(() => {
+    const {currentFaqItem, openFaqItem} = useMemo(() => {
         const current = faqData.find((item) => item.id === id);
         const open = faqData.find((item) => item.id === openQuestionId) || current;
-        return { currentFaqItem: current, openFaqItem: open };
+        return {currentFaqItem: current, openFaqItem: open};
     }, [id, openQuestionId]);
 
     if (!currentFaqItem || !openFaqItem) return null;
@@ -35,11 +36,25 @@ export default function FaqPageContent({ id }: { id: number }) {
     return (
         <>
             <aside className="sticky top-20 h-fit w-[260px] backdrop-blur-sm z-[999999]">
-                <div className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[8px]`}>
+                <div
+                    className={`${styles.registerBlock} mb-[20px] p-[20px] text-center border border-[#353535] rounded-[8px]`}>
                     <p className={`${styles.text} mb-[16px] text-[#3D9ED6] text-[20px] font-[400] leading-[110%]`}>
                         При регистрации дарим 30 минут!
                     </p>
-                    <GlassButton>Попробовать</GlassButton>
+
+                    <div className="relative w-full flex h-[51px] items-center justify-center">
+                        <button
+                            className={`${HeaderStyles["login-button"]} w-full max-w-[200px] !h-full  group flex items-center justify-center`}
+                            data-text=""
+                         >
+                        <span className="font-normal  text-[20px] leading-[120%]">
+                          Войти
+                        </span>
+                        </button>
+                        <div className={styles.highlight}/>
+                    </div>
+
+                    {/*<GlassButton>Попробовать</GlassButton>*/}
                 </div>
 
                 {openQuestionId && (
@@ -53,16 +68,16 @@ export default function FaqPageContent({ id }: { id: number }) {
                                 className="rounded-[8px] object-cover"
                                 priority={openFaqItem.id === id}
                                 quality={85}
-                                onLoadingComplete={() => setLoadedImages(prev => ({ ...prev, [openFaqItem.id]: true }))}
+                                onLoadingComplete={() => setLoadedImages(prev => ({...prev, [openFaqItem.id]: true}))}
                             />
 
                             {!loadedImages[openFaqItem.id] && (
-                                <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-[8px]" />
+                                <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-[8px]"/>
                             )}
 
 
                         </div>
-                        <FaqAside items={openFaqItem.aside} />
+                        <FaqAside items={openFaqItem.aside}/>
                     </>
                 )}
             </aside>
