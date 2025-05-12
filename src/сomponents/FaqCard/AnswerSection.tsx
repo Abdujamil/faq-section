@@ -55,7 +55,7 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
             <div className={`hidden`}>
                 <Header />
             </div>
-            <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
+            <div className={`${styles.texts} flex gap-[40px] mb-[24px]`}>
                 <p className="text-[18px] font-normal leading-[140%]">{answer}</p>
                 <motion.div
                     className="w-[155px] max-h-[155px] mt-[5px]"
