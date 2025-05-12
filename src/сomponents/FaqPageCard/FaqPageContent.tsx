@@ -57,29 +57,29 @@ export default function FaqPageContent({id}: { id: number }) {
                     {/*<GlassButton>Попробовать</GlassButton>*/}
                 </div>
 
-                {openQuestionId && (
-                    <>
-                        <div className="relative w-full h-[260px] mb-[20px] rounded-[8px]">
-                            <Image
-                                src={openFaqItem.largeImgSrc}
-                                alt={openFaqItem.question}
-                                fill
-                                sizes="260px"
-                                className="rounded-[8px] object-cover"
-                                priority={openFaqItem.id === id}
-                                quality={85}
-                                onLoadingComplete={() => setLoadedImages(prev => ({...prev, [openFaqItem.id]: true}))}
-                            />
+                    {openQuestionId && (
+                        <>
+                            <div className="relative w-full h-[260px] mb-[20px] rounded-[8px]">
+                                <Image
+                                    src={openFaqItem.largeImgSrc}
+                                    alt={openFaqItem.question}
+                                    fill
+                                    sizes="260px"
+                                    className="rounded-[8px] object-cover"
+                                    priority={openFaqItem.id === id}
+                                    quality={85}
+                                    onLoadingComplete={() => setLoadedImages(prev => ({...prev, [openFaqItem.id]: true}))}
+                                />
 
-                            {!loadedImages[openFaqItem.id] && (
-                                <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-[8px]"/>
-                            )}
+                                {!loadedImages[openFaqItem.id] && (
+                                    <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-[8px]"/>
+                                )}
 
 
-                        </div>
-                        <FaqAside items={openFaqItem.aside}/>
-                    </>
-                )}
+                            </div>
+                            <FaqAside items={openFaqItem.aside}/>
+                        </>
+                    )}
             </aside>
             <div className="col-span-3">
                 <div className="pb-[40px]">

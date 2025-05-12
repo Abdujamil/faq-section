@@ -56,9 +56,9 @@ const AnswerSection: React.FC<Props> = ({id, isOpen, answer, src, animationSetti
                 <Header />
             </div>
             <div className={`${styles.texts} flex gap-[40px] mb-[30px]`}>
-                <p className="text-[18px] font-normal">{answer}</p>
+                <p className="text-[18px] font-normal leading-[140%]">{answer}</p>
                 <motion.div
-                    className="w-[155px] max-h-[155px] mt-[7px]"
+                    className="w-[155px] max-h-[155px] mt-[5px]"
                     initial={{y: 20, opacity: 0}}
                     animate={controls}
                     style={{display: isOpen ? "block" : "none"}}
