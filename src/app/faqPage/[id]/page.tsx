@@ -42,7 +42,8 @@ export default async function FaqPage({params}: Props) {
                     <div className={`${styles.linear}  absolute inset-0 bg-black/20`}></div>
                 </div>
 
-                <div className="w-full max-w-[1180px] h-auto mx-auto mt-[60px] px-[10px] mb-[100px] grid grid-cols-4 gap-[58px]">
+                <div
+                    className="w-full max-w-[1180px] h-auto min-h-lvh mx-auto mt-[60px] px-[10px] mb-[100px] grid grid-cols-4 gap-[58px]">
                     <FaqPageContent id={id}/>
                 </div>
                 <Footer/>

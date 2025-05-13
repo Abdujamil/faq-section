@@ -36,6 +36,77 @@ body {
     /*overflow: hidden;*/
 }
 
+.field__input:focus, .field__textarea:focus {
+    box-shadow: inset 2px 2px 2px rgba(7, 26, 38, .502), inset -2px -2px 2px rgba(7, 26, 38, .502);
+    border: 1px solid #737373;
+    z-index: 1;
+}
+
+.field__input, .field__textarea {
+    /*margin-top: 25px;*/
+    z-index: 1;
+    transition: all .2s ease-in-out 0s;
+    display: block;
+    height: 50px;
+    background: #4a587d;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 12px;
+    color: #ccc;
+    border: 1px solid #353535;
+    resize: none;
+    outline: none;
+    caret-color: #ccc;
+}
+
+.field__input:focus ~ .field__title-top, .field__textarea:focus ~ .field__title-top {
+    top: -25px;
+}
+
+.field__title-top {
+    z-index: -1;
+}
+
+.field__input:focus ~ .field__title, .field__input:hover ~ .field__title, .field__textarea:focus ~ .field__title, .field__textarea:hover ~ .field__title {
+    opacity: 0;
+}
+
+.field__input:not(:placeholder-shown):not(:focus) ~ .field__title {
+    z-index: -1;
+}
+
+.field__title, .field__title-top {
+    transition: all .2s ease-in-out 0s;
+    position: absolute;
+    top: 13px;
+    left: 12px;
+    font-size: 16px;
+    color: #ccc;
+    max-width: calc(100% - 40px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.field__input:not(:placeholder-shown):not(:focus) ~ .field__title, .field__textarea:not(:placeholder-shown):not(:focus) ~ .field__title {
+    z-index: -1;
+}
+
+input::placeholder {
+    opacity: 0;
+}
+
+input[type='email']::placeholder {
+    opacity: 1;
+}
+
+.field__title {
+    z-index: 1;
+    pointer-events: none;
+}
+
+
 /*input{*/
 /*    border: 1px solid #CCCCCC;*/
 /*}*/
